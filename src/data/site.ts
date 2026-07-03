@@ -5,6 +5,9 @@ import tplRealEstate from "@/assets/tpl-realestate.jpg";
 import heroLaptop from "@/assets/hero-device-laptop.png";
 import heroTablet from "@/assets/hero-device-tablet.png";
 import heroMobile from "@/assets/hero-device-mobile.png";
+import customHero from "@/assets/custom-hero.jpg";
+import customPriceIllus from "@/assets/custom-price-illustration.jpg";
+import customCtaIllus from "@/assets/custom-cta-illustration.jpg";
 
 // ============================================================
 // Site content configuration — future admin-panel editable.
@@ -21,7 +24,7 @@ export const brand = {
 export const navigation: NavItem[] = [
   { id: "home", label: "Home", href: "/" },
   { id: "templates", label: "Templates", href: "/templates" },
-  { id: "custom", label: "Custom Websites", href: "/#custom" },
+  { id: "custom", label: "Custom Websites", href: "/custom-websites" },
   { id: "pricing", label: "Pricing", href: "/#pricing" },
   { id: "about", label: "About Us", href: "/#about" },
   { id: "contact", label: "Contact", href: "/#contact" },
@@ -30,7 +33,7 @@ export const navigation: NavItem[] = [
 export const navActions = {
   loginLabel: "Login",
   ctaLabel: "Get Custom Website",
-  ctaHref: "/#custom",
+  ctaHref: "/custom-websites",
 };
 
 // -------------------- Hero --------------------
@@ -41,7 +44,7 @@ export const hero = {
   description:
     "Buy premium templates, tailor them to your brand, or commission a fully custom build. One studio, every stage of your website.",
   primary: { label: "Browse Templates", href: "/templates" },
-  secondary: { label: "Request Custom Website", href: "/#custom" },
+  secondary: { label: "Request Custom Website", href: "/custom-websites" },
   benefits: [
     { id: "responsive", label: "Mobile Responsive" },
     { id: "seo", label: "SEO Optimized" },
@@ -302,7 +305,7 @@ export const customCta = {
   description:
     "Our senior team designs and ships fully bespoke websites — from brand systems to production code.",
   benefits: ["Custom design", "Dedicated team", "Fast delivery"],
-  cta: { label: "Request Custom Website", href: "/#custom" },
+  cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
 // -------------------- Marketplace (Templates page) --------------------
@@ -351,7 +354,7 @@ export const marketplaceCta = {
   description:
     "Tell us what your business needs and we'll create a website around it.",
   benefits: ["100% Custom Design", "Fast Delivery", "Dedicated Support"],
-  cta: { label: "Request Custom Website", href: "/#custom" },
+  cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
 // -------------------- Footer --------------------
@@ -360,7 +363,7 @@ export const footer = {
   columns: [
     { id: "products", title: "Products", links: [
       { label: "Templates", href: "/templates" },
-      { label: "Custom Websites", href: "/#custom" },
+      { label: "Custom Websites", href: "/custom-websites" },
       { label: "Pricing", href: "/#pricing" },
       { label: "How It Works", href: "/#" },
       { label: "Become an Affiliate", href: "/#" },
@@ -393,4 +396,134 @@ export const footer = {
   ],
   payments: ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay"],
   legal: `© ${new Date().getFullYear()} Mini Store. All rights reserved.`,
+};
+
+// -------------------- Custom Websites Page --------------------
+
+export type CustomBenefit = { id: string; label: string; icon: "palette" | "zap" | "headset" | "check" | "shield" | "clock" };
+
+export type ProcessStep = {
+  id: string;
+  step: number;
+  title: string;
+  description: string;
+  icon: "message" | "file" | "code" | "check" | "rocket";
+  tone: "violet" | "blue" | "green" | "amber" | "pink";
+};
+
+export type ServiceType = {
+  id: string;
+  title: string;
+  description: string;
+  icon: "briefcase" | "cart" | "user" | "send" | "utensils" | "home" | "stethoscope" | "layers";
+  tone: "violet" | "blue" | "orange" | "green" | "pink" | "amber" | "sky";
+  visible: boolean;
+  displayOrder: number;
+};
+
+export type RecentWork = {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  tone: "violet" | "blue" | "orange" | "green" | "pink" | "amber" | "sky";
+  visible: boolean;
+  displayOrder: number;
+};
+
+export type FaqItem = { id: string; question: string; answer: string; visible: boolean; displayOrder: number };
+
+export const customRequestHref = "/custom-websites/request";
+
+export const customWebsitesPage = {
+  hero: {
+    badge: "100% Custom Websites",
+    titleLines: ["We build stunning", "websites for your"],
+    titleGradient: "unique business.",
+    description:
+      "Stand out online with a custom website designed to match your brand, engage your audience, and grow your business.",
+    benefits: [
+      { id: "design", label: "100% Custom Design", icon: "palette" },
+      { id: "delivery", label: "Fast Delivery", icon: "zap" },
+      { id: "support", label: "Dedicated Support", icon: "headset" },
+    ] satisfies CustomBenefit[],
+    primary: { label: "Request Custom Website", href: customRequestHref },
+    secondary: { label: "How It Works", href: "#process" },
+    visual: { src: customHero, alt: "Custom website preview on desktop and mobile", width: 1280, height: 1024 },
+  },
+  process: {
+    eyebrow: "HOW IT WORKS",
+    title: "Our Simple Process",
+    steps: [
+      { id: "discuss", step: 1, title: "Discuss", description: "Share your requirements and business goals with us.", icon: "message", tone: "violet" },
+      { id: "plan", step: 2, title: "Plan & Design", description: "We plan the structure and create a custom design.", icon: "file", tone: "blue" },
+      { id: "develop", step: 3, title: "Develop", description: "Our team builds your website with clean, modern code.", icon: "code", tone: "green" },
+      { id: "review", step: 4, title: "Review & Test", description: "You review, we test, and make sure it's perfect.", icon: "check", tone: "amber" },
+      { id: "launch", step: 5, title: "Launch", description: "We go live and support you every step of the way.", icon: "rocket", tone: "pink" },
+    ] satisfies ProcessStep[],
+  },
+  services: {
+    title: "What We Build",
+    items: [
+      { id: "business", title: "Business Websites", description: "Professional websites for companies and startups.", icon: "briefcase", tone: "violet", visible: true, displayOrder: 1 },
+      { id: "ecommerce", title: "E-commerce Stores", description: "Online stores that sell more and grow your brand.", icon: "cart", tone: "green", visible: true, displayOrder: 2 },
+      { id: "portfolio", title: "Portfolio Websites", description: "Showcase your work and attract more clients.", icon: "user", tone: "orange", visible: true, displayOrder: 3 },
+      { id: "landing", title: "Landing Pages", description: "High-converting pages for offers and campaigns.", icon: "send", tone: "sky", visible: true, displayOrder: 4 },
+      { id: "restaurant", title: "Restaurant Websites", description: "Online presence for restaurants and cafes.", icon: "utensils", tone: "pink", visible: true, displayOrder: 5 },
+      { id: "realestate", title: "Real Estate Websites", description: "Property listings with advanced search and filters.", icon: "home", tone: "blue", visible: true, displayOrder: 6 },
+      { id: "medical", title: "Medical Websites", description: "Healthcare websites that build trust and credibility.", icon: "stethoscope", tone: "green", visible: true, displayOrder: 7 },
+      { id: "apps", title: "Custom Web Apps", description: "Powerful web applications built for your needs.", icon: "layers", tone: "violet", visible: true, displayOrder: 8 },
+    ] satisfies ServiceType[],
+  },
+  included: {
+    title: "What's Included",
+    features: [
+      "100% Custom Design",
+      "Responsive on All Devices",
+      "SEO Friendly Structure",
+      "Speed Optimized",
+      "Contact / Inquiry Forms",
+      "Content Upload",
+      "Basic On-Page SEO",
+      "Social Media Integration",
+      "Training & Documentation",
+      "3 Months Free Support",
+    ],
+    pricing: {
+      label: "Packages Starting From",
+      price: "₹9,999",
+      note: "One-time payment • No hidden charges",
+      benefits: ["No Monthly Fees", "Full Ownership", "Scalable & Future Ready"],
+      cta: { label: "Request a Free Quote", href: customRequestHref },
+      illustration: { src: customPriceIllus, alt: "Website mockup illustration" },
+      badge: "₹9,999 Starting Price",
+    },
+  },
+  recentWork: {
+    title: "Our Recent Work",
+    items: [
+      { id: "spice", title: "Spice Palace Restaurant", category: "Restaurant", image: tplRestaurant, tone: "orange", visible: true, displayOrder: 1 },
+      { id: "haven", title: "Haven Real Estate", category: "Real Estate", image: tplRealEstate, tone: "amber", visible: true, displayOrder: 2 },
+      { id: "lifecare", title: "LifeCare Hospital", category: "Medical", image: tplMedical, tone: "blue", visible: true, displayOrder: 3 },
+      { id: "aurea", title: "Auréa Fashion", category: "Fashion", image: tplFashion, tone: "pink", visible: true, displayOrder: 4 },
+    ] satisfies RecentWork[],
+  },
+  faq: {
+    title: "Frequently Asked Questions",
+    items: [
+      { id: "time", question: "How long does it take to build a custom website?", answer: "Most custom websites are delivered in 2 to 4 weeks depending on the size, features, and how quickly we receive your content and feedback.", visible: true, displayOrder: 1 },
+      { id: "update", question: "Can I update the website myself?", answer: "Yes. We build with easy-to-manage structures and provide training so you can update content, images, and pages on your own.", visible: true, displayOrder: 2 },
+      { id: "responsive", question: "Will my website be mobile responsive?", answer: "Every website we deliver is fully responsive and works beautifully across desktops, laptops, tablets, and mobile devices.", visible: true, displayOrder: 3 },
+      { id: "info", question: "What information do you need to get started?", answer: "We'll need your brand assets, a short brief about your business goals, any reference websites you like, and your content or a plan for it.", visible: true, displayOrder: 4 },
+      { id: "hosting", question: "Do you provide domain and hosting?", answer: "We help you choose and set up a reliable domain and hosting provider. Hosting costs are billed by the provider directly, keeping ownership in your hands.", visible: true, displayOrder: 5 },
+      { id: "support", question: "Do you offer after-sales support?", answer: "Yes. Every custom website includes 3 months of free support for fixes and small changes, with affordable ongoing plans available afterwards.", visible: true, displayOrder: 6 },
+    ] satisfies FaqItem[],
+  },
+  finalCta: {
+    title: "Ready to grow your business online?",
+    description: "Let's build a website that represents your brand and drives real results.",
+    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    cta: { label: "Request Custom Website", href: customRequestHref },
+    illustration: { src: customCtaIllus, alt: "Custom website chat illustration" },
+  },
 };
