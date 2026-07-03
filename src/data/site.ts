@@ -21,7 +21,7 @@ export const brand = {
 export const navigation: NavItem[] = [
   { id: "home", label: "Home", href: "/" },
   { id: "templates", label: "Templates", href: "/templates" },
-  { id: "custom", label: "Custom Websites", href: "/#custom" },
+  { id: "custom", label: "Custom Websites", href: "/custom-websites" },
   { id: "pricing", label: "Pricing", href: "/#pricing" },
   { id: "about", label: "About Us", href: "/#about" },
   { id: "contact", label: "Contact", href: "/#contact" },
@@ -30,7 +30,7 @@ export const navigation: NavItem[] = [
 export const navActions = {
   loginLabel: "Login",
   ctaLabel: "Get Custom Website",
-  ctaHref: "/#custom",
+  ctaHref: "/custom-websites",
 };
 
 // -------------------- Hero --------------------
@@ -41,7 +41,7 @@ export const hero = {
   description:
     "Buy premium templates, tailor them to your brand, or commission a fully custom build. One studio, every stage of your website.",
   primary: { label: "Browse Templates", href: "/templates" },
-  secondary: { label: "Request Custom Website", href: "/#custom" },
+  secondary: { label: "Request Custom Website", href: "/custom-websites" },
   benefits: [
     { id: "responsive", label: "Mobile Responsive" },
     { id: "seo", label: "SEO Optimized" },
@@ -351,7 +351,7 @@ export const marketplaceCta = {
   description:
     "Tell us what your business needs and we'll create a website around it.",
   benefits: ["100% Custom Design", "Fast Delivery", "Dedicated Support"],
-  cta: { label: "Request Custom Website", href: "/#custom" },
+  cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
 // -------------------- Footer --------------------
@@ -360,7 +360,7 @@ export const footer = {
   columns: [
     { id: "products", title: "Products", links: [
       { label: "Templates", href: "/templates" },
-      { label: "Custom Websites", href: "/#custom" },
+      { label: "Custom Websites", href: "/custom-websites" },
       { label: "Pricing", href: "/#pricing" },
       { label: "How It Works", href: "/#" },
       { label: "Become an Affiliate", href: "/#" },
