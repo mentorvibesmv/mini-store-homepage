@@ -949,3 +949,56 @@ export const contactPage = {
     illustration: { src: aboutCtaImg, alt: "Team collaborating together", width: 1024, height: 768 },
   },
 };
+
+// -------------------- How It Works Page --------------------
+export type HowTone = "violet" | "green" | "orange" | "blue";
+
+export const howItWorksPage = {
+  hero: {
+    badge: "How It Works",
+    headingPre: "Simple Process.\n",
+    headingGradient: "Powerful",
+    headingPost: " Results.",
+    description:
+      "We've made building your website easy, transparent and hassle-free. Here's how Mini Store works from start to finish.",
+    trustPoints: [
+      { id: "simple", label: "Easy & Simple", icon: "check" as const },
+      { id: "transparent", label: "Transparent", icon: "shield" as const },
+      { id: "always", label: "Always Here", icon: "headset" as const },
+    ],
+    image: { src: aboutHeroImg, alt: "Mini Store responsive website preview on laptop and phone", width: 1280, height: 960 },
+  },
+  process: {
+    eyebrow: "OUR PROCESS",
+    title: "How Mini Store Works",
+    description:
+      "From choosing your path to going live, we handle every step so you can focus on growing your business.",
+    steps: [
+      { id: "choose", number: "01", title: "Choose Your Path", description: "Choose between a ready-made template or a fully custom website.", icon: "path" as const, tone: "violet" as HowTone },
+      { id: "select", number: "02", title: "Select Template or Custom", description: "Browse templates or tell us what you need. We'll suggest the best solution.", icon: "browser" as const, tone: "green" as HowTone },
+      { id: "share", number: "03", title: "Share Your Details", description: "Share your business information, content, and any specific requirements.", icon: "form" as const, tone: "orange" as HowTone },
+      { id: "build", number: "04", title: "We Build Your Website", description: "Our team designs and develops your website with care and attention to detail.", icon: "code" as const, tone: "blue" as HowTone },
+      { id: "review", number: "05", title: "Review & Feedback", description: "You review the website and share your feedback. We make any agreed changes.", icon: "review" as const, tone: "violet" as HowTone },
+      { id: "live", number: "06", title: "Go Live", description: "Once you're happy, we launch your website and make it live.", icon: "rocket" as const, tone: "green" as HowTone },
+      { id: "support", number: "07", title: "Ongoing Support", description: "Support continues based on your selected plan or project agreement.", icon: "headset" as const, tone: "orange" as HowTone },
+    ],
+  },
+  values: {
+    eyebrow: "WHY IT WORKS",
+    title: "Built Around You",
+    description: "We focus on what matters most — your success.",
+    items: [
+      { id: "customer", title: "Customer First", description: "Your goals are our priority. We listen, understand and deliver based on the agreed requirements.", icon: "target" as const, tone: "violet" as HowTone },
+      { id: "notech", title: "No Technical Stress", description: "You don't need to worry about the technical side. We guide you through the process.", icon: "shield" as const, tone: "green" as HowTone },
+      { id: "fast", title: "Fast & Efficient", description: "Our streamlined process helps move your website from idea to launch efficiently.", icon: "bolt" as const, tone: "orange" as HowTone },
+      { id: "growth", title: "Focus on Growth", description: "We handle the website process so you can focus on running and growing your business.", icon: "chart" as const, tone: "blue" as HowTone },
+    ],
+  },
+  cta: {
+    title: "Ready to Get Started?",
+    description: "Let's build a website that helps your business grow. We're ready when you are!",
+    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    primary: { label: "Get in Touch", href: "/contact" },
+    illustration: { src: aboutCtaImg, alt: "Team collaborating on a website project", width: 1024, height: 768 },
+  },
+};
