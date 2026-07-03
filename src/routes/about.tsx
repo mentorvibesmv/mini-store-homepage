@@ -85,7 +85,10 @@ function AboutHero() {
             </span>
             <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">
               {h.headingPre}
-              <span className="bg-primary-gradient bg-clip-text text-transparent">
+              <span
+                className="bg-gradient-to-r from-[oklch(0.55_0.22_290)] to-[oklch(0.55_0.2_240)] bg-clip-text text-transparent"
+                style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+              >
                 {h.headingGradient}
               </span>
               {h.headingPost}
