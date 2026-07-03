@@ -399,9 +399,6 @@ export const footer = {
 };
 
 // -------------------- Custom Websites Page --------------------
-import customHero from "@/assets/custom-hero.jpg";
-import customPriceIllus from "@/assets/custom-price-illustration.jpg";
-import customCtaIllus from "@/assets/custom-cta-illustration.jpg";
 
 export type CustomBenefit = { id: string; label: string; icon: "palette" | "zap" | "headset" | "check" | "shield" | "clock" };
 
