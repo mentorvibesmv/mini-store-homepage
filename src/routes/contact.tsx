@@ -725,7 +725,6 @@ function FinalCta({ onCta }: { onCta: () => void }) {
               </ul>
               <div className="mt-6">
                 <Button
-                  as="button"
                   href="#contact-form"
                   onClick={(e) => {
                     e.preventDefault();
