@@ -11,16 +11,16 @@ export function Templates() {
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Featured Templates
           </h2>
-          <a
-            href="#"
+          <Link
+            to="/templates"
             className="hidden items-center gap-1.5 text-sm font-medium text-primary hover:underline sm:inline-flex"
           >
             View All Templates <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {templates.map((t) => (
+          {templates.slice(0, 4).map((t) => (
             <article
               key={t.id}
               className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
