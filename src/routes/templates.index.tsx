@@ -31,7 +31,7 @@ const searchSchema = z.object({
   ).default("featured"),
 });
 
-export const Route = createFileRoute("/templates")({
+export const Route = createFileRoute("/templates/")({
   validateSearch: zodValidator(searchSchema),
   head: () => ({
     meta: [
