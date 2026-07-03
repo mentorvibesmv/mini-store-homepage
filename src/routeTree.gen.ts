@@ -9,28 +9,35 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
 import { Route as TemplatesSlugPreviewRouteImport } from './routes/templates.$slug.preview'
 
+const TemplatesRoute = TemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemplatesIndexRoute = TemplatesIndexRouteImport.update({
-  id: '/templates/',
-  path: '/templates/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => TemplatesRoute,
 } as any)
 const TemplatesSlugPreviewRoute = TemplatesSlugPreviewRouteImport.update({
-  id: '/templates/$slug/preview',
-  path: '/templates/$slug/preview',
-  getParentRoute: () => rootRouteImport,
+  id: '/$slug/preview',
+  path: '/$slug/preview',
+  getParentRoute: () => TemplatesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/templates': typeof TemplatesRouteWithChildren
   '/templates/': typeof TemplatesIndexRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
 }
@@ -42,25 +49,37 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/templates': typeof TemplatesRouteWithChildren
   '/templates/': typeof TemplatesIndexRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/templates/' | '/templates/$slug/preview'
+  fullPaths: '/' | '/templates' | '/templates/' | '/templates/$slug/preview'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/templates' | '/templates/$slug/preview'
-  id: '__root__' | '/' | '/templates/' | '/templates/$slug/preview'
+  id:
+    | '__root__'
+    | '/'
+    | '/templates'
+    | '/templates/'
+    | '/templates/$slug/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  TemplatesIndexRoute: typeof TemplatesIndexRoute
-  TemplatesSlugPreviewRoute: typeof TemplatesSlugPreviewRoute
+  TemplatesRoute: typeof TemplatesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,25 +89,38 @@ declare module '@tanstack/react-router' {
     }
     '/templates/': {
       id: '/templates/'
-      path: '/templates'
+      path: '/'
       fullPath: '/templates/'
       preLoaderRoute: typeof TemplatesIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof TemplatesRoute
     }
     '/templates/$slug/preview': {
       id: '/templates/$slug/preview'
-      path: '/templates/$slug/preview'
+      path: '/$slug/preview'
       fullPath: '/templates/$slug/preview'
       preLoaderRoute: typeof TemplatesSlugPreviewRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof TemplatesRoute
     }
   }
 }
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+interface TemplatesRouteChildren {
+  TemplatesIndexRoute: typeof TemplatesIndexRoute
+  TemplatesSlugPreviewRoute: typeof TemplatesSlugPreviewRoute
+}
+
+const TemplatesRouteChildren: TemplatesRouteChildren = {
   TemplatesIndexRoute: TemplatesIndexRoute,
   TemplatesSlugPreviewRoute: TemplatesSlugPreviewRoute,
+}
+
+const TemplatesRouteWithChildren = TemplatesRoute._addFileChildren(
+  TemplatesRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  TemplatesRoute: TemplatesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
