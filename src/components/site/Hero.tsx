@@ -13,7 +13,7 @@ export function Hero() {
         <div className="absolute top-40 left-[-15%] h-[420px] w-[420px] rounded-full bg-[color:var(--tone-sky)] opacity-60 blur-3xl" />
       </div>
 
-      <Container className="relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-24">
+      <Container className="relative grid items-center gap-10 pt-10 pb-6 sm:pt-14 sm:pb-8 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:pt-16 lg:pb-10">
         {/* LEFT */}
         <div className="relative">
           <div className="fade-up">
