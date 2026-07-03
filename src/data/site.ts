@@ -5,6 +5,9 @@ import tplRealEstate from "@/assets/tpl-realestate.jpg";
 import heroLaptop from "@/assets/hero-device-laptop.png";
 import heroTablet from "@/assets/hero-device-tablet.png";
 import heroMobile from "@/assets/hero-device-mobile.png";
+import customHero from "@/assets/custom-hero.jpg";
+import customPriceIllus from "@/assets/custom-price-illustration.jpg";
+import customCtaIllus from "@/assets/custom-cta-illustration.jpg";
 
 // ============================================================
 // Site content configuration — future admin-panel editable.
