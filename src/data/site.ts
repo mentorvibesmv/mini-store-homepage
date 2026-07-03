@@ -26,8 +26,8 @@ export const navigation: NavItem[] = [
   { id: "templates", label: "Templates", href: "/templates" },
   { id: "custom", label: "Custom Websites", href: "/custom-websites" },
   { id: "pricing", label: "Pricing", href: "/pricing" },
-  { id: "about", label: "About Us", href: "/#about" },
-  { id: "contact", label: "Contact", href: "/#contact" },
+  { id: "about", label: "About Us", href: "/about" },
+  { id: "contact", label: "Contact", href: "/contact" },
 ];
 
 
@@ -370,11 +370,10 @@ export const footer = {
       { label: "Become an Affiliate", href: "/#" },
     ]},
     { id: "company", title: "Company", links: [
-      { label: "About Us", href: "/#about" },
-      { label: "Careers", href: "/#" },
-      { label: "Press", href: "/#" },
-      { label: "Contact", href: "/#contact" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact", href: "/contact" },
       { label: "Reviews", href: "/#" },
+      { label: "Careers", href: "/#" },
     ]},
     { id: "support", title: "Support", links: [
       { label: "Help Center", href: "/#" },
