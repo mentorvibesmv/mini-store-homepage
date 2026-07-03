@@ -94,22 +94,40 @@ export const categories: Category[] = [
 // -------------------- Templates --------------------
 export type TemplateBadge = "featured" | "popular" | "new";
 
+export type TemplateTech = { id: string; name: string; tone: "orange" | "blue" | "amber" | "violet" | "pink" | "sky" | "green" };
+
+export type TemplateMeta = {
+  pagesCount?: string;         // e.g. "12+ Ready Pages"
+  customization?: string;      // e.g. "Easy with Drag & Drop"
+  support?: string;            // e.g. "6 Months Included"
+  updates?: string;            // e.g. "Lifetime Free Updates"
+};
+
 export type Template = {
   id: string;
   slug: string;
   title: string;
   shortDescription: string;
+  fullDescription?: string;
   category: string; // matches Category.label
   price: number; // numeric for sorting
   priceLabel: string;
   rating: number;
   reviews: number;
+  customerCount?: string; // e.g. "1,245+ Happy Customers"
   image: string;
+  gallery?: string[];
+  benefits?: string[];
+  pagesIncluded?: string[];
+  features?: string[];
+  technologies?: TemplateTech[];
+  meta?: TemplateMeta;
   tags: string[];
   featured: boolean;
   popular: boolean;
   isNew: boolean;
   createdAt: string; // ISO
+  updatedAt?: string;
   visible: boolean;
   displayOrder: number;
 };
