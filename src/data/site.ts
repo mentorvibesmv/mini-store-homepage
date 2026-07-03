@@ -492,13 +492,14 @@ export const customWebsitesPage = {
     ],
     pricing: {
       label: "Packages Starting From",
-      price: "₹9,999",
-      note: "One-time payment • No hidden charges",
-      benefits: ["No Monthly Fees", "Full Ownership", "Scalable & Future Ready"],
-      cta: { label: "Request a Free Quote", href: customRequestHref },
+      price: "₹25,000",
+      note: "One-time development charge • Final price depends on features and project requirements.",
+      benefits: ["Full Ownership", "Custom Design", "Scalable & Future Ready"],
+      cta: { label: "Get Custom Website Quote", href: customRequestHref },
       illustration: { src: customPriceIllus, alt: "Website mockup illustration" },
-      badge: "₹9,999 Starting Price",
+      badge: "Starting ₹25,000",
     },
+
   },
   recentWork: {
     title: "Our Recent Work",
