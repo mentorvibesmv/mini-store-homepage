@@ -756,3 +756,77 @@ export const pricingPage = {
     illustration: { src: customCtaIllus, alt: "Consultation illustration" },
   },
 };
+
+// -------------------- About Page --------------------
+import aboutHeroImg from "@/assets/about-hero.jpg";
+import aboutCtaImg from "@/assets/about-cta.jpg";
+
+export type AboutTone = "violet" | "green" | "orange" | "blue" | "pink" | "amber" | "sky";
+
+export const aboutPage = {
+  hero: {
+    badge: "About Mini Store",
+    headingPre: "We make professional websites ",
+    headingGradient: "simple, affordable and accessible",
+    headingPost: " for everyone.",
+    description:
+      "Mini Store is a one-stop platform for templates and custom websites built to help businesses of all sizes establish a strong online presence without technical complexity or high costs.",
+    trustPoints: [
+      { id: "process", label: "Simple Process", icon: "check" as const },
+      { id: "pricing", label: "Affordable Pricing", icon: "tag" as const },
+      { id: "support", label: "Reliable Support", icon: "headset" as const },
+    ],
+    image: { src: aboutHeroImg, alt: "Mini Store responsive website preview", width: 1280, height: 960 },
+  },
+  mission: {
+    eyebrow: "WHY WE EXIST",
+    title: "Our Mission",
+    description:
+      "Many businesses struggle to get a professional website because of high costs, complicated processes, or lack of technical knowledge. Mini Store exists to change that.",
+    principles: [
+      { id: "affordable", title: "Affordable for Everyone", description: "We believe every business deserves a professional website at a fair price.", icon: "wallet" as const, tone: "violet" as AboutTone },
+      { id: "time", title: "Save Time", description: "Our ready-made templates and simple process help you go online in no time.", icon: "clock" as const, tone: "green" as AboutTone },
+      { id: "notech", title: "No Technical Skills Needed", description: "You don't need to code or design. We handle the technical part for you.", icon: "code" as const, tone: "orange" as AboutTone },
+      { id: "growth", title: "Focus on Growth", description: "We take care of your website so you can focus on what matters most — your business.", icon: "chart" as const, tone: "blue" as AboutTone },
+    ],
+  },
+  capabilities: {
+    eyebrow: "WHAT WE DO",
+    title: "Everything You Need to Build Your Online Presence",
+    items: [
+      { id: "templates", title: "Website Templates", description: "Beautiful, modern and conversion-ready templates for all types of businesses.", icon: "monitor" as const, tone: "violet" as AboutTone, href: "/templates" },
+      { id: "custom", title: "Custom Websites", description: "100% custom websites built to match your brand and business goals.", icon: "pen" as const, tone: "green" as AboutTone, href: "/custom-websites" },
+      { id: "performance", title: "Reliable Performance", description: "Fast, secure and mobile responsive websites that deliver the best experience.", icon: "shield" as const, tone: "amber" as AboutTone },
+      { id: "support", title: "Ongoing Support", description: "We're here to support you every step of the way, even after your website is live.", icon: "headset" as const, tone: "blue" as AboutTone },
+    ],
+  },
+  journey: {
+    eyebrow: "HOW MINI STORE WORKS FOR YOU",
+    title: "Simple Steps. Great Results.",
+    steps: [
+      { id: "choose", number: 1, title: "Choose", description: "Pick a template or choose a custom website option.", icon: "search" as const, tone: "violet" as AboutTone },
+      { id: "share", number: 2, title: "Share Details", description: "Share your requirements, content and any preferences.", icon: "file" as const, tone: "green" as AboutTone },
+      { id: "build", number: 3, title: "We Build", description: "Our team designs and develops your website with care.", icon: "pen" as const, tone: "amber" as AboutTone },
+      { id: "review", number: 4, title: "Review", description: "You review the website and we make any necessary changes.", icon: "eye" as const, tone: "blue" as AboutTone },
+      { id: "live", number: 5, title: "Go Live", description: "Your website goes live and your business is ready to grow.", icon: "rocket" as const, tone: "violet" as AboutTone },
+    ],
+  },
+  promises: {
+    eyebrow: "OUR PROMISE",
+    title: "Why Businesses Trust Mini Store",
+    items: [
+      { id: "transparent", title: "Transparent Pricing", description: "No hidden surprises. What you see is what you pay.", icon: "shield-check" as const, tone: "violet" as AboutTone },
+      { id: "secure", title: "Secure & Reliable", description: "We use best practices to keep your website safe and secure.", icon: "lock" as const, tone: "green" as AboutTone },
+      { id: "customer", title: "Customer First", description: "Your success is our priority. We listen, care and deliver.", icon: "users" as const, tone: "blue" as AboutTone },
+      { id: "quality", title: "Quality Focused", description: "We focus on clean design, performance and the best user experience.", icon: "rocket" as const, tone: "amber" as AboutTone },
+      { id: "longterm", title: "Long-term Support", description: "We don't just build. We build relationships that last.", icon: "refresh" as const, tone: "violet" as AboutTone },
+    ],
+  },
+  cta: {
+    title: "Let's Build Something Great Together",
+    description: "Whether you need a template or a fully custom website, we're here to bring your ideas to life.",
+    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    primary: { label: "Get in Touch", href: "/contact" },
+    illustration: { src: aboutCtaImg, alt: "Team collaborating around a laptop", width: 1024, height: 768 },
+  },
+};
