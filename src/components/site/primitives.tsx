@@ -9,7 +9,7 @@ export function Container({
 }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12", className)}
+      className={cn("mx-auto w-full max-w-[1240px] px-6 sm:px-8 lg:px-10", className)}
       {...rest}
     >
       {children}
@@ -30,7 +30,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("scroll-mt-24 py-12 sm:py-16 lg:py-20", className)}
+      className={cn("scroll-mt-24 py-10 sm:py-12 lg:py-14", className)}
     >
       {children}
     </section>

@@ -18,10 +18,10 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full border-b transition-all duration-300",
         scrolled
-          ? "border-b border-border/60 bg-background/80 backdrop-blur-xl"
-          : "bg-background/0",
+          ? "border-border/60 bg-background/90 backdrop-blur-xl"
+          : "border-transparent bg-background/70 backdrop-blur-md",
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4 sm:h-20">

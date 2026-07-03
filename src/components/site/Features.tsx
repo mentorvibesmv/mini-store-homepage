@@ -25,17 +25,17 @@ export function Features() {
               <div
                 key={f.id}
                 className={cn(
-                  "group flex flex-col rounded-2xl border border-border/60 p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift",
+                  "group flex flex-col rounded-2xl border border-border/60 p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift",
                   tones.bg,
                 )}
               >
-                <span className={cn("grid h-10 w-10 place-items-center rounded-xl shadow-soft", tones.icon)}>
+                <span className={cn("grid h-11 w-11 place-items-center rounded-xl shadow-soft", tones.icon)}>
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 text-[15px] font-semibold leading-snug text-foreground">
+                <h3 className="mt-4 text-[16px] font-semibold leading-snug text-foreground">
                   {f.title}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
                   {f.description}
                 </p>
               </div>
