@@ -80,7 +80,8 @@ const TONE_BG: Record<TemplateTech["tone"], string> = {
 
 // ---------- Page ----------
 function TemplateDetailsPage() {
-  const { template } = Route.useLoaderData();
+  const loaderData = Route.useLoaderData() as { template: Template };
+  const template = loaderData.template;
   const [previewTemplate, setPreviewTemplate] = useState<Template | null>(null);
 
   const gallery = template.gallery && template.gallery.length ? template.gallery : [template.image];
