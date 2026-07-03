@@ -830,3 +830,122 @@ export const aboutPage = {
     illustration: { src: aboutCtaImg, alt: "Team collaborating around a laptop", width: 1024, height: 768 },
   },
 };
+
+// -------------------- Contact Page --------------------
+import contactHeroImg from "@/assets/contact-hero.jpg";
+
+export type ContactMethodId = "email" | "whatsapp" | "chat" | "hours";
+export type ContactMethodTone = "violet" | "green" | "blue" | "orange";
+
+export type ContactMethod = {
+  id: ContactMethodId;
+  title: string;
+  primary: string;
+  description: string;
+  tone: ContactMethodTone;
+  icon: "mail" | "whatsapp" | "chat" | "clock";
+  href?: string;
+  visible: boolean;
+  status?: "live" | "coming-soon";
+};
+
+export type ContactSubjectOption = { id: string; label: string };
+export type ContactBudgetOption = { id: string; label: string };
+
+export const contactPage = {
+  // Centralized official business contact details (edit in one place).
+  // Set null/empty to hide or disable the corresponding action.
+  business: {
+    email: "hello@ministore.in",
+    whatsappNumber: "+91 91234 56789",
+    whatsappE164: "919123456789", // digits only, no +/spaces; used in wa.me link
+    whatsappHours: "Mon – Sat, 9:00 AM – 7:00 PM",
+    businessHours: {
+      weekdays: "Mon – Sat, 9:00 AM – 7:00 PM",
+      weekend: "Sunday: Closed",
+    },
+    liveChat: { enabled: false, statusLabel: "Coming Soon" },
+    responseGuidance: "We usually reply within a few hours.",
+  },
+
+  hero: {
+    badge: "Contact Mini Store",
+    headingPre: "We're here to\nhelp you ",
+    headingGradient: "succeed.",
+    description:
+      "Have a question, need help, or want to start a project? Fill out the form and our team will get back to you as soon as possible.",
+    trustPoints: [
+      { id: "quick", label: "Quick Response", icon: "check" as const },
+      { id: "friendly", label: "Friendly Support", icon: "smile" as const },
+      { id: "noobligation", label: "No Obligation", icon: "check" as const },
+    ],
+    image: { src: contactHeroImg, alt: "Contact Mini Store illustration", width: 1024, height: 1024 },
+  },
+
+  form: {
+    title: "Send us a message",
+    supporting: "All fields marked with * are required",
+    submitLabel: "Send Message",
+    successTitle: "Thanks — your message has been prepared.",
+    successBody:
+      "Our team will be in touch shortly. A submission service will be connected soon; please email us directly for anything urgent.",
+    errorBody: "Something went wrong. Please try again or email us directly.",
+    consentLabel: "I agree to the",
+    privacyHref: "/legal/privacy",
+    termsHref: "/legal/terms",
+    subjectOptions: [
+      { id: "general", label: "General Question" },
+      { id: "template", label: "Template Help" },
+      { id: "custom", label: "Custom Website" },
+      { id: "pricing", label: "Pricing & Plans" },
+      { id: "technical", label: "Technical Support" },
+      { id: "partnership", label: "Partnership" },
+    ] satisfies ContactSubjectOption[],
+    budgetOptions: [
+      { id: "unsure", label: "Not Sure Yet" },
+      { id: "b1", label: "Below ₹5,000" },
+      { id: "b2", label: "₹5,000 – ₹15,000" },
+      { id: "b3", label: "₹15,000 – ₹30,000" },
+      { id: "b4", label: "₹30,000 – ₹50,000" },
+      { id: "b5", label: "Above ₹50,000" },
+    ] satisfies ContactBudgetOption[],
+  },
+
+  methods: {
+    title: "Other ways to reach us",
+    supporting: "Choose the option that works best for you.",
+    valueCard: {
+      title: "We value your time",
+      description: "Our team will get back to you as quickly as possible.",
+    },
+  },
+
+  process: {
+    eyebrow: "WHAT HAPPENS NEXT?",
+    title: "We keep it simple and transparent.",
+    steps: [
+      { id: "receive", number: 1, title: "We Receive Your Message", description: "We receive your message and understand your requirement.", icon: "file" as const, tone: "violet" as AboutTone },
+      { id: "review", number: 2, title: "Our Team Reviews It", description: "Our team reviews the details and prepares the best next step for you.", icon: "users" as const, tone: "green" as AboutTone },
+      { id: "reply", number: 3, title: "We Get Back to You", description: "We contact you with the right solution and next steps.", icon: "send" as const, tone: "amber" as AboutTone },
+    ],
+  },
+
+  faq: {
+    eyebrow: "QUICK ANSWERS",
+    title: "Frequently Asked Questions",
+    items: [
+      { id: "respond", question: "How soon will you respond?", answer: "We aim to reply during business hours, Monday to Saturday. Most queries are answered within a few hours." },
+      { id: "custom", question: "Do you provide template customization?", answer: "Yes. Business plans include moderate customization, and our Custom Website service can extend any template to fit your brand and requirements." },
+      { id: "request", question: "Can I request a custom website?", answer: "Absolutely. Choose Custom Website in the form and share your requirements — we'll get back with a scope and quote." },
+      { id: "support", question: "Do you offer support after my website is live?", answer: "Yes. Every plan includes support, and optional maintenance add-ons are available so your website stays fast, secure, and up to date." },
+    ],
+  },
+
+  cta: {
+    title: "Let's build something amazing together",
+    description: "Whether you need a template or a fully custom website, we're ready to bring your ideas to life.",
+    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    primary: { label: "Get in Touch" }, // scrolls to form; no href
+    illustration: { src: aboutCtaImg, alt: "Team collaborating together", width: 1024, height: 768 },
+  },
+};
