@@ -2,6 +2,9 @@ import tplRestaurant from "@/assets/tpl-restaurant.jpg";
 import tplFashion from "@/assets/tpl-fashion.jpg";
 import tplMedical from "@/assets/tpl-medical.jpg";
 import tplRealEstate from "@/assets/tpl-realestate.jpg";
+import heroLaptop from "@/assets/hero-device-laptop.png";
+import heroTablet from "@/assets/hero-device-tablet.png";
+import heroMobile from "@/assets/hero-device-mobile.png";
 
 // ============================================================
 // Site content configuration.
@@ -52,6 +55,26 @@ export const hero = {
     { id: "secure", label: "Fast & Secure" },
     { id: "easy", label: "Easy to Customize" },
   ],
+  devices: {
+    laptop: {
+      src: heroLaptop,
+      alt: "Mini Store template previewed on a laptop",
+      width: 1280,
+      height: 896,
+    },
+    tablet: {
+      src: heroTablet,
+      alt: "Mini Store template previewed on a tablet",
+      width: 688,
+      height: 960,
+    },
+    mobile: {
+      src: heroMobile,
+      alt: "Mini Store template previewed on a mobile phone",
+      width: 624,
+      height: 1072,
+    },
+  },
 };
 
 // -------------------- Stats --------------------
