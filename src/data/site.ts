@@ -365,7 +365,7 @@ export const footer = {
     { id: "products", title: "Products", links: [
       { label: "Templates", href: "/templates" },
       { label: "Custom Websites", href: "/custom-websites" },
-      { label: "Pricing", href: "/#pricing" },
+      { label: "Pricing", href: "/pricing" },
       { label: "How It Works", href: "/#" },
       { label: "Become an Affiliate", href: "/#" },
     ]},
