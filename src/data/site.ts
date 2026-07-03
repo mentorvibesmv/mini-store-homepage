@@ -25,10 +25,11 @@ export const navigation: NavItem[] = [
   { id: "home", label: "Home", href: "/" },
   { id: "templates", label: "Templates", href: "/templates" },
   { id: "custom", label: "Custom Websites", href: "/custom-websites" },
-  { id: "pricing", label: "Pricing", href: "/#pricing" },
+  { id: "pricing", label: "Pricing", href: "/pricing" },
   { id: "about", label: "About Us", href: "/#about" },
   { id: "contact", label: "Contact", href: "/#contact" },
 ];
+
 
 export const navActions = {
   loginLabel: "Login",
