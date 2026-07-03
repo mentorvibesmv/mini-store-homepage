@@ -366,7 +366,7 @@ export const footer = {
       { label: "Templates", href: "/templates" },
       { label: "Custom Websites", href: "/custom-websites" },
       { label: "Pricing", href: "/pricing" },
-      { label: "How It Works", href: "/#" },
+      { label: "How It Works", href: "/how-it-works" },
       { label: "Become an Affiliate", href: "/#" },
     ]},
     { id: "company", title: "Company", links: [
