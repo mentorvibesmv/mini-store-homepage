@@ -44,9 +44,9 @@ export function Hero() {
           </p>
 
           <div className="fade-up-delay-3 mt-10 flex flex-wrap items-center gap-3.5">
-            <Button href={hero.primary.href} size="lg">
+            <Button href={hero.primary.href} size="lg" className="group">
               {hero.primary.label}
-              <span aria-hidden className="ml-0.5 transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Button>
             <Button href={hero.secondary.href} size="lg" variant="secondary">
               {hero.secondary.label}
