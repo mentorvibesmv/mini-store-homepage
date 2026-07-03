@@ -48,7 +48,7 @@ export function Templates() {
                 </div>
                 <h3 className="text-[17px] font-semibold text-foreground">{t.title}</h3>
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-lg font-bold text-foreground">{t.price}</span>
+                  <span className="text-lg font-bold text-foreground">{t.priceLabel}</span>
                 </div>
                 <div className="mt-auto flex items-center gap-2 pt-2">
                   <Link
