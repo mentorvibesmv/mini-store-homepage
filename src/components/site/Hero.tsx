@@ -62,15 +62,15 @@ export function Hero() {
 
         {/* RIGHT — Devices */}
         <div className="relative fade-up-delay-2">
-          <div aria-hidden className="absolute inset-x-6 -bottom-8 h-24 rounded-[50%] bg-primary/20 blur-3xl" />
-          <div className="relative mx-auto aspect-[5/4] w-full max-w-[600px]">
-            <div className="absolute inset-x-[8%] top-[12%] float-slow drop-shadow-[0_30px_50px_rgba(76,29,149,0.18)]">
+          <div aria-hidden className="absolute inset-x-6 -bottom-8 h-28 rounded-[50%] bg-primary/20 blur-3xl" />
+          <div className="relative mx-auto aspect-[5/4] w-full max-w-[720px] lg:max-w-none">
+            <div className="absolute inset-x-[4%] top-[8%] float-slow drop-shadow-[0_36px_60px_rgba(76,29,149,0.22)]">
               <img src={laptop.src} alt={laptop.alt} width={laptop.width} height={laptop.height} fetchPriority="high" className="h-auto w-full select-none" draggable={false} />
             </div>
-            <div className="absolute right-[-2%] top-[4%] w-[32%] rotate-[6deg] float-slower drop-shadow-[0_20px_40px_rgba(30,27,75,0.22)]">
+            <div className="absolute right-[-4%] top-[-2%] w-[36%] rotate-[6deg] float-slower drop-shadow-[0_24px_48px_rgba(30,27,75,0.25)]">
               <img src={tablet.src} alt={tablet.alt} width={tablet.width} height={tablet.height} loading="lazy" className="h-auto w-full select-none" draggable={false} />
             </div>
-            <div className="absolute left-[0%] top-[24%] w-[20%] -rotate-[8deg] float-slow drop-shadow-[0_20px_35px_rgba(30,27,75,0.25)]">
+            <div className="absolute left-[-3%] top-[22%] w-[23%] -rotate-[8deg] float-slow drop-shadow-[0_24px_40px_rgba(30,27,75,0.28)]">
               <img src={mobile.src} alt={mobile.alt} width={mobile.width} height={mobile.height} loading="lazy" className="h-auto w-full select-none" draggable={false} />
             </div>
           </div>
