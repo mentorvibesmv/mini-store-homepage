@@ -25,10 +25,11 @@ export const navigation: NavItem[] = [
   { id: "home", label: "Home", href: "/" },
   { id: "templates", label: "Templates", href: "/templates" },
   { id: "custom", label: "Custom Websites", href: "/custom-websites" },
-  { id: "pricing", label: "Pricing", href: "/#pricing" },
+  { id: "pricing", label: "Pricing", href: "/pricing" },
   { id: "about", label: "About Us", href: "/#about" },
   { id: "contact", label: "Contact", href: "/#contact" },
 ];
+
 
 export const navActions = {
   loginLabel: "Login",
@@ -364,7 +365,7 @@ export const footer = {
     { id: "products", title: "Products", links: [
       { label: "Templates", href: "/templates" },
       { label: "Custom Websites", href: "/custom-websites" },
-      { label: "Pricing", href: "/#pricing" },
+      { label: "Pricing", href: "/pricing" },
       { label: "How It Works", href: "/#" },
       { label: "Become an Affiliate", href: "/#" },
     ]},
@@ -491,13 +492,14 @@ export const customWebsitesPage = {
     ],
     pricing: {
       label: "Packages Starting From",
-      price: "₹9,999",
-      note: "One-time payment • No hidden charges",
-      benefits: ["No Monthly Fees", "Full Ownership", "Scalable & Future Ready"],
-      cta: { label: "Request a Free Quote", href: customRequestHref },
+      price: "₹25,000",
+      note: "One-time development charge • Final price depends on features and project requirements.",
+      benefits: ["Full Ownership", "Custom Design", "Scalable & Future Ready"],
+      cta: { label: "Get Custom Website Quote", href: customRequestHref },
       illustration: { src: customPriceIllus, alt: "Website mockup illustration" },
-      badge: "₹9,999 Starting Price",
+      badge: "Starting ₹25,000",
     },
+
   },
   recentWork: {
     title: "Our Recent Work",
@@ -525,5 +527,233 @@ export const customWebsitesPage = {
     benefits: ["Free Consultation", "No Obligation", "Quick Response"],
     cta: { label: "Request Custom Website", href: customRequestHref },
     illustration: { src: customCtaIllus, alt: "Custom website chat illustration" },
+  },
+};
+
+// -------------------- Pricing Page --------------------
+
+export type PlanTone = "green" | "blue" | "violet";
+export type PlanCTA = { label: string; href: string };
+
+export type StarterPlan = {
+  id: "starter";
+  name: string;
+  subtitle: string;
+  planType: string;
+  tone: PlanTone;
+  icon: "cart" | "briefcase" | "code";
+  monthlyPrice: string;
+  annualPrice: string;
+  annualSaving?: string;
+  domain: { label: string; example: string };
+  features: string[];
+  cta: PlanCTA;
+  popular?: boolean;
+  visible: boolean;
+  displayOrder: number;
+};
+
+export type BusinessPlan = Omit<StarterPlan, "id"> & {
+  id: "business";
+  setupPrice: string;
+  setupNote: string;
+};
+
+export type CustomPlan = {
+  id: "custom";
+  name: string;
+  subtitle: string;
+  planType: string;
+  tone: PlanTone;
+  icon: "code";
+  startingPrice: string;
+  pricingNote: string;
+  features: string[];
+  cta: PlanCTA;
+  visible: boolean;
+  displayOrder: number;
+};
+
+export type PricingPlan = StarterPlan | BusinessPlan | CustomPlan;
+
+export type CompareRow = {
+  id: string;
+  label: string;
+  starter: string;
+  business: string;
+  custom: string;
+};
+
+export type AddOn = {
+  id: string;
+  label: string;
+  price: string;
+  icon: "pages" | "content" | "cart" | "logo" | "plug" | "wrench";
+  visible: boolean;
+  displayOrder: number;
+};
+
+export type CommonFeature = {
+  id: string;
+  label: string;
+  icon: "mobile" | "shield" | "gauge" | "backup" | "browser" | "monitor";
+  visible: boolean;
+  displayOrder: number;
+};
+
+export const pricingPage = {
+  hero: {
+    badge: "Simple, Transparent Pricing",
+    titleLines: ["Choose the perfect", "website "],
+    titleGradient: "solution for you",
+    description:
+      "Flexible plans for every business need. One-time fees and subscriptions are clearly shown separately.",
+    trust: [
+      { id: "clear", label: "Clear Pricing", icon: "shield" as const },
+      { id: "flex", label: "Flexible Options", icon: "check" as const },
+      { id: "support", label: "Dedicated Support", icon: "headset" as const },
+    ],
+    visual: { src: customHero, alt: "Mini Store website preview on desktop and mobile" },
+  },
+
+  plans: {
+    starter: {
+      id: "starter",
+      name: "Starter Store",
+      subtitle: "Pre-built template with Mini Store subdomain",
+      planType: "Subscription Plan",
+      tone: "green",
+      icon: "cart",
+      monthlyPrice: "₹999",
+      annualPrice: "₹9,999",
+      annualSaving: "Save 17%",
+      domain: { label: "Your site will be like", example: "yourbusiness.ministore.in" },
+      features: [
+        "Pre-built Website Template",
+        "Mini Store Subdomain",
+        "Mobile Responsive Design",
+        "Hosting Included",
+        "SSL Certificate & Security",
+        "Basic SEO Setup",
+        "Limited Customization",
+        "Maintenance & Updates Included",
+        "Email Support",
+      ],
+      cta: { label: "Choose Starter Plan", href: "/pricing/start?plan=starter" },
+      visible: true,
+      displayOrder: 1,
+    } satisfies StarterPlan,
+
+    business: {
+      id: "business",
+      name: "Business Website",
+      subtitle: "Pre-built template with your own domain",
+      planType: "One-time Setup + Subscription",
+      tone: "blue",
+      icon: "briefcase",
+      setupPrice: "₹4,999",
+      setupNote: "One-time setup charge",
+      monthlyPrice: "₹999",
+      annualPrice: "₹9,999",
+      domain: { label: "Use your own domain like", example: "yourbusiness.com" },
+      features: [
+        "Premium Pre-built Templates",
+        "Custom Domain Connection",
+        "More Customization Options",
+        "Content Upload (Pages, Images, Videos)",
+        "SEO Setup (On-page)",
+        "Hosting & SSL Certificate",
+        "Speed Optimized",
+        "Security & Regular Updates",
+        "Priority Support",
+      ],
+      cta: { label: "Choose Business Plan", href: "/pricing/start?plan=business" },
+      popular: true,
+      visible: true,
+      displayOrder: 2,
+    } satisfies BusinessPlan,
+
+    custom: {
+      id: "custom",
+      name: "Custom Website",
+      subtitle: "Fully custom website built for your business",
+      planType: "One-time Development",
+      tone: "violet",
+      icon: "code",
+      startingPrice: "₹25,000",
+      pricingNote: "Final price depends on features and project requirements.",
+      features: [
+        "100% Custom Design & Development",
+        "Custom Domain Support",
+        "Custom Pages & Features",
+        "Advanced Functionality",
+        "Third-party Integrations",
+        "Admin Panel (If Required)",
+        "Performance & Speed Optimization",
+        "Advanced SEO Setup",
+        "Optional Ongoing Support & Maintenance",
+      ],
+      cta: { label: "Get Custom Website Quote", href: customRequestHref },
+      visible: true,
+      displayOrder: 3,
+    } satisfies CustomPlan,
+  },
+
+  compareTitle: "Compare All Plans",
+  compareRows: [
+    { id: "type", label: "Website Type", starter: "Pre-built Template", business: "Pre-built Template", custom: "Fully Custom" },
+    { id: "domain", label: "Domain", starter: "Mini Store Subdomain", business: "Your Own Domain", custom: "Your Own Domain" },
+    { id: "setup", label: "Setup / Development Fee", starter: "—", business: "₹4,999 One-time", custom: "Starting from ₹25,000" },
+    { id: "sub", label: "Subscription / Maintenance", starter: "₹999/month or ₹9,999/year", business: "₹999/month or ₹9,999/year", custom: "As per requirement" },
+    { id: "pages", label: "Pages", starter: "Up to 5 Pages", business: "Up to 20 Pages", custom: "Based on project scope" },
+    { id: "custom", label: "Customization", starter: "Limited", business: "Moderate", custom: "Fully Custom" },
+    { id: "adv", label: "Advanced Features", starter: "no", business: "yes", custom: "yes" },
+    { id: "ecom", label: "E-commerce", starter: "no", business: "yes", custom: "yes" },
+    { id: "admin", label: "Admin Panel", starter: "no", business: "no", custom: "If Required" },
+    { id: "support", label: "Support", starter: "Email Support", business: "Priority Support", custom: "Based on Agreement" },
+  ] satisfies CompareRow[],
+
+  commonFeatures: {
+    title: "What's Included in All Plans",
+    items: [
+      { id: "mobile", label: "Mobile Responsive", icon: "mobile", visible: true, displayOrder: 1 },
+      { id: "ssl", label: "SSL Security Included", icon: "shield", visible: true, displayOrder: 2 },
+      { id: "speed", label: "Speed Optimized", icon: "gauge", visible: true, displayOrder: 3 },
+      { id: "backup", label: "Regular Backups", icon: "backup", visible: true, displayOrder: 4 },
+      { id: "browser", label: "Browser Compatibility", icon: "browser", visible: true, displayOrder: 5 },
+      { id: "monitor", label: "Uptime Monitoring", icon: "monitor", visible: true, displayOrder: 6 },
+    ] satisfies CommonFeature[],
+  },
+
+  addOns: {
+    title: "Popular Add-ons (Optional)",
+    items: [
+      { id: "pages", label: "Additional Pages", price: "₹999 / Page", icon: "pages", visible: true, displayOrder: 1 },
+      { id: "content", label: "Content Writing", price: "₹1,499 / Page", icon: "content", visible: true, displayOrder: 2 },
+      { id: "ecom", label: "E-commerce Functionality", price: "₹4,999+", icon: "cart", visible: true, displayOrder: 3 },
+      { id: "logo", label: "Logo Design", price: "₹1,499", icon: "logo", visible: true, displayOrder: 4 },
+      { id: "integ", label: "Advanced Integrations", price: "Custom Quote", icon: "plug", visible: true, displayOrder: 5 },
+      { id: "maint", label: "Monthly Maintenance Package", price: "₹1,999 / month", icon: "wrench", visible: true, displayOrder: 6 },
+    ] satisfies AddOn[],
+  },
+
+  faq: {
+    title: "Frequently Asked Questions",
+    items: [
+      { id: "diff", question: "What is the difference between Starter and Business plans?", answer: "Starter uses a Mini Store subdomain (yourbusiness.ministore.in) on a simple monthly or yearly subscription. Business uses a pre-built template on your own custom domain (yourbusiness.com) with a one-time setup charge plus an ongoing subscription for hosting and maintenance.", visible: true, displayOrder: 1 },
+      { id: "upgrade", question: "Can I upgrade my plan later?", answer: "Yes. You can move from Starter to Business, or from Business to a fully Custom Website at any time. We help you migrate your content and settings so nothing is lost.", visible: true, displayOrder: 2 },
+      { id: "domain", question: "Do you provide domain and hosting?", answer: "Starter includes the Mini Store subdomain and hosting. Business includes hosting and SSL; you can connect a domain you already own or register a new one — domain registration cost is billed separately by the domain provider. Custom Website domain, hosting, and maintenance are decided as part of your project quote.", visible: true, displayOrder: 3 },
+      { id: "hidden", question: "Are there any hidden charges?", answer: "No. Setup fees, subscriptions, and optional add-ons are shown separately on this page. Third-party costs like domain registration or premium integrations are always disclosed before you commit.", visible: true, displayOrder: 4 },
+      { id: "mobile", question: "Will my website be mobile responsive?", answer: "Yes. Every plan — Starter, Business, and Custom — delivers a fully responsive website that works on desktops, laptops, tablets, and mobile devices.", visible: true, displayOrder: 5 },
+      { id: "after", question: "Do you offer after-sales support?", answer: "Yes. Starter includes email support, Business includes priority support, and Custom Website support is defined by your selected support agreement. Maintenance add-ons are available for all plans.", visible: true, displayOrder: 6 },
+    ] satisfies FaqItem[],
+  },
+
+  finalCta: {
+    title: "Still not sure which plan is right for you?",
+    description: "Let's discuss your requirements and help you choose the best solution.",
+    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    cta: { label: "Talk to Our Expert", href: customRequestHref },
+    illustration: { src: customCtaIllus, alt: "Consultation illustration" },
   },
 };
