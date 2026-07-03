@@ -7,18 +7,10 @@ import heroTablet from "@/assets/hero-device-tablet.png";
 import heroMobile from "@/assets/hero-device-mobile.png";
 
 // ============================================================
-// Site content configuration.
-// Every visible string, link, and image is defined here so a
-// future admin panel can edit content without touching JSX.
+// Site content configuration — future admin-panel editable.
 // ============================================================
 
-export type NavItem = {
-  id: string;
-  label: string;
-  href: string;
-  visible?: boolean;
-  order?: number;
-};
+export type NavItem = { id: string; label: string; href: string };
 
 export const brand = {
   name: "Mini Store",
@@ -31,12 +23,12 @@ export const navigation: NavItem[] = [
   { id: "templates", label: "Templates", href: "#templates" },
   { id: "custom", label: "Custom Websites", href: "#custom" },
   { id: "pricing", label: "Pricing", href: "#pricing" },
-  { id: "about", label: "About", href: "#about" },
+  { id: "about", label: "About Us", href: "#about" },
   { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 export const navActions = {
-  loginLabel: "Log in",
+  loginLabel: "Login",
   ctaLabel: "Get Custom Website",
   ctaHref: "#custom",
 };
@@ -44,64 +36,59 @@ export const navActions = {
 // -------------------- Hero --------------------
 export const hero = {
   badge: "New · 2026 Template Collection",
-  headline: "Beautiful websites, ready in minutes.",
+  headlineLines: ["Build Your Business", "Website ", "Than Ever"], // "Faster" gradient injected at index 1 end
+  headlineGradientWord: "Faster",
   description:
     "Buy premium templates, tailor them to your brand, or commission a fully custom build. One studio, every stage of your website.",
   primary: { label: "Browse Templates", href: "#templates" },
   secondary: { label: "Request Custom Website", href: "#custom" },
-  trust: [
-    { id: "responsive", label: "Responsive" },
+  benefits: [
+    { id: "responsive", label: "Mobile Responsive" },
     { id: "seo", label: "SEO Optimized" },
     { id: "secure", label: "Fast & Secure" },
-    { id: "easy", label: "Easy to Customize" },
+    { id: "easy", label: "Easy To Customize" },
   ],
   devices: {
-    laptop: {
-      src: heroLaptop,
-      alt: "Mini Store template previewed on a laptop",
-      width: 1280,
-      height: 896,
-    },
-    tablet: {
-      src: heroTablet,
-      alt: "Mini Store template previewed on a tablet",
-      width: 688,
-      height: 960,
-    },
-    mobile: {
-      src: heroMobile,
-      alt: "Mini Store template previewed on a mobile phone",
-      width: 624,
-      height: 1072,
-    },
+    laptop: { src: heroLaptop, alt: "Template on laptop", width: 1280, height: 896 },
+    tablet: { src: heroTablet, alt: "Template on tablet", width: 688, height: 960 },
+    mobile: { src: heroMobile, alt: "Template on mobile", width: 624, height: 1072 },
   },
 };
 
 // -------------------- Stats --------------------
-export const stats = [
-  { id: "templates", value: "240+", label: "Templates" },
-  { id: "customers", value: "18k", label: "Happy Customers" },
-  { id: "projects", value: "3.4k", label: "Projects Shipped" },
-  { id: "satisfaction", value: "99%", label: "Satisfaction" },
+export type StatTone = "violet" | "blue" | "green" | "orange";
+export type Stat = {
+  id: string;
+  value: string;
+  title: string;
+  description: string;
+  icon: "templates" | "customers" | "projects" | "star";
+  tone: StatTone;
+};
+
+export const stats: Stat[] = [
+  { id: "templates", value: "240+", title: "Templates", description: "Ready-to-use designs", icon: "templates", tone: "violet" },
+  { id: "customers", value: "18k+", title: "Happy Customers", description: "Across 40+ countries", icon: "customers", tone: "blue" },
+  { id: "projects", value: "3.4k", title: "Projects Shipped", description: "Delivered on time", icon: "projects", tone: "green" },
+  { id: "satisfaction", value: "99%", title: "Satisfaction", description: "Loved by our clients", icon: "star", tone: "orange" },
 ];
 
 // -------------------- Categories --------------------
 export type Category = {
   id: string;
   label: string;
-  count: string;
   tone: "violet" | "blue" | "orange" | "green" | "pink" | "amber" | "sky" | "muted";
 };
 
 export const categories: Category[] = [
-  { id: "restaurant", label: "Restaurant", count: "32 templates", tone: "orange" },
-  { id: "fashion", label: "Fashion", count: "28 templates", tone: "pink" },
-  { id: "medical", label: "Medical", count: "21 templates", tone: "blue" },
-  { id: "realestate", label: "Real Estate", count: "19 templates", tone: "amber" },
-  { id: "fitness", label: "Fitness", count: "24 templates", tone: "green" },
-  { id: "education", label: "Education", count: "17 templates", tone: "sky" },
-  { id: "portfolio", label: "Portfolio", count: "36 templates", tone: "violet" },
-  { id: "more", label: "Browse All", count: "240+ templates", tone: "muted" },
+  { id: "restaurant", label: "Restaurant", tone: "orange" },
+  { id: "fashion", label: "Fashion", tone: "pink" },
+  { id: "realestate", label: "Real Estate", tone: "amber" },
+  { id: "medical", label: "Medical", tone: "blue" },
+  { id: "fitness", label: "Fitness", tone: "green" },
+  { id: "education", label: "Education", tone: "sky" },
+  { id: "portfolio", label: "Portfolio", tone: "violet" },
+  { id: "more", label: "More", tone: "muted" },
 ];
 
 // -------------------- Templates --------------------
@@ -114,54 +101,13 @@ export type Template = {
   reviews: number;
   image: string;
   demoHref: string;
-  featured?: boolean;
 };
 
 export const templates: Template[] = [
-  {
-    id: "lumina",
-    title: "Lumina — Modern Restaurant",
-    category: "Restaurant",
-    price: "$49",
-    rating: 4.9,
-    reviews: 128,
-    image: tplRestaurant,
-    demoHref: "#",
-    featured: true,
-  },
-  {
-    id: "aurea",
-    title: "Auréa — Editorial Fashion",
-    category: "Fashion",
-    price: "$59",
-    rating: 4.8,
-    reviews: 96,
-    image: tplFashion,
-    demoHref: "#",
-    featured: true,
-  },
-  {
-    id: "clarity",
-    title: "Clarity — Medical Clinic",
-    category: "Medical",
-    price: "$54",
-    rating: 4.9,
-    reviews: 74,
-    image: tplMedical,
-    demoHref: "#",
-    featured: true,
-  },
-  {
-    id: "haven",
-    title: "Haven — Luxury Real Estate",
-    category: "Real Estate",
-    price: "$69",
-    rating: 5.0,
-    reviews: 52,
-    image: tplRealEstate,
-    demoHref: "#",
-    featured: true,
-  },
+  { id: "lumina", title: "Lumina Restaurant", category: "Restaurant", price: "$49", rating: 4.9, reviews: 128, image: tplRestaurant, demoHref: "#" },
+  { id: "aurea", title: "Auréa Fashion", category: "Fashion", price: "$59", rating: 4.8, reviews: 96, image: tplFashion, demoHref: "#" },
+  { id: "clarity", title: "Clarity Medical", category: "Medical", price: "$54", rating: 4.9, reviews: 74, image: tplMedical, demoHref: "#" },
+  { id: "haven", title: "Haven Real Estate", category: "Real Estate", price: "$69", rating: 5.0, reviews: 52, image: tplRealEstate, demoHref: "#" },
 ];
 
 // -------------------- Features --------------------
@@ -170,53 +116,24 @@ export type Feature = {
   title: string;
   description: string;
   icon: "sparkles" | "layout" | "search" | "sliders" | "refresh" | "life-buoy";
+  tone: "violet" | "blue" | "pink" | "green" | "amber" | "sky";
 };
 
 export const features: Feature[] = [
-  {
-    id: "design",
-    title: "Modern Design",
-    description: "Crafted by senior designers with an editorial, premium aesthetic.",
-    icon: "sparkles",
-  },
-  {
-    id: "responsive",
-    title: "Fully Responsive",
-    description: "Pixel-perfect on every screen, from ultrawide to mobile.",
-    icon: "layout",
-  },
-  {
-    id: "seo",
-    title: "SEO Optimized",
-    description: "Semantic markup, fast Core Web Vitals, and clean metadata by default.",
-    icon: "search",
-  },
-  {
-    id: "customize",
-    title: "Easy to Customize",
-    description: "Structured content and tokens — edit copy, colors, and images in minutes.",
-    icon: "sliders",
-  },
-  {
-    id: "updates",
-    title: "Lifetime Updates",
-    description: "One purchase, forever kept fresh with new features and refinements.",
-    icon: "refresh",
-  },
-  {
-    id: "support",
-    title: "Human Support",
-    description: "Real people, real answers — usually within a few hours.",
-    icon: "life-buoy",
-  },
+  { id: "design", title: "Modern & Unique Designs", description: "Crafted by senior designers with a premium editorial aesthetic.", icon: "sparkles", tone: "violet" },
+  { id: "responsive", title: "Fully Responsive On All Devices", description: "Pixel-perfect on every screen, from ultrawide to mobile.", icon: "layout", tone: "blue" },
+  { id: "seo", title: "SEO Optimized For Higher Rank", description: "Semantic markup, fast Core Web Vitals, clean metadata.", icon: "search", tone: "pink" },
+  { id: "customize", title: "Easy to Customize No Coding Skills", description: "Structured content and tokens — edit in minutes.", icon: "sliders", tone: "green" },
+  { id: "updates", title: "Lifetime Updates Free & Regular", description: "One purchase, forever kept fresh with new features.", icon: "refresh", tone: "amber" },
+  { id: "support", title: "Dedicated Support We're Here to Help", description: "Real people, real answers — usually within a few hours.", icon: "life-buoy", tone: "sky" },
 ];
 
 // -------------------- Custom CTA --------------------
 export const customCta = {
-  eyebrow: "Custom builds",
-  title: "Need something entirely your own?",
+  title: "Need Something Unique?",
   description:
-    "Our senior team designs and ships fully bespoke websites — from brand systems to production code. Book a discovery call and we'll shape the plan together.",
+    "Our senior team designs and ships fully bespoke websites — from brand systems to production code.",
+  benefits: ["Custom design", "Dedicated team", "Fast delivery"],
   cta: { label: "Request Custom Website", href: "#custom" },
 };
 
@@ -224,40 +141,28 @@ export const customCta = {
 export const footer = {
   tagline: "Premium templates and custom websites for ambitious brands.",
   columns: [
-    {
-      id: "company",
-      title: "Company",
-      links: [
-        { label: "About", href: "#about" },
-        { label: "Careers", href: "#" },
-        { label: "Press", href: "#" },
-        { label: "Contact", href: "#contact" },
-      ],
-    },
-    {
-      id: "products",
-      title: "Products",
-      links: [
-        { label: "Templates", href: "#templates" },
-        { label: "Custom Websites", href: "#custom" },
-        { label: "Pricing", href: "#pricing" },
-        { label: "Roadmap", href: "#" },
-      ],
-    },
-    {
-      id: "support",
-      title: "Support",
-      links: [
-        { label: "Help Center", href: "#" },
-        { label: "Documentation", href: "#" },
-        { label: "Community", href: "#" },
-        { label: "Status", href: "#" },
-      ],
-    },
+    { id: "products", title: "Products", links: [
+      { label: "Templates", href: "#templates" },
+      { label: "Custom Websites", href: "#custom" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Roadmap", href: "#" },
+    ]},
+    { id: "company", title: "Company", links: [
+      { label: "About", href: "#about" },
+      { label: "Careers", href: "#" },
+      { label: "Press", href: "#" },
+      { label: "Contact", href: "#contact" },
+    ]},
+    { id: "support", title: "Support", links: [
+      { label: "Help Center", href: "#" },
+      { label: "Documentation", href: "#" },
+      { label: "Community", href: "#" },
+      { label: "Status", href: "#" },
+    ]},
   ],
   newsletter: {
-    title: "Stay in the loop",
-    description: "New templates, essays, and updates. One email per month.",
+    title: "Newsletter",
+    description: "New templates and updates. One email per month.",
     placeholder: "you@studio.com",
     cta: "Subscribe",
   },

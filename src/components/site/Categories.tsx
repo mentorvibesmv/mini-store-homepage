@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { Container, Section, SectionTitle } from "./primitives";
 import { categories, type Category } from "@/data/site";
 import { categoryIcon } from "./icons";
@@ -19,39 +18,25 @@ export function Categories() {
   return (
     <Section id="templates">
       <Container>
-        <SectionTitle
-          eyebrow="Browse by category"
-          title="Find the perfect starting point."
-          description="Hand-picked template collections organized by industry and use case."
-        />
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <SectionTitle title="Browse Templates by Category" />
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
           {categories.map((c) => {
             const Icon = categoryIcon[c.id];
             return (
               <a
                 key={c.id}
                 href="#"
-                className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+                className={cn(
+                  "group flex flex-col items-center justify-center gap-3 rounded-2xl border border-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft",
+                  toneClass[c.tone],
+                )}
               >
-                <div className="flex min-w-0 items-center gap-3.5">
-                  <span
-                    className={cn(
-                      "grid h-11 w-11 shrink-0 place-items-center rounded-xl",
-                      toneClass[c.tone],
-                    )}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold text-foreground">
-                      {c.label}
-                    </div>
-                    <div className="truncate text-xs text-muted-foreground">
-                      {c.count}
-                    </div>
-                  </div>
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-white/70 shadow-soft">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <div className="text-center text-sm font-semibold text-foreground">
+                  {c.label}
                 </div>
-                <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
               </a>
             );
           })}

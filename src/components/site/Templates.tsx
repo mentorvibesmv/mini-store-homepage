@@ -1,28 +1,24 @@
 import { Star, Eye, ExternalLink, ArrowRight } from "lucide-react";
-import { Container, Section, SectionTitle, Button } from "./primitives";
+import { Container, Section, Button } from "./primitives";
 import { templates } from "@/data/site";
 
 export function Templates() {
   return (
     <Section className="bg-surface">
       <Container>
-        <div className="flex flex-col items-end justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionTitle
-            align="left"
-            eyebrow="Featured templates"
-            title="Beautiful, ready to ship."
-            description="A curated selection from our latest release — each built for performance and clarity."
-            className="max-w-xl"
-          />
+        <div className="flex items-end justify-between gap-6">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Featured Templates
+          </h2>
           <a
             href="#"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary"
+            className="hidden items-center gap-1.5 text-sm font-medium text-primary hover:underline sm:inline-flex"
           >
-            View all templates <ArrowRight className="h-4 w-4" />
+            View All Templates <ArrowRight className="h-4 w-4" />
           </a>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {templates.map((t) => (
             <article
               key={t.id}
