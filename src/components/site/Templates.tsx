@@ -1,5 +1,5 @@
 import { Star, Eye, ExternalLink, ArrowRight } from "lucide-react";
-import { Container, Section, SectionTitle, Button } from "./primitives";
+import { Container, Section, Button } from "./primitives";
 import { templates } from "@/data/site";
 
 export function Templates() {
