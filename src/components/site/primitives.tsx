@@ -90,11 +90,11 @@ export function SectionTitle({
           {eyebrow}
         </div>
       )}
-      <h2 className="text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
+      <h2 className="text-3xl font-bold leading-[1.15] text-foreground sm:text-4xl lg:text-[40px]">
         {title}
       </h2>
       {description && (
-        <p className="mt-5 text-base text-muted-foreground sm:text-lg">
+        <p className="mt-4 text-base text-muted-foreground">
           {description}
         </p>
       )}
