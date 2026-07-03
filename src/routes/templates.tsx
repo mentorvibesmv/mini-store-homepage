@@ -108,7 +108,7 @@ function TemplatesPage() {
   const updateSearch = (patch: Partial<{ q: string; category: string; sort: SortOption["id"] }>) => {
     setPageSize(PAGE_SIZE);
     navigate({
-      search: (prev) => ({ ...prev, ...patch }),
+      search: (prev: { q: string; category: string; sort: SortOption["id"] }) => ({ ...prev, ...patch }),
     });
   };
 

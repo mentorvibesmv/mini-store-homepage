@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TemplatesSlugPreviewRouteImport } from './routes/templates.$slug.preview'
 
 const TemplatesRoute = TemplatesRouteImport.update({
   id: '/templates',
@@ -22,31 +23,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemplatesSlugPreviewRoute = TemplatesSlugPreviewRouteImport.update({
+  id: '/$slug/preview',
+  path: '/$slug/preview',
+  getParentRoute: () => TemplatesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/templates': typeof TemplatesRoute
+  '/templates': typeof TemplatesRouteWithChildren
+  '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/templates': typeof TemplatesRoute
+  '/templates': typeof TemplatesRouteWithChildren
+  '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/templates': typeof TemplatesRoute
+  '/templates': typeof TemplatesRouteWithChildren
+  '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/templates'
+  fullPaths: '/' | '/templates' | '/templates/$slug/preview'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/templates'
-  id: '__root__' | '/' | '/templates'
+  to: '/' | '/templates' | '/templates/$slug/preview'
+  id: '__root__' | '/' | '/templates' | '/templates/$slug/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  TemplatesRoute: typeof TemplatesRoute
+  TemplatesRoute: typeof TemplatesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +74,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/templates/$slug/preview': {
+      id: '/templates/$slug/preview'
+      path: '/$slug/preview'
+      fullPath: '/templates/$slug/preview'
+      preLoaderRoute: typeof TemplatesSlugPreviewRouteImport
+      parentRoute: typeof TemplatesRoute
+    }
   }
 }
 
+interface TemplatesRouteChildren {
+  TemplatesSlugPreviewRoute: typeof TemplatesSlugPreviewRoute
+}
+
+const TemplatesRouteChildren: TemplatesRouteChildren = {
+  TemplatesSlugPreviewRoute: TemplatesSlugPreviewRoute,
+}
+
+const TemplatesRouteWithChildren = TemplatesRoute._addFileChildren(
+  TemplatesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  TemplatesRoute: TemplatesRoute,
+  TemplatesRoute: TemplatesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
