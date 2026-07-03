@@ -25,7 +25,7 @@ export function Categories() {
             return (
               <a
                 key={c.id}
-                href="#"
+                href={c.id === "more" ? "/templates" : `/templates?category=${encodeURIComponent(c.label)}`}
                 className={cn(
                   "group flex flex-col items-center justify-center gap-3 rounded-2xl border border-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft",
                   toneClass[c.tone],

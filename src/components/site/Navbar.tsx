@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouterState } from "@tanstack/react-router";
 import { Search, ShoppingBag, Menu, X } from "lucide-react";
 import { Container, Button } from "./primitives";
 import { brand, navigation, navActions } from "@/data/site";
@@ -7,6 +8,7 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -14,6 +16,12 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("/#")) return false;
+    return pathname === href || pathname.startsWith(href + "/");
+  };
 
   return (
     <header
@@ -25,7 +33,7 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4 sm:h-20">
-        <a href="#home" className="flex min-w-0 items-center gap-2.5">
+        <a href="/" className="flex min-w-0 items-center gap-2.5">
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary-gradient text-sm font-semibold text-primary-foreground shadow-soft">
             {brand.logoMark}
           </span>
@@ -35,16 +43,29 @@ export function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {navigation.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className="rounded-full px-3.5 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navigation.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative rounded-full px-3.5 py-2 text-sm transition-colors",
+                  active
+                    ? "font-semibold text-foreground"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                )}
+              >
+                {item.label}
+                {active && (
+                  <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-primary-gradient" />
+                )}
+              </a>
+            );
+          })}
         </nav>
+
 
         <div className="flex items-center gap-1 sm:gap-2">
           <button
