@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as CustomWebsitesRouteImport } from './routes/custom-websites'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
 import { Route as TemplatesSlugIndexRouteImport } from './routes/templates.$slug.index'
@@ -30,6 +31,11 @@ const PricingRoute = PricingRouteImport.update({
 const CustomWebsitesRoute = CustomWebsitesRouteImport.update({
   id: '/custom-websites',
   path: '/custom-websites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -55,6 +61,7 @@ const TemplatesSlugPreviewRoute = TemplatesSlugPreviewRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/custom-websites': typeof CustomWebsitesRoute
   '/pricing': typeof PricingRoute
   '/templates': typeof TemplatesRouteWithChildren
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/custom-websites': typeof CustomWebsitesRoute
   '/pricing': typeof PricingRoute
   '/templates': typeof TemplatesIndexRoute
@@ -73,6 +81,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/custom-websites': typeof CustomWebsitesRoute
   '/pricing': typeof PricingRoute
   '/templates': typeof TemplatesRouteWithChildren
@@ -84,6 +93,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/custom-websites'
     | '/pricing'
     | '/templates'
@@ -93,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/custom-websites'
     | '/pricing'
     | '/templates'
@@ -101,6 +112,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/custom-websites'
     | '/pricing'
     | '/templates'
@@ -111,6 +123,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   CustomWebsitesRoute: typeof CustomWebsitesRoute
   PricingRoute: typeof PricingRoute
   TemplatesRoute: typeof TemplatesRouteWithChildren
@@ -137,6 +150,13 @@ declare module '@tanstack/react-router' {
       path: '/custom-websites'
       fullPath: '/custom-websites'
       preLoaderRoute: typeof CustomWebsitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -188,6 +208,7 @@ const TemplatesRouteWithChildren = TemplatesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   CustomWebsitesRoute: CustomWebsitesRoute,
   PricingRoute: PricingRoute,
   TemplatesRoute: TemplatesRouteWithChildren,
@@ -195,3 +216,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
