@@ -302,7 +302,7 @@ export const customCta = {
   description:
     "Our senior team designs and ships fully bespoke websites — from brand systems to production code.",
   benefits: ["Custom design", "Dedicated team", "Fast delivery"],
-  cta: { label: "Request Custom Website", href: "/#custom" },
+  cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
 // -------------------- Marketplace (Templates page) --------------------
