@@ -90,7 +90,7 @@ function filterTemplates(list: Template[], query: string, category: string): Tem
 
 function TemplatesPage() {
   const { q, category, sort } = Route.useSearch();
-  const navigate = useNavigate({ from: "/templates" });
+  const navigate = useNavigate({ from: "/templates/" });
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
   const [previewTemplate, setPreviewTemplate] = useState<Template | null>(null);
 
