@@ -1,40 +1,44 @@
 import { Container, Section, Button } from "./primitives";
 import { customCta } from "@/data/site";
+import { Check } from "lucide-react";
 import ctaImg from "@/assets/cta-illustration.jpg";
 
 export function CustomCta() {
   return (
-    <Section id="custom" className="pb-24">
+    <Section id="custom" className="pb-16">
       <Container>
-        <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card-tint px-8 py-14 shadow-soft sm:px-14 sm:py-16 lg:px-20 lg:py-20">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-soft blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-tone-pink blur-3xl" />
-
-          <div className="relative grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-[color:var(--primary-soft)] via-white to-[color:var(--tone-sky)] px-6 py-10 shadow-soft sm:px-10 sm:py-12 lg:px-14">
+          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary-soft blur-3xl" />
+          <div className="relative grid items-center gap-8 lg:grid-cols-[1.4fr_auto_1fr]">
             <div>
-              <div className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                {customCta.eyebrow}
-              </div>
-              <h2 className="text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
+              <h2 className="text-2xl font-bold leading-tight text-foreground sm:text-3xl">
                 {customCta.title}
               </h2>
-              <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
+              <p className="mt-3 max-w-lg text-sm text-muted-foreground sm:text-base">
                 {customCta.description}
               </p>
-              <div className="mt-8">
-                <Button href={customCta.cta.href} size="lg">
-                  {customCta.cta.label}
-                </Button>
-              </div>
+              <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+                {customCta.benefits.map((b) => (
+                  <li key={b} className="flex items-center gap-2 text-sm font-medium text-foreground">
+                    <span className="grid h-5 w-5 place-items-center rounded-full bg-primary text-primary-foreground">
+                      <Check className="h-3 w-3" />
+                    </span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="relative">
+            <div className="lg:justify-self-center">
+              <Button href={customCta.cta.href} size="lg">
+                {customCta.cta.label}
+              </Button>
+            </div>
+            <div className="hidden lg:block">
               <img
                 src={ctaImg}
-                alt="Custom website illustration"
+                alt=""
                 loading="lazy"
-                width={1200}
-                height={1000}
-                className="mx-auto h-auto w-full max-w-md drop-shadow-xl"
+                className="ml-auto h-auto w-full max-w-[240px] rounded-2xl opacity-90 drop-shadow-xl"
               />
             </div>
           </div>
