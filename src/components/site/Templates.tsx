@@ -72,7 +72,7 @@ export function Templates() {
         </div>
 
         <div className="mt-12 flex justify-center sm:hidden">
-          <Button href="#" variant="secondary">
+          <Button href="/templates" variant="secondary">
             View all templates
           </Button>
         </div>
