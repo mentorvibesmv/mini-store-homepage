@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Star, Eye, ExternalLink, ArrowRight } from "lucide-react";
 import { Container, Section, Button } from "./primitives";
 import { templates } from "@/data/site";
