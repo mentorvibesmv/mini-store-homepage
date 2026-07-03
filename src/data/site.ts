@@ -94,22 +94,40 @@ export const categories: Category[] = [
 // -------------------- Templates --------------------
 export type TemplateBadge = "featured" | "popular" | "new";
 
+export type TemplateTech = { id: string; name: string; tone: "orange" | "blue" | "amber" | "violet" | "pink" | "sky" | "green" };
+
+export type TemplateMeta = {
+  pagesCount?: string;         // e.g. "12+ Ready Pages"
+  customization?: string;      // e.g. "Easy with Drag & Drop"
+  support?: string;            // e.g. "6 Months Included"
+  updates?: string;            // e.g. "Lifetime Free Updates"
+};
+
 export type Template = {
   id: string;
   slug: string;
   title: string;
   shortDescription: string;
+  fullDescription?: string;
   category: string; // matches Category.label
   price: number; // numeric for sorting
   priceLabel: string;
   rating: number;
   reviews: number;
+  customerCount?: string; // e.g. "1,245+ Happy Customers"
   image: string;
+  gallery?: string[];
+  benefits?: string[];
+  pagesIncluded?: string[];
+  features?: string[];
+  technologies?: TemplateTech[];
+  meta?: TemplateMeta;
   tags: string[];
   featured: boolean;
   popular: boolean;
   isNew: boolean;
   createdAt: string; // ISO
+  updatedAt?: string;
   visible: boolean;
   displayOrder: number;
 };
@@ -118,8 +136,43 @@ export const templates: Template[] = [
   {
     id: "lumina", slug: "lumina-restaurant", title: "Lumina Restaurant",
     shortDescription: "Warm, appetizing restaurant template with menu, reservations, and gallery.",
+    fullDescription:
+      "Lumina is a modern restaurant website template crafted for fine dining, cafes, bistros, and culinary businesses. It comes with a beautiful menu layout, reservation system, chef showcase, and more.",
     category: "Restaurant", price: 49, priceLabel: "$49",
-    rating: 4.9, reviews: 128, image: tplRestaurant,
+    rating: 4.9, reviews: 128, customerCount: "1,245+ Happy Customers",
+    image: tplRestaurant,
+    gallery: [tplRestaurant, tplFashion, tplMedical, tplRealEstate],
+    benefits: [
+      "Modern & Clean Design",
+      "Fully Responsive",
+      "Easy to Customize",
+      "SEO Optimized",
+      "Fast Loading",
+      "Lifetime Updates",
+    ],
+    pagesIncluded: [
+      "Home", "About Us", "Menu", "Reservations", "Our Chefs", "Gallery",
+      "Blog", "Blog Details", "Contact Us", "404 Page", "Terms & Conditions", "Privacy Policy",
+    ],
+    features: [
+      "Modern & Unique Design", "Online Table Reservation", "Beautiful Menu Layout",
+      "Chef Showcase", "Photo Gallery", "Testimonial Section",
+      "Blog & News Section", "Fully Responsive Design", "SEO Friendly", "Cross Browser Compatible",
+    ],
+    technologies: [
+      { id: "html", name: "HTML5", tone: "orange" },
+      { id: "css", name: "CSS3", tone: "blue" },
+      { id: "js", name: "JavaScript", tone: "amber" },
+      { id: "bs", name: "Bootstrap 5", tone: "violet" },
+      { id: "sass", name: "Sass", tone: "pink" },
+      { id: "fa", name: "Font Awesome", tone: "sky" },
+    ],
+    meta: {
+      pagesCount: "12+ Ready Pages",
+      customization: "Easy with Drag & Drop",
+      support: "6 Months Included",
+      updates: "Lifetime Free Updates",
+    },
     tags: ["restaurant", "food", "menu", "reservations"],
     featured: true, popular: false, isNew: false,
     createdAt: "2025-08-14", visible: true, displayOrder: 1,
