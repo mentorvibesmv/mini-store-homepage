@@ -1,15 +1,35 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState, type FormEvent, type ChangeEvent } from "react";
 import {
-  Check, Smile, Mail, MessageCircle, MessageSquare, Clock, Headphones,
-  FileText, Users, Send, ArrowRight, User, Phone, Building2, Globe,
-  DollarSign, Pencil, Loader2, ChevronDown, type LucideIcon,
+  Check,
+  Smile,
+  Mail,
+  MessageCircle,
+  MessageSquare,
+  Clock,
+  Headphones,
+  FileText,
+  Users,
+  Send,
+  ArrowRight,
+  User,
+  Phone,
+  Building2,
+  Globe,
+  DollarSign,
+  Pencil,
+  Loader2,
+  ChevronDown,
+  type LucideIcon,
 } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Button } from "@/components/site";
 import { contactPage } from "@/data/site";
 import {
-  Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
@@ -17,9 +37,16 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Mini Store" },
-      { name: "description", content: "Get in touch with the Mini Store team. Ask a question, request a custom website, or start your next project." },
+      {
+        name: "description",
+        content:
+          "Get in touch with the Mini Store team. Ask a question, request a custom website, or start your next project.",
+      },
       { property: "og:title", content: "Contact — Mini Store" },
-      { property: "og:description", content: "Reach out to Mini Store for templates, custom websites, pricing, or support." },
+      {
+        property: "og:description",
+        content: "Reach out to Mini Store for templates, custom websites, pricing, or support.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -136,9 +163,16 @@ type FormState = {
 };
 
 const initialForm: FormState = {
-  fullName: "", email: "", phone: "", purpose: "",
-  companyName: "", website: "", preferredBudget: "",
-  message: "", consent: false, hp: "",
+  fullName: "",
+  email: "",
+  phone: "",
+  purpose: "",
+  companyName: "",
+  website: "",
+  preferredBudget: "",
+  message: "",
+  consent: false,
+  hp: "",
 };
 
 function ContactMain({
@@ -161,7 +195,11 @@ function ContactMain({
 }
 
 // ---------- Form ----------
-function ContactForm({ firstFieldRef }: { firstFieldRef: React.RefObject<HTMLInputElement | null> }) {
+function ContactForm({
+  firstFieldRef,
+}: {
+  firstFieldRef: React.RefObject<HTMLInputElement | null>;
+}) {
   const f = contactPage.form;
   const [values, setValues] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
@@ -178,7 +216,8 @@ function ContactForm({ firstFieldRef }: { firstFieldRef: React.RefObject<HTMLInp
     else if (v.fullName.length > 100) e.fullName = "Name is too long.";
 
     if (!v.email.trim()) e.email = "Please enter your email address.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email.trim())) e.email = "Please enter a valid email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email.trim()))
+      e.email = "Please enter a valid email.";
     else if (v.email.length > 200) e.email = "Email is too long.";
 
     if (v.phone && v.phone.length > 30) e.phone = "Phone number is too long.";
@@ -210,7 +249,7 @@ function ContactForm({ firstFieldRef }: { firstFieldRef: React.RefObject<HTMLInp
     try {
       // No backend connected yet — this is a clearly-isolated placeholder
       // handler ready to be wired to a future submission service.
-      // eslint-disable-next-line no-console
+
       // (Do not log PII to the console.)
       await new Promise((r) => setTimeout(r, 700));
       setStatus("success");
@@ -247,13 +286,7 @@ function ContactForm({ firstFieldRef }: { firstFieldRef: React.RefObject<HTMLInp
           </label>
         </div>
 
-        <Field
-          id="fullName"
-          label="Full Name"
-          required
-          icon={User}
-          error={errors.fullName}
-        >
+        <Field id="fullName" label="Full Name" required icon={User} error={errors.fullName}>
           <input
             ref={firstFieldRef}
             id="fullName"
@@ -298,7 +331,13 @@ function ContactForm({ firstFieldRef }: { firstFieldRef: React.RefObject<HTMLInp
           />
         </Field>
 
-        <Field id="purpose" label="Subject / Purpose" required icon={FileText} error={errors.purpose}>
+        <Field
+          id="purpose"
+          label="Subject / Purpose"
+          required
+          icon={FileText}
+          error={errors.purpose}
+        >
           <Select
             id="purpose"
             name="purpose"
@@ -311,7 +350,12 @@ function ContactForm({ firstFieldRef }: { firstFieldRef: React.RefObject<HTMLInp
         </Field>
 
         <div className="sm:col-span-2">
-          <Field id="companyName" label="Company / Business Name" icon={Building2} error={errors.companyName}>
+          <Field
+            id="companyName"
+            label="Company / Business Name"
+            icon={Building2}
+            error={errors.companyName}
+          >
             <input
               id="companyName"
               name="companyName"
@@ -378,13 +422,26 @@ function ContactForm({ firstFieldRef }: { firstFieldRef: React.RefObject<HTMLInp
             />
             <span>
               {contactPage.form.consentLabel}{" "}
-              <a href={contactPage.form.privacyHref} className="text-primary underline underline-offset-2">Privacy Policy</a>
-              {" "}and{" "}
-              <a href={contactPage.form.termsHref} className="text-primary underline underline-offset-2">Terms of Service</a>.
+              <a
+                href={contactPage.form.privacyHref}
+                className="text-primary underline underline-offset-2"
+              >
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a
+                href={contactPage.form.termsHref}
+                className="text-primary underline underline-offset-2"
+              >
+                Terms of Service
+              </a>
+              .
             </span>
           </label>
           {errors.consent && (
-            <p className="mt-1.5 text-xs font-medium text-[oklch(0.55_0.22_25)]">{errors.consent}</p>
+            <p className="mt-1.5 text-xs font-medium text-[oklch(0.55_0.22_25)]">
+              {errors.consent}
+            </p>
           )}
         </div>
 
@@ -440,7 +497,12 @@ function inputCls(invalid: boolean) {
 }
 
 function Field({
-  id, label, required, icon: Icon, error, children,
+  id,
+  label,
+  required,
+  icon: Icon,
+  error,
+  children,
 }: {
   id: string;
   label: string;
@@ -452,21 +514,26 @@ function Field({
   return (
     <div>
       <label htmlFor={id} className="sr-only">
-        {label}{required ? " (required)" : ""}
+        {label}
+        {required ? " (required)" : ""}
       </label>
       <div className="relative">
         <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         {children}
       </div>
-      {error && (
-        <p className="mt-1.5 text-xs font-medium text-[oklch(0.55_0.22_25)]">{error}</p>
-      )}
+      {error && <p className="mt-1.5 text-xs font-medium text-[oklch(0.55_0.22_25)]">{error}</p>}
     </div>
   );
 }
 
 function Select({
-  id, name, value, onChange, options, placeholder, invalid,
+  id,
+  name,
+  value,
+  onChange,
+  options,
+  placeholder,
+  invalid,
 }: {
   id: string;
   name: string;
@@ -490,7 +557,9 @@ function Select({
           value === "" && "text-muted-foreground",
         )}
       >
-        <option value="" disabled>{placeholder}</option>
+        <option value="" disabled>
+          {placeholder}
+        </option>
         {options.map((o) => (
           <option key={o.id} value={o.id} className="text-foreground">
             {o.label}
@@ -548,10 +617,10 @@ function ContactMethods() {
     {
       id: "chat",
       title: "Live Chat",
-      primary: b.liveChat.enabled
-        ? "Chat with our team instantly."
-        : b.liveChat.statusLabel,
-      description: b.liveChat.enabled ? "Available on our website." : "Available soon on our website.",
+      primary: b.liveChat.enabled ? "Chat with our team instantly." : b.liveChat.statusLabel,
+      description: b.liveChat.enabled
+        ? "Available on our website."
+        : "Available soon on our website.",
       tone: "blue",
       icon: MessageSquare,
       visible: true,
@@ -588,10 +657,17 @@ function ContactMethods() {
                 {...wrapperProps}
                 className={cn(
                   "flex items-start gap-4 rounded-2xl border border-border/60 bg-background p-4 transition-all",
-                  c.href ? "hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-soft" : "",
+                  c.href
+                    ? "hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-soft"
+                    : "",
                 )}
               >
-                <span className={cn("grid h-11 w-11 shrink-0 place-items-center rounded-2xl", toneSolid[c.tone])}>
+                <span
+                  className={cn(
+                    "grid h-11 w-11 shrink-0 place-items-center rounded-2xl",
+                    toneSolid[c.tone],
+                  )}
+                >
                   <Icon className="h-5 w-5" />
                 </span>
                 <div className="min-w-0">
@@ -610,12 +686,8 @@ function ContactMethods() {
           <Headphones className="h-5 w-5" />
         </span>
         <div>
-          <div className="text-sm font-semibold text-foreground">
-            {m.valueCard.title}
-          </div>
-          <div className="mt-0.5 text-xs text-muted-foreground">
-            {m.valueCard.description}
-          </div>
+          <div className="text-sm font-semibold text-foreground">{m.valueCard.title}</div>
+          <div className="mt-0.5 text-xs text-muted-foreground">{m.valueCard.description}</div>
         </div>
       </div>
     </aside>
@@ -629,8 +701,12 @@ function ProcessSection() {
     <Section>
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{p.eyebrow}</div>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-[34px]">{p.title}</h2>
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            {p.eyebrow}
+          </div>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-[34px]">
+            {p.title}
+          </h2>
         </div>
 
         <div className="mt-10 rounded-3xl border border-border bg-surface p-8 sm:p-10 shadow-soft">
@@ -641,11 +717,21 @@ function ProcessSection() {
               const Icon = processIcon[s.icon] ?? FileText;
               return (
                 <div key={s.id} className="relative text-center">
-                  <div className={cn("relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full", toneSoft[s.tone])}>
+                  <div
+                    className={cn(
+                      "relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full",
+                      toneSoft[s.tone],
+                    )}
+                  >
                     <Icon className="h-7 w-7" />
                   </div>
                   <div className="mt-5 flex items-center justify-center gap-2">
-                    <span className={cn("inline-flex h-6 min-w-6 items-center justify-center rounded-md px-1.5 text-[11px] font-semibold", toneSolid[s.tone])}>
+                    <span
+                      className={cn(
+                        "inline-flex h-6 min-w-6 items-center justify-center rounded-md px-1.5 text-[11px] font-semibold",
+                        toneSolid[s.tone],
+                      )}
+                    >
                       {String(s.number).padStart(2, "0")}
                     </span>
                     <span className="text-sm font-semibold text-foreground">{s.title}</span>
@@ -673,8 +759,12 @@ function FaqSection() {
     <Section>
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{f.eyebrow}</div>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-[34px]">{f.title}</h2>
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            {f.eyebrow}
+          </div>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-[34px]">
+            {f.title}
+          </h2>
         </div>
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">

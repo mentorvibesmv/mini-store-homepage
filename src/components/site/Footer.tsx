@@ -39,12 +39,8 @@ export function Footer() {
           ))}
 
           <div>
-            <h4 className="text-sm font-semibold text-foreground">
-              {footer.newsletter.title}
-            </h4>
-            <p className="mt-3 text-sm text-muted-foreground">
-              {footer.newsletter.description}
-            </p>
+            <h4 className="text-sm font-semibold text-foreground">{footer.newsletter.title}</h4>
+            <p className="mt-3 text-sm text-muted-foreground">{footer.newsletter.description}</p>
             <form
               onSubmit={(e) => e.preventDefault()}
               className="mt-4 flex items-center gap-2 rounded-full border border-border bg-background p-1.5 shadow-soft"

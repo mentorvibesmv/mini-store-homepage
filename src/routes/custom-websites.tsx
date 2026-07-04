@@ -1,17 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  Palette, Zap, Headphones, Check, ArrowRight, Play, Code2,
-  MessageSquare, FileText, CheckCircle2, Rocket,
-  Briefcase, ShoppingCart, UserCircle2, Send,
-  UtensilsCrossed, Home, Stethoscope, Layers,
-  Plus, Minus, type LucideIcon,
+  Palette,
+  Zap,
+  Headphones,
+  Check,
+  ArrowRight,
+  Play,
+  Code2,
+  MessageSquare,
+  FileText,
+  CheckCircle2,
+  Rocket,
+  Briefcase,
+  ShoppingCart,
+  UserCircle2,
+  Send,
+  UtensilsCrossed,
+  Home,
+  Stethoscope,
+  Layers,
+  Plus,
+  Minus,
+  type LucideIcon,
 } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge, SectionTitle, Button } from "@/components/site";
 import { customWebsitesPage } from "@/data/site";
 import {
-  Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
@@ -19,9 +39,17 @@ export const Route = createFileRoute("/custom-websites")({
   head: () => ({
     meta: [
       { title: "Custom Websites — Mini Store" },
-      { name: "description", content: "We build stunning, fully custom websites for your unique business. 100% custom design, fast delivery, dedicated support." },
+      {
+        name: "description",
+        content:
+          "We build stunning, fully custom websites for your unique business. 100% custom design, fast delivery, dedicated support.",
+      },
       { property: "og:title", content: "Custom Websites — Mini Store" },
-      { property: "og:description", content: "Stand out online with a custom website designed to match your brand, engage your audience, and grow your business." },
+      {
+        property: "og:description",
+        content:
+          "Stand out online with a custom website designed to match your brand, engage your audience, and grow your business.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -41,14 +69,27 @@ const toneBg: Record<string, string> = {
 };
 
 const benefitIcon: Record<string, LucideIcon> = {
-  palette: Palette, zap: Zap, headset: Headphones, check: Check,
+  palette: Palette,
+  zap: Zap,
+  headset: Headphones,
+  check: Check,
 };
 const processIcon: Record<string, LucideIcon> = {
-  message: MessageSquare, file: FileText, code: Code2, check: CheckCircle2, rocket: Rocket,
+  message: MessageSquare,
+  file: FileText,
+  code: Code2,
+  check: CheckCircle2,
+  rocket: Rocket,
 };
 const serviceIcon: Record<string, LucideIcon> = {
-  briefcase: Briefcase, cart: ShoppingCart, user: UserCircle2, send: Send,
-  utensils: UtensilsCrossed, home: Home, stethoscope: Stethoscope, layers: Layers,
+  briefcase: Briefcase,
+  cart: ShoppingCart,
+  user: UserCircle2,
+  send: Send,
+  utensils: UtensilsCrossed,
+  home: Home,
+  stethoscope: Stethoscope,
+  layers: Layers,
 };
 
 function CustomWebsitesPage() {
@@ -93,7 +134,10 @@ function CustomHero() {
             {h.benefits.map((b) => {
               const Icon = benefitIcon[b.icon] ?? Check;
               return (
-                <li key={b.id} className="flex items-center gap-2 text-[13px] font-medium text-foreground">
+                <li
+                  key={b.id}
+                  className="flex items-center gap-2 text-[13px] font-medium text-foreground"
+                >
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-primary-soft text-primary">
                     <Icon className="h-3.5 w-3.5" />
                   </span>
@@ -122,7 +166,10 @@ function CustomHero() {
           </div>
         </div>
         <div className="relative fade-up-delay-2">
-          <div aria-hidden className="absolute inset-x-8 -bottom-6 h-24 rounded-[50%] bg-primary/15 blur-3xl" />
+          <div
+            aria-hidden
+            className="absolute inset-x-8 -bottom-6 h-24 rounded-[50%] bg-primary/15 blur-3xl"
+          />
           <img
             src={h.visual.src}
             alt={h.visual.alt}
@@ -147,13 +194,21 @@ function ProcessSteps() {
         <SectionTitle eyebrow={p.eyebrow} title={p.title} />
         <div className="relative mt-12">
           {/* Connector line */}
-          <div aria-hidden className="pointer-events-none absolute left-[10%] right-[10%] top-8 hidden border-t border-dashed border-border lg:block" />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-[10%] right-[10%] top-8 hidden border-t border-dashed border-border lg:block"
+          />
           <ol className="relative grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
             {p.steps.map((s) => {
               const Icon = processIcon[s.icon] ?? CheckCircle2;
               return (
                 <li key={s.id} className="relative flex flex-col items-center text-center">
-                  <div className={cn("relative grid h-16 w-16 place-items-center rounded-full ring-8 ring-surface transition-transform hover:scale-105", toneBg[s.tone])}>
+                  <div
+                    className={cn(
+                      "relative grid h-16 w-16 place-items-center rounded-full ring-8 ring-surface transition-transform hover:scale-105",
+                      toneBg[s.tone],
+                    )}
+                  >
                     <Icon className="h-6 w-6" />
                   </div>
                   <div className="mt-5 text-[15px] font-semibold text-foreground">
@@ -184,13 +239,23 @@ function ServiceGrid() {
           {items.map((item) => {
             const Icon = serviceIcon[item.icon] ?? Briefcase;
             return (
-              <div key={item.id} className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift">
-                <span className={cn("grid h-12 w-12 shrink-0 place-items-center rounded-xl", toneBg[item.tone])}>
+              <div
+                key={item.id}
+                className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <span
+                  className={cn(
+                    "grid h-12 w-12 shrink-0 place-items-center rounded-xl",
+                    toneBg[item.tone],
+                  )}
+                >
                   <Icon className="h-5 w-5" />
                 </span>
                 <div className="min-w-0">
                   <div className="text-[15px] font-semibold text-foreground">{item.title}</div>
-                  <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{item.description}</p>
+                  <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             );
@@ -213,7 +278,9 @@ function IncludedAndPricing() {
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Left */}
           <div className="rounded-3xl border border-border bg-card p-8 shadow-soft sm:p-10">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{inc.title}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              {inc.title}
+            </h2>
             <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
               {[left, right].map((col, i) => (
                 <ul key={i} className="space-y-3">
@@ -241,7 +308,10 @@ function IncludedAndPricing() {
                 <p className="mt-2 text-[13px] text-muted-foreground">{pr.note}</p>
                 <ul className="mt-5 space-y-2.5">
                   {pr.benefits.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-[13px] font-medium text-foreground">
+                    <li
+                      key={b}
+                      className="flex items-center gap-2 text-[13px] font-medium text-foreground"
+                    >
                       <CheckCircle2 className="h-4 w-4 text-primary" />
                       {b}
                     </li>
@@ -253,7 +323,10 @@ function IncludedAndPricing() {
                 </Button>
               </div>
               <div className="relative hidden sm:block">
-                <div aria-hidden className="absolute right-0 top-0 grid h-24 w-24 place-items-center rounded-full bg-primary-gradient text-primary-foreground shadow-glow">
+                <div
+                  aria-hidden
+                  className="absolute right-0 top-0 grid h-24 w-24 place-items-center rounded-full bg-primary-gradient text-primary-foreground shadow-glow"
+                >
                   <div className="text-center leading-tight">
                     <div className="text-[11px] font-medium opacity-80">Starting</div>
                     <div className="text-sm font-bold">{pr.price}</div>
@@ -283,11 +356,16 @@ function RecentWork() {
     <Section>
       <Container>
         <div className="mb-8 text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{rw.title}</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            {rw.title}
+          </h2>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((w) => (
-            <article key={w.id} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift">
+            <article
+              key={w.id}
+              className="group overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
+            >
               <div className="aspect-[4/3] overflow-hidden bg-muted">
                 <img
                   src={w.image}
@@ -297,10 +375,13 @@ function RecentWork() {
                 />
               </div>
               <div className="flex items-center justify-between gap-3 p-4">
-                <div className="min-w-0 text-[14px] font-semibold text-foreground">
-                  {w.title}
-                </div>
-                <span className={cn("shrink-0 rounded-full px-2.5 py-1 text-[11px] font-medium", toneBg[w.tone])}>
+                <div className="min-w-0 text-[14px] font-semibold text-foreground">{w.title}</div>
+                <span
+                  className={cn(
+                    "shrink-0 rounded-full px-2.5 py-1 text-[11px] font-medium",
+                    toneBg[w.tone],
+                  )}
+                >
                   {w.category}
                 </span>
               </div>
@@ -323,8 +404,12 @@ function FAQSection() {
     <Section className="bg-surface">
       <Container>
         <div className="mb-8 text-center">
-          <div className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-primary">✦ FAQ</div>
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{f.title}</h2>
+          <div className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-primary">
+            ✦ FAQ
+          </div>
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            {f.title}
+          </h2>
         </div>
         <Accordion
           type="single"
@@ -346,7 +431,11 @@ function FAQSection() {
                     <AccordionTrigger className="py-4 text-[14px] font-medium text-foreground hover:no-underline [&>svg]:hidden">
                       <span className="pr-3 text-left">{q.question}</span>
                       <span className="ml-auto grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary-soft text-primary transition-transform">
-                        {isOpen ? <Minus className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
+                        {isOpen ? (
+                          <Minus className="h-3.5 w-3.5" />
+                        ) : (
+                          <Plus className="h-3.5 w-3.5" />
+                        )}
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="pb-5 text-[13px] leading-relaxed text-muted-foreground">
@@ -380,7 +469,10 @@ function FinalCta() {
               </p>
               <ul className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
                 {c.benefits.map((b) => (
-                  <li key={b} className="flex items-center gap-2 text-[13px] font-medium text-foreground">
+                  <li
+                    key={b}
+                    className="flex items-center gap-2 text-[13px] font-medium text-foreground"
+                  >
                     <CheckCircle2 className="h-4 w-4 text-primary" />
                     {b}
                   </li>

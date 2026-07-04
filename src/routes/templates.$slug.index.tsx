@@ -1,8 +1,19 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import {
-  Star, Check, ExternalLink, Sliders, ChevronLeft, ChevronRight,
-  FileText, Wand2, LifeBuoy, RefreshCw, ShieldCheck, Home as HomeIcon, ChevronRight as CrumbSep,
+  Star,
+  Check,
+  ExternalLink,
+  Sliders,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  Wand2,
+  LifeBuoy,
+  RefreshCw,
+  ShieldCheck,
+  Home as HomeIcon,
+  ChevronRight as CrumbSep,
 } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section } from "@/components/site/primitives";
@@ -23,7 +34,12 @@ export const Route = createFileRoute("/templates/$slug/")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Template not found — Mini Store" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "Template not found — Mini Store" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const t = loaderData.template;
     return {
@@ -39,7 +55,11 @@ export const Route = createFileRoute("/templates/$slug/")({
   notFoundComponent: TemplateNotFound,
   errorComponent: ({ error }) => (
     <SiteLayout>
-      <Section><Container><p className="text-center text-muted-foreground">{error.message}</p></Container></Section>
+      <Section>
+        <Container>
+          <p className="text-center text-muted-foreground">{error.message}</p>
+        </Container>
+      </Section>
     </SiteLayout>
   ),
   component: TemplateDetailsPage,
@@ -47,16 +67,33 @@ export const Route = createFileRoute("/templates/$slug/")({
 
 // ---------- Fallback defaults ----------
 const DEFAULT_BENEFITS = [
-  "Modern & Clean Design", "Fully Responsive", "Easy to Customize",
-  "SEO Optimized", "Fast Loading", "Lifetime Updates",
+  "Modern & Clean Design",
+  "Fully Responsive",
+  "Easy to Customize",
+  "SEO Optimized",
+  "Fast Loading",
+  "Lifetime Updates",
 ];
 const DEFAULT_PAGES = [
-  "Home", "About Us", "Services", "Gallery", "Blog", "Blog Details",
-  "Contact Us", "404 Page", "Terms & Conditions", "Privacy Policy",
+  "Home",
+  "About Us",
+  "Services",
+  "Gallery",
+  "Blog",
+  "Blog Details",
+  "Contact Us",
+  "404 Page",
+  "Terms & Conditions",
+  "Privacy Policy",
 ];
 const DEFAULT_FEATURES = [
-  "Modern & Unique Design", "Fully Responsive Design", "Photo Gallery",
-  "Testimonial Section", "Blog & News Section", "SEO Friendly", "Cross Browser Compatible",
+  "Modern & Unique Design",
+  "Fully Responsive Design",
+  "Photo Gallery",
+  "Testimonial Section",
+  "Blog & News Section",
+  "SEO Friendly",
+  "Cross Browser Compatible",
 ];
 const DEFAULT_TECH: TemplateTech[] = [
   { id: "html", name: "HTML5", tone: "orange" },
@@ -74,8 +111,13 @@ const DEFAULT_META = {
 };
 
 const TONE_BG: Record<TemplateTech["tone"], string> = {
-  orange: "bg-tone-orange", blue: "bg-tone-blue", amber: "bg-tone-amber",
-  violet: "bg-tone-violet", pink: "bg-tone-pink", sky: "bg-tone-sky", green: "bg-tone-green",
+  orange: "bg-tone-orange",
+  blue: "bg-tone-blue",
+  amber: "bg-tone-amber",
+  violet: "bg-tone-violet",
+  pink: "bg-tone-pink",
+  sky: "bg-tone-sky",
+  green: "bg-tone-green",
 };
 
 // ---------- Page ----------
@@ -104,10 +146,10 @@ function TemplateDetailsPage() {
   const statusBadge = template.featured
     ? { label: "Featured", tone: "bg-tone-amber text-[oklch(0.48_0.13_75)]" }
     : template.popular
-    ? { label: "Popular", tone: "bg-tone-orange text-[oklch(0.5_0.15_50)]" }
-    : template.isNew
-    ? { label: "New", tone: "bg-tone-green text-[oklch(0.42_0.12_155)]" }
-    : null;
+      ? { label: "Popular", tone: "bg-tone-orange text-[oklch(0.5_0.15_50)]" }
+      : template.isNew
+        ? { label: "New", tone: "bg-tone-green text-[oklch(0.42_0.12_155)]" }
+        : null;
 
   const prev = () => setActive((i) => (i - 1 + gallery.length) % gallery.length);
   const next = () => setActive((i) => (i + 1) % gallery.length);
@@ -123,12 +165,20 @@ function TemplateDetailsPage() {
                 <HomeIcon className="h-3.5 w-3.5" /> Home
               </Link>
             </li>
-            <li aria-hidden><CrumbSep className="h-3.5 w-3.5" /></li>
-            <li>
-              <Link to="/templates" className="hover:text-foreground">Templates</Link>
+            <li aria-hidden>
+              <CrumbSep className="h-3.5 w-3.5" />
             </li>
-            <li aria-hidden><CrumbSep className="h-3.5 w-3.5" /></li>
-            <li aria-current="page" className="font-medium text-foreground">{template.title}</li>
+            <li>
+              <Link to="/templates" className="hover:text-foreground">
+                Templates
+              </Link>
+            </li>
+            <li aria-hidden>
+              <CrumbSep className="h-3.5 w-3.5" />
+            </li>
+            <li aria-current="page" className="font-medium text-foreground">
+              {template.title}
+            </li>
           </ol>
         </nav>
       </Container>
@@ -166,7 +216,9 @@ function TemplateDetailsPage() {
                       aria-current={i === active}
                       className={cn(
                         "relative aspect-[4/3] w-28 shrink-0 overflow-hidden rounded-xl border-2 transition",
-                        i === active ? "border-primary shadow-soft" : "border-transparent opacity-80 hover:opacity-100",
+                        i === active
+                          ? "border-primary shadow-soft"
+                          : "border-transparent opacity-80 hover:opacity-100",
                       )}
                     >
                       <img src={src} alt="" className="h-full w-full object-cover" />
@@ -192,7 +244,9 @@ function TemplateDetailsPage() {
                   {template.category}
                 </span>
                 {statusBadge && (
-                  <span className={cn("rounded-full px-3 py-1 text-xs font-semibold", statusBadge.tone)}>
+                  <span
+                    className={cn("rounded-full px-3 py-1 text-xs font-semibold", statusBadge.tone)}
+                  >
                     ★ {statusBadge.label}
                   </span>
                 )}
@@ -242,8 +296,7 @@ function TemplateDetailsPage() {
                   <ExternalLink className="h-4 w-4" /> Live Demo
                 </Link>
                 <Link
-                  to="/templates/$slug/customize"
-                  params={{ slug: template.slug }}
+                  to="/contact"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-foreground/20"
                 >
                   <Sliders className="h-4 w-4" /> Customize This Template
@@ -263,10 +316,30 @@ function TemplateDetailsPage() {
       <Section className="py-4">
         <Container>
           <div className="grid gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft sm:grid-cols-2 lg:grid-cols-4">
-            <ValueItem tone="violet" icon={<FileText className="h-5 w-5" />} title="Pages Included" value={meta.pagesCount} />
-            <ValueItem tone="pink" icon={<Wand2 className="h-5 w-5" />} title="Customization" value={meta.customization} />
-            <ValueItem tone="green" icon={<LifeBuoy className="h-5 w-5" />} title="Support" value={meta.support} />
-            <ValueItem tone="amber" icon={<RefreshCw className="h-5 w-5" />} title="Updates" value={meta.updates} />
+            <ValueItem
+              tone="violet"
+              icon={<FileText className="h-5 w-5" />}
+              title="Pages Included"
+              value={meta.pagesCount}
+            />
+            <ValueItem
+              tone="pink"
+              icon={<Wand2 className="h-5 w-5" />}
+              title="Customization"
+              value={meta.customization}
+            />
+            <ValueItem
+              tone="green"
+              icon={<LifeBuoy className="h-5 w-5" />}
+              title="Support"
+              value={meta.support}
+            />
+            <ValueItem
+              tone="amber"
+              icon={<RefreshCw className="h-5 w-5" />}
+              title="Updates"
+              value={meta.updates}
+            />
           </div>
         </Container>
       </Section>
@@ -277,7 +350,9 @@ function TemplateDetailsPage() {
           <div className="grid gap-6 rounded-3xl border border-border bg-card p-6 shadow-soft lg:grid-cols-3 lg:p-8">
             <div>
               <h2 className="text-lg font-bold text-foreground">Pages Included</h2>
-              <p className="mt-1 text-sm text-muted-foreground">All the essential pages you need to launch a professional website.</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                All the essential pages you need to launch a professional website.
+              </p>
               <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-foreground">
                 {pages.map((p) => (
                   <li key={p} className="flex items-center gap-2">
@@ -302,8 +377,16 @@ function TemplateDetailsPage() {
               <h2 className="text-lg font-bold text-foreground">Technologies Used</h2>
               <div className="mt-4 grid grid-cols-3 gap-3">
                 {tech.map((t) => (
-                  <div key={t.id} className="flex flex-col items-center gap-1.5 rounded-xl bg-card p-3 text-center shadow-soft">
-                    <div className={cn("grid h-10 w-10 place-items-center rounded-lg text-sm font-bold text-foreground", TONE_BG[t.tone])}>
+                  <div
+                    key={t.id}
+                    className="flex flex-col items-center gap-1.5 rounded-xl bg-card p-3 text-center shadow-soft"
+                  >
+                    <div
+                      className={cn(
+                        "grid h-10 w-10 place-items-center rounded-lg text-sm font-bold text-foreground",
+                        TONE_BG[t.tone],
+                      )}
+                    >
                       {t.name.slice(0, 2).toUpperCase()}
                     </div>
                     <div className="text-xs font-medium text-foreground">{t.name}</div>
@@ -321,13 +404,39 @@ function TemplateDetailsPage() {
           <div className="grid items-center gap-8 rounded-3xl border border-border bg-muted/40 p-6 lg:grid-cols-[1fr_1.6fr] lg:p-10">
             <div>
               <h2 className="text-2xl font-bold text-foreground">Fully Responsive Design</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Looks perfect on all devices and screen sizes.</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Looks perfect on all devices and screen sizes.
+              </p>
             </div>
             <div className="relative flex items-end justify-center gap-3 sm:gap-5">
-              <DeviceFrame frame={heroLaptop} src={activeImg} label="Desktop" widthClass="w-[40%]" clipInset="inset-[6%_5%_18%_5%]" />
-              <DeviceFrame frame={heroLaptop} src={activeImg} label="Laptop" widthClass="w-[32%]" clipInset="inset-[6%_5%_18%_5%]" />
-              <DeviceFrame frame={heroTablet} src={activeImg} label="Tablet" widthClass="w-[18%]" clipInset="inset-[5%]" />
-              <DeviceFrame frame={heroMobile} src={activeImg} label="Mobile" widthClass="w-[10%]" clipInset="inset-[6%_5%]" />
+              <DeviceFrame
+                frame={heroLaptop}
+                src={activeImg}
+                label="Desktop"
+                widthClass="w-[40%]"
+                clipInset="inset-[6%_5%_18%_5%]"
+              />
+              <DeviceFrame
+                frame={heroLaptop}
+                src={activeImg}
+                label="Laptop"
+                widthClass="w-[32%]"
+                clipInset="inset-[6%_5%_18%_5%]"
+              />
+              <DeviceFrame
+                frame={heroTablet}
+                src={activeImg}
+                label="Tablet"
+                widthClass="w-[18%]"
+                clipInset="inset-[5%]"
+              />
+              <DeviceFrame
+                frame={heroMobile}
+                src={activeImg}
+                label="Mobile"
+                widthClass="w-[10%]"
+                clipInset="inset-[6%_5%]"
+              />
             </div>
           </div>
         </Container>
@@ -362,8 +471,16 @@ function TemplateDetailsPage() {
 }
 
 function ValueItem({
-  tone, icon, title, value,
-}: { tone: "violet" | "pink" | "green" | "amber"; icon: React.ReactNode; title: string; value: string }) {
+  tone,
+  icon,
+  title,
+  value,
+}: {
+  tone: "violet" | "pink" | "green" | "amber";
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+}) {
   const toneClass = {
     violet: "bg-tone-violet text-[oklch(0.45_0.18_290)]",
     pink: "bg-tone-pink text-[oklch(0.5_0.14_355)]",
@@ -372,7 +489,9 @@ function ValueItem({
   }[tone];
   return (
     <div className="flex items-center gap-3">
-      <div className={cn("grid h-12 w-12 shrink-0 place-items-center rounded-xl", toneClass)}>{icon}</div>
+      <div className={cn("grid h-12 w-12 shrink-0 place-items-center rounded-xl", toneClass)}>
+        {icon}
+      </div>
       <div className="min-w-0">
         <div className="text-sm font-semibold text-foreground">{title}</div>
         <div className="text-xs text-muted-foreground">{value}</div>
@@ -382,8 +501,18 @@ function ValueItem({
 }
 
 function DeviceFrame({
-  frame, src, label, widthClass, clipInset,
-}: { frame: string; src: string; label: string; widthClass: string; clipInset: string }) {
+  frame,
+  src,
+  label,
+  widthClass,
+  clipInset,
+}: {
+  frame: string;
+  src: string;
+  label: string;
+  widthClass: string;
+  clipInset: string;
+}) {
   return (
     <div className={cn("relative shrink-0", widthClass)} aria-label={label}>
       <img src={frame} alt="" className="relative z-10 h-auto w-full" />

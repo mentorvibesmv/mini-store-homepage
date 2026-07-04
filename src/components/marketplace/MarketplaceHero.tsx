@@ -29,7 +29,10 @@ export function MarketplaceHero() {
 
         {/* RIGHT — 3 floating preview cards */}
         <div className="relative fade-up-delay-2">
-          <div aria-hidden className="absolute inset-x-8 -bottom-6 h-24 rounded-[50%] bg-primary/15 blur-3xl" />
+          <div
+            aria-hidden
+            className="absolute inset-x-8 -bottom-6 h-24 rounded-[50%] bg-primary/15 blur-3xl"
+          />
           <div className="relative mx-auto aspect-[16/10] w-full max-w-[640px] lg:max-w-none">
             {/* left card */}
             <div className="absolute left-[0%] top-[18%] w-[42%] -rotate-[6deg] float-slower">

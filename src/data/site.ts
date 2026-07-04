@@ -30,7 +30,6 @@ export const navigation: NavItem[] = [
   { id: "contact", label: "Contact", href: "/contact" },
 ];
 
-
 export const navActions = {
   loginLabel: "Login",
   ctaLabel: "Get Custom Website",
@@ -71,10 +70,38 @@ export type Stat = {
 };
 
 export const stats: Stat[] = [
-  { id: "templates", value: "240+", title: "Templates", description: "Ready-to-use designs", icon: "templates", tone: "violet" },
-  { id: "customers", value: "18k+", title: "Happy Customers", description: "Across 40+ countries", icon: "customers", tone: "blue" },
-  { id: "projects", value: "3.4k", title: "Projects Shipped", description: "Delivered on time", icon: "projects", tone: "green" },
-  { id: "satisfaction", value: "99%", title: "Satisfaction", description: "Loved by our clients", icon: "star", tone: "orange" },
+  {
+    id: "templates",
+    value: "240+",
+    title: "Templates",
+    description: "Ready-to-use designs",
+    icon: "templates",
+    tone: "violet",
+  },
+  {
+    id: "customers",
+    value: "18k+",
+    title: "Happy Customers",
+    description: "Across 40+ countries",
+    icon: "customers",
+    tone: "blue",
+  },
+  {
+    id: "projects",
+    value: "3.4k",
+    title: "Projects Shipped",
+    description: "Delivered on time",
+    icon: "projects",
+    tone: "green",
+  },
+  {
+    id: "satisfaction",
+    value: "99%",
+    title: "Satisfaction",
+    description: "Loved by our clients",
+    icon: "star",
+    tone: "orange",
+  },
 ];
 
 // -------------------- Categories --------------------
@@ -98,13 +125,17 @@ export const categories: Category[] = [
 // -------------------- Templates --------------------
 export type TemplateBadge = "featured" | "popular" | "new";
 
-export type TemplateTech = { id: string; name: string; tone: "orange" | "blue" | "amber" | "violet" | "pink" | "sky" | "green" };
+export type TemplateTech = {
+  id: string;
+  name: string;
+  tone: "orange" | "blue" | "amber" | "violet" | "pink" | "sky" | "green";
+};
 
 export type TemplateMeta = {
-  pagesCount?: string;         // e.g. "12+ Ready Pages"
-  customization?: string;      // e.g. "Easy with Drag & Drop"
-  support?: string;            // e.g. "6 Months Included"
-  updates?: string;            // e.g. "Lifetime Free Updates"
+  pagesCount?: string; // e.g. "12+ Ready Pages"
+  customization?: string; // e.g. "Easy with Drag & Drop"
+  support?: string; // e.g. "6 Months Included"
+  updates?: string; // e.g. "Lifetime Free Updates"
 };
 
 export type Template = {
@@ -138,12 +169,18 @@ export type Template = {
 
 export const templates: Template[] = [
   {
-    id: "lumina", slug: "lumina-restaurant", title: "Lumina Restaurant",
+    id: "lumina",
+    slug: "lumina-restaurant",
+    title: "Lumina Restaurant",
     shortDescription: "Warm, appetizing restaurant template with menu, reservations, and gallery.",
     fullDescription:
       "Lumina is a modern restaurant website template crafted for fine dining, cafes, bistros, and culinary businesses. It comes with a beautiful menu layout, reservation system, chef showcase, and more.",
-    category: "Restaurant", price: 49, priceLabel: "$49",
-    rating: 4.9, reviews: 128, customerCount: "1,245+ Happy Customers",
+    category: "Restaurant",
+    price: 49,
+    priceLabel: "$49",
+    rating: 4.9,
+    reviews: 128,
+    customerCount: "1,245+ Happy Customers",
     image: tplRestaurant,
     gallery: [tplRestaurant, tplFashion, tplMedical, tplRealEstate],
     benefits: [
@@ -155,13 +192,30 @@ export const templates: Template[] = [
       "Lifetime Updates",
     ],
     pagesIncluded: [
-      "Home", "About Us", "Menu", "Reservations", "Our Chefs", "Gallery",
-      "Blog", "Blog Details", "Contact Us", "404 Page", "Terms & Conditions", "Privacy Policy",
+      "Home",
+      "About Us",
+      "Menu",
+      "Reservations",
+      "Our Chefs",
+      "Gallery",
+      "Blog",
+      "Blog Details",
+      "Contact Us",
+      "404 Page",
+      "Terms & Conditions",
+      "Privacy Policy",
     ],
     features: [
-      "Modern & Unique Design", "Online Table Reservation", "Beautiful Menu Layout",
-      "Chef Showcase", "Photo Gallery", "Testimonial Section",
-      "Blog & News Section", "Fully Responsive Design", "SEO Friendly", "Cross Browser Compatible",
+      "Modern & Unique Design",
+      "Online Table Reservation",
+      "Beautiful Menu Layout",
+      "Chef Showcase",
+      "Photo Gallery",
+      "Testimonial Section",
+      "Blog & News Section",
+      "Fully Responsive Design",
+      "SEO Friendly",
+      "Cross Browser Compatible",
     ],
     technologies: [
       { id: "html", name: "HTML5", tone: "orange" },
@@ -178,107 +232,222 @@ export const templates: Template[] = [
       updates: "Lifetime Free Updates",
     },
     tags: ["restaurant", "food", "menu", "reservations"],
-    featured: true, popular: false, isNew: false,
-    createdAt: "2025-08-14", visible: true, displayOrder: 1,
+    featured: true,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-08-14",
+    visible: true,
+    displayOrder: 1,
   },
   {
-    id: "aurea", slug: "aurea-fashion", title: "Auréa Fashion",
+    id: "aurea",
+    slug: "aurea-fashion",
+    title: "Auréa Fashion",
     shortDescription: "Editorial fashion boutique with lookbook, product grid, and campaign hero.",
-    category: "Fashion", price: 59, priceLabel: "$59",
-    rating: 4.8, reviews: 96, image: tplFashion,
+    category: "Fashion",
+    price: 59,
+    priceLabel: "$59",
+    rating: 4.8,
+    reviews: 96,
+    image: tplFashion,
     tags: ["fashion", "boutique", "editorial", "lookbook"],
-    featured: false, popular: false, isNew: false,
-    createdAt: "2025-09-02", visible: true, displayOrder: 2,
+    featured: false,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-09-02",
+    visible: true,
+    displayOrder: 2,
   },
   {
-    id: "clarity", slug: "clarity-medical", title: "Clarity Medical",
-    shortDescription: "Trusted medical clinic site with services, doctors, and appointment booking.",
-    category: "Medical", price: 54, priceLabel: "$54",
-    rating: 4.9, reviews: 74, image: tplMedical,
+    id: "clarity",
+    slug: "clarity-medical",
+    title: "Clarity Medical",
+    shortDescription:
+      "Trusted medical clinic site with services, doctors, and appointment booking.",
+    category: "Medical",
+    price: 54,
+    priceLabel: "$54",
+    rating: 4.9,
+    reviews: 74,
+    image: tplMedical,
     tags: ["medical", "clinic", "doctors", "healthcare"],
-    featured: false, popular: true, isNew: false,
-    createdAt: "2025-07-10", visible: true, displayOrder: 3,
+    featured: false,
+    popular: true,
+    isNew: false,
+    createdAt: "2025-07-10",
+    visible: true,
+    displayOrder: 3,
   },
   {
-    id: "haven", slug: "haven-real-estate", title: "Haven Real Estate",
+    id: "haven",
+    slug: "haven-real-estate",
+    title: "Haven Real Estate",
     shortDescription: "Modern real estate template with property listings, filters, and agents.",
-    category: "Real Estate", price: 69, priceLabel: "$69",
-    rating: 5.0, reviews: 52, image: tplRealEstate,
+    category: "Real Estate",
+    price: 69,
+    priceLabel: "$69",
+    rating: 5.0,
+    reviews: 52,
+    image: tplRealEstate,
     tags: ["real estate", "property", "listings", "agents"],
-    featured: false, popular: false, isNew: false,
-    createdAt: "2025-10-01", visible: true, displayOrder: 4,
+    featured: false,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-10-01",
+    visible: true,
+    displayOrder: 4,
   },
   {
-    id: "powerfit", slug: "powerfit-gym", title: "PowerFit Gym",
+    id: "powerfit",
+    slug: "powerfit-gym",
+    title: "PowerFit Gym",
     shortDescription: "Bold fitness studio site with class schedules, trainers, and memberships.",
-    category: "Fitness", price: 49, priceLabel: "$49",
-    rating: 4.7, reviews: 41, image: tplRestaurant,
+    category: "Fitness",
+    price: 49,
+    priceLabel: "$49",
+    rating: 4.7,
+    reviews: 41,
+    image: tplRestaurant,
     tags: ["fitness", "gym", "trainers", "classes"],
-    featured: false, popular: false, isNew: true,
-    createdAt: "2026-05-20", visible: true, displayOrder: 5,
+    featured: false,
+    popular: false,
+    isNew: true,
+    createdAt: "2026-05-20",
+    visible: true,
+    displayOrder: 5,
   },
   {
-    id: "eduvision", slug: "eduvision-academy", title: "EduVision Academy",
+    id: "eduvision",
+    slug: "eduvision-academy",
+    title: "EduVision Academy",
     shortDescription: "Modern education platform with courses, faculty, and enrollment flow.",
-    category: "Education", price: 49, priceLabel: "$49",
-    rating: 4.8, reviews: 63, image: tplFashion,
+    category: "Education",
+    price: 49,
+    priceLabel: "$49",
+    rating: 4.8,
+    reviews: 63,
+    image: tplFashion,
     tags: ["education", "academy", "courses", "learning"],
-    featured: false, popular: false, isNew: false,
-    createdAt: "2025-06-11", visible: true, displayOrder: 6,
+    featured: false,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-06-11",
+    visible: true,
+    displayOrder: 6,
   },
   {
-    id: "alex-portfolio", slug: "alex-portfolio", title: "Alex Portfolio",
+    id: "alex-portfolio",
+    slug: "alex-portfolio",
+    title: "Alex Portfolio",
     shortDescription: "Minimal creative portfolio for designers and freelancers.",
-    category: "Portfolio", price: 39, priceLabel: "$39",
-    rating: 4.9, reviews: 37, image: tplMedical,
+    category: "Portfolio",
+    price: 39,
+    priceLabel: "$39",
+    rating: 4.9,
+    reviews: 37,
+    image: tplMedical,
     tags: ["portfolio", "designer", "freelance", "minimal"],
-    featured: false, popular: false, isNew: false,
-    createdAt: "2025-05-04", visible: true, displayOrder: 7,
+    featured: false,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-05-04",
+    visible: true,
+    displayOrder: 7,
   },
   {
-    id: "creative-studio", slug: "creative-studio", title: "Creative Studio",
+    id: "creative-studio",
+    slug: "creative-studio",
+    title: "Creative Studio",
     shortDescription: "Agency-grade portfolio for creative studios with case studies.",
-    category: "Portfolio", price: 59, priceLabel: "$59",
-    rating: 4.8, reviews: 88, image: tplRealEstate,
+    category: "Portfolio",
+    price: 59,
+    priceLabel: "$59",
+    rating: 4.8,
+    reviews: 88,
+    image: tplRealEstate,
     tags: ["portfolio", "agency", "case studies", "creative"],
-    featured: true, popular: false, isNew: false,
-    createdAt: "2025-04-18", visible: true, displayOrder: 8,
+    featured: true,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-04-18",
+    visible: true,
+    displayOrder: 8,
   },
   {
-    id: "bistro-noir", slug: "bistro-noir", title: "Bistro Noir",
+    id: "bistro-noir",
+    slug: "bistro-noir",
+    title: "Bistro Noir",
     shortDescription: "Elegant fine-dining restaurant template with tasting menu.",
-    category: "Restaurant", price: 55, priceLabel: "$55",
-    rating: 4.7, reviews: 44, image: tplRestaurant,
+    category: "Restaurant",
+    price: 55,
+    priceLabel: "$55",
+    rating: 4.7,
+    reviews: 44,
+    image: tplRestaurant,
     tags: ["restaurant", "fine dining", "menu", "wine"],
-    featured: false, popular: false, isNew: false,
-    createdAt: "2025-03-22", visible: true, displayOrder: 9,
+    featured: false,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-03-22",
+    visible: true,
+    displayOrder: 9,
   },
   {
-    id: "atelier-mode", slug: "atelier-mode", title: "Atelier Mode",
+    id: "atelier-mode",
+    slug: "atelier-mode",
+    title: "Atelier Mode",
     shortDescription: "Luxury fashion atelier with campaign storytelling and shop.",
-    category: "Fashion", price: 65, priceLabel: "$65",
-    rating: 4.9, reviews: 59, image: tplFashion,
+    category: "Fashion",
+    price: 65,
+    priceLabel: "$65",
+    rating: 4.9,
+    reviews: 59,
+    image: tplFashion,
     tags: ["fashion", "luxury", "atelier", "shop"],
-    featured: false, popular: true, isNew: false,
-    createdAt: "2026-01-08", visible: true, displayOrder: 10,
+    featured: false,
+    popular: true,
+    isNew: false,
+    createdAt: "2026-01-08",
+    visible: true,
+    displayOrder: 10,
   },
   {
-    id: "meridian-realty", slug: "meridian-realty", title: "Meridian Realty",
+    id: "meridian-realty",
+    slug: "meridian-realty",
+    title: "Meridian Realty",
     shortDescription: "Premium property showcase with map view and mortgage tools.",
-    category: "Real Estate", price: 79, priceLabel: "$79",
-    rating: 4.8, reviews: 47, image: tplRealEstate,
+    category: "Real Estate",
+    price: 79,
+    priceLabel: "$79",
+    rating: 4.8,
+    reviews: 47,
+    image: tplRealEstate,
     tags: ["real estate", "premium", "map", "mortgage"],
-    featured: false, popular: false, isNew: true,
-    createdAt: "2026-06-01", visible: true, displayOrder: 11,
+    featured: false,
+    popular: false,
+    isNew: true,
+    createdAt: "2026-06-01",
+    visible: true,
+    displayOrder: 11,
   },
   {
-    id: "wellcare", slug: "wellcare-clinic", title: "WellCare Clinic",
+    id: "wellcare",
+    slug: "wellcare-clinic",
+    title: "WellCare Clinic",
     shortDescription: "Friendly family clinic template with insurance and telehealth.",
-    category: "Medical", price: 49, priceLabel: "$49",
-    rating: 4.6, reviews: 33, image: tplMedical,
+    category: "Medical",
+    price: 49,
+    priceLabel: "$49",
+    rating: 4.6,
+    reviews: 33,
+    image: tplMedical,
     tags: ["medical", "clinic", "telehealth", "family"],
-    featured: false, popular: false, isNew: false,
-    createdAt: "2025-02-14", visible: true, displayOrder: 12,
+    featured: false,
+    popular: false,
+    isNew: false,
+    createdAt: "2025-02-14",
+    visible: true,
+    displayOrder: 12,
   },
 ];
 
@@ -292,12 +461,48 @@ export type Feature = {
 };
 
 export const features: Feature[] = [
-  { id: "design", title: "Modern & Unique Designs", description: "Crafted by senior designers with a premium editorial aesthetic.", icon: "sparkles", tone: "violet" },
-  { id: "responsive", title: "Fully Responsive On All Devices", description: "Pixel-perfect on every screen, from ultrawide to mobile.", icon: "layout", tone: "blue" },
-  { id: "seo", title: "SEO Optimized For Higher Rank", description: "Semantic markup, fast Core Web Vitals, clean metadata.", icon: "search", tone: "pink" },
-  { id: "customize", title: "Easy to Customize No Coding Skills", description: "Structured content and tokens — edit in minutes.", icon: "sliders", tone: "green" },
-  { id: "updates", title: "Lifetime Updates Free & Regular", description: "One purchase, forever kept fresh with new features.", icon: "refresh", tone: "amber" },
-  { id: "support", title: "Dedicated Support We're Here to Help", description: "Real people, real answers — usually within a few hours.", icon: "life-buoy", tone: "sky" },
+  {
+    id: "design",
+    title: "Modern & Unique Designs",
+    description: "Crafted by senior designers with a premium editorial aesthetic.",
+    icon: "sparkles",
+    tone: "violet",
+  },
+  {
+    id: "responsive",
+    title: "Fully Responsive On All Devices",
+    description: "Pixel-perfect on every screen, from ultrawide to mobile.",
+    icon: "layout",
+    tone: "blue",
+  },
+  {
+    id: "seo",
+    title: "SEO Optimized For Higher Rank",
+    description: "Semantic markup, fast Core Web Vitals, clean metadata.",
+    icon: "search",
+    tone: "pink",
+  },
+  {
+    id: "customize",
+    title: "Easy to Customize No Coding Skills",
+    description: "Structured content and tokens — edit in minutes.",
+    icon: "sliders",
+    tone: "green",
+  },
+  {
+    id: "updates",
+    title: "Lifetime Updates Free & Regular",
+    description: "One purchase, forever kept fresh with new features.",
+    icon: "refresh",
+    tone: "amber",
+  },
+  {
+    id: "support",
+    title: "Dedicated Support We're Here to Help",
+    description: "Real people, real answers — usually within a few hours.",
+    icon: "life-buoy",
+    tone: "sky",
+  },
 ];
 
 // -------------------- Custom CTA --------------------
@@ -352,8 +557,7 @@ export const sortOptions: SortOption[] = [
 
 export const marketplaceCta = {
   title: "Can't find the right fit?",
-  description:
-    "Tell us what your business needs and we'll create a website around it.",
+  description: "Tell us what your business needs and we'll create a website around it.",
   benefits: ["100% Custom Design", "Fast Delivery", "Dedicated Support"],
   cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
@@ -362,25 +566,37 @@ export const marketplaceCta = {
 export const footer = {
   tagline: "Premium templates and custom websites for ambitious brands.",
   columns: [
-    { id: "products", title: "Products", links: [
-      { label: "Templates", href: "/templates" },
-      { label: "Custom Websites", href: "/custom-websites" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "How It Works", href: "/how-it-works" },
-      { label: "Become an Affiliate", href: "/#" },
-    ]},
-    { id: "company", title: "Company", links: [
-      { label: "About Us", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Reviews", href: "/#" },
-      { label: "Careers", href: "/#" },
-    ]},
-    { id: "support", title: "Support", links: [
-      { label: "Help Center", href: "/#" },
-      { label: "Documentation", href: "/#" },
-      { label: "Community", href: "/#" },
-      { label: "Status", href: "/#" },
-    ]},
+    {
+      id: "products",
+      title: "Products",
+      links: [
+        { label: "Templates", href: "/templates" },
+        { label: "Custom Websites", href: "/custom-websites" },
+        { label: "Pricing", href: "/pricing" },
+        { label: "How It Works", href: "/how-it-works" },
+        { label: "Become an Affiliate", href: "/#" },
+      ],
+    },
+    {
+      id: "company",
+      title: "Company",
+      links: [
+        { label: "About Us", href: "/about" },
+        { label: "Contact", href: "/contact" },
+        { label: "Reviews", href: "/#" },
+        { label: "Careers", href: "/#" },
+      ],
+    },
+    {
+      id: "support",
+      title: "Support",
+      links: [
+        { label: "Help Center", href: "/#" },
+        { label: "Documentation", href: "/#" },
+        { label: "Community", href: "/#" },
+        { label: "Status", href: "/#" },
+      ],
+    },
   ],
   newsletter: {
     title: "Newsletter",
@@ -400,7 +616,11 @@ export const footer = {
 
 // -------------------- Custom Websites Page --------------------
 
-export type CustomBenefit = { id: string; label: string; icon: "palette" | "zap" | "headset" | "check" | "shield" | "clock" };
+export type CustomBenefit = {
+  id: string;
+  label: string;
+  icon: "palette" | "zap" | "headset" | "check" | "shield" | "clock";
+};
 
 export type ProcessStep = {
   id: string;
@@ -431,7 +651,13 @@ export type RecentWork = {
   displayOrder: number;
 };
 
-export type FaqItem = { id: string; question: string; answer: string; visible: boolean; displayOrder: number };
+export type FaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+  visible: boolean;
+  displayOrder: number;
+};
 
 export const customRequestHref = "/custom-websites/request";
 
@@ -449,30 +675,134 @@ export const customWebsitesPage = {
     ] satisfies CustomBenefit[],
     primary: { label: "Request Custom Website", href: customRequestHref },
     secondary: { label: "How It Works", href: "#process" },
-    visual: { src: customHero, alt: "Custom website preview on desktop and mobile", width: 1280, height: 1024 },
+    visual: {
+      src: customHero,
+      alt: "Custom website preview on desktop and mobile",
+      width: 1280,
+      height: 1024,
+    },
   },
   process: {
     eyebrow: "HOW IT WORKS",
     title: "Our Simple Process",
     steps: [
-      { id: "discuss", step: 1, title: "Discuss", description: "Share your requirements and business goals with us.", icon: "message", tone: "violet" },
-      { id: "plan", step: 2, title: "Plan & Design", description: "We plan the structure and create a custom design.", icon: "file", tone: "blue" },
-      { id: "develop", step: 3, title: "Develop", description: "Our team builds your website with clean, modern code.", icon: "code", tone: "green" },
-      { id: "review", step: 4, title: "Review & Test", description: "You review, we test, and make sure it's perfect.", icon: "check", tone: "amber" },
-      { id: "launch", step: 5, title: "Launch", description: "We go live and support you every step of the way.", icon: "rocket", tone: "pink" },
+      {
+        id: "discuss",
+        step: 1,
+        title: "Discuss",
+        description: "Share your requirements and business goals with us.",
+        icon: "message",
+        tone: "violet",
+      },
+      {
+        id: "plan",
+        step: 2,
+        title: "Plan & Design",
+        description: "We plan the structure and create a custom design.",
+        icon: "file",
+        tone: "blue",
+      },
+      {
+        id: "develop",
+        step: 3,
+        title: "Develop",
+        description: "Our team builds your website with clean, modern code.",
+        icon: "code",
+        tone: "green",
+      },
+      {
+        id: "review",
+        step: 4,
+        title: "Review & Test",
+        description: "You review, we test, and make sure it's perfect.",
+        icon: "check",
+        tone: "amber",
+      },
+      {
+        id: "launch",
+        step: 5,
+        title: "Launch",
+        description: "We go live and support you every step of the way.",
+        icon: "rocket",
+        tone: "pink",
+      },
     ] satisfies ProcessStep[],
   },
   services: {
     title: "What We Build",
     items: [
-      { id: "business", title: "Business Websites", description: "Professional websites for companies and startups.", icon: "briefcase", tone: "violet", visible: true, displayOrder: 1 },
-      { id: "ecommerce", title: "E-commerce Stores", description: "Online stores that sell more and grow your brand.", icon: "cart", tone: "green", visible: true, displayOrder: 2 },
-      { id: "portfolio", title: "Portfolio Websites", description: "Showcase your work and attract more clients.", icon: "user", tone: "orange", visible: true, displayOrder: 3 },
-      { id: "landing", title: "Landing Pages", description: "High-converting pages for offers and campaigns.", icon: "send", tone: "sky", visible: true, displayOrder: 4 },
-      { id: "restaurant", title: "Restaurant Websites", description: "Online presence for restaurants and cafes.", icon: "utensils", tone: "pink", visible: true, displayOrder: 5 },
-      { id: "realestate", title: "Real Estate Websites", description: "Property listings with advanced search and filters.", icon: "home", tone: "blue", visible: true, displayOrder: 6 },
-      { id: "medical", title: "Medical Websites", description: "Healthcare websites that build trust and credibility.", icon: "stethoscope", tone: "green", visible: true, displayOrder: 7 },
-      { id: "apps", title: "Custom Web Apps", description: "Powerful web applications built for your needs.", icon: "layers", tone: "violet", visible: true, displayOrder: 8 },
+      {
+        id: "business",
+        title: "Business Websites",
+        description: "Professional websites for companies and startups.",
+        icon: "briefcase",
+        tone: "violet",
+        visible: true,
+        displayOrder: 1,
+      },
+      {
+        id: "ecommerce",
+        title: "E-commerce Stores",
+        description: "Online stores that sell more and grow your brand.",
+        icon: "cart",
+        tone: "green",
+        visible: true,
+        displayOrder: 2,
+      },
+      {
+        id: "portfolio",
+        title: "Portfolio Websites",
+        description: "Showcase your work and attract more clients.",
+        icon: "user",
+        tone: "orange",
+        visible: true,
+        displayOrder: 3,
+      },
+      {
+        id: "landing",
+        title: "Landing Pages",
+        description: "High-converting pages for offers and campaigns.",
+        icon: "send",
+        tone: "sky",
+        visible: true,
+        displayOrder: 4,
+      },
+      {
+        id: "restaurant",
+        title: "Restaurant Websites",
+        description: "Online presence for restaurants and cafes.",
+        icon: "utensils",
+        tone: "pink",
+        visible: true,
+        displayOrder: 5,
+      },
+      {
+        id: "realestate",
+        title: "Real Estate Websites",
+        description: "Property listings with advanced search and filters.",
+        icon: "home",
+        tone: "blue",
+        visible: true,
+        displayOrder: 6,
+      },
+      {
+        id: "medical",
+        title: "Medical Websites",
+        description: "Healthcare websites that build trust and credibility.",
+        icon: "stethoscope",
+        tone: "green",
+        visible: true,
+        displayOrder: 7,
+      },
+      {
+        id: "apps",
+        title: "Custom Web Apps",
+        description: "Powerful web applications built for your needs.",
+        icon: "layers",
+        tone: "violet",
+        visible: true,
+        displayOrder: 8,
+      },
     ] satisfies ServiceType[],
   },
   included: {
@@ -498,26 +828,99 @@ export const customWebsitesPage = {
       illustration: { src: customPriceIllus, alt: "Website mockup illustration" },
       badge: "Starting ₹25,000",
     },
-
   },
   recentWork: {
     title: "Our Recent Work",
     items: [
-      { id: "spice", title: "Spice Palace Restaurant", category: "Restaurant", image: tplRestaurant, tone: "orange", visible: true, displayOrder: 1 },
-      { id: "haven", title: "Haven Real Estate", category: "Real Estate", image: tplRealEstate, tone: "amber", visible: true, displayOrder: 2 },
-      { id: "lifecare", title: "LifeCare Hospital", category: "Medical", image: tplMedical, tone: "blue", visible: true, displayOrder: 3 },
-      { id: "aurea", title: "Auréa Fashion", category: "Fashion", image: tplFashion, tone: "pink", visible: true, displayOrder: 4 },
+      {
+        id: "spice",
+        title: "Spice Palace Restaurant",
+        category: "Restaurant",
+        image: tplRestaurant,
+        tone: "orange",
+        visible: true,
+        displayOrder: 1,
+      },
+      {
+        id: "haven",
+        title: "Haven Real Estate",
+        category: "Real Estate",
+        image: tplRealEstate,
+        tone: "amber",
+        visible: true,
+        displayOrder: 2,
+      },
+      {
+        id: "lifecare",
+        title: "LifeCare Hospital",
+        category: "Medical",
+        image: tplMedical,
+        tone: "blue",
+        visible: true,
+        displayOrder: 3,
+      },
+      {
+        id: "aurea",
+        title: "Auréa Fashion",
+        category: "Fashion",
+        image: tplFashion,
+        tone: "pink",
+        visible: true,
+        displayOrder: 4,
+      },
     ] satisfies RecentWork[],
   },
   faq: {
     title: "Frequently Asked Questions",
     items: [
-      { id: "time", question: "How long does it take to build a custom website?", answer: "Most custom websites are delivered in 2 to 4 weeks depending on the size, features, and how quickly we receive your content and feedback.", visible: true, displayOrder: 1 },
-      { id: "update", question: "Can I update the website myself?", answer: "Yes. We build with easy-to-manage structures and provide training so you can update content, images, and pages on your own.", visible: true, displayOrder: 2 },
-      { id: "responsive", question: "Will my website be mobile responsive?", answer: "Every website we deliver is fully responsive and works beautifully across desktops, laptops, tablets, and mobile devices.", visible: true, displayOrder: 3 },
-      { id: "info", question: "What information do you need to get started?", answer: "We'll need your brand assets, a short brief about your business goals, any reference websites you like, and your content or a plan for it.", visible: true, displayOrder: 4 },
-      { id: "hosting", question: "Do you provide domain and hosting?", answer: "We help you choose and set up a reliable domain and hosting provider. Hosting costs are billed by the provider directly, keeping ownership in your hands.", visible: true, displayOrder: 5 },
-      { id: "support", question: "Do you offer after-sales support?", answer: "Yes. Every custom website includes 3 months of free support for fixes and small changes, with affordable ongoing plans available afterwards.", visible: true, displayOrder: 6 },
+      {
+        id: "time",
+        question: "How long does it take to build a custom website?",
+        answer:
+          "Most custom websites are delivered in 2 to 4 weeks depending on the size, features, and how quickly we receive your content and feedback.",
+        visible: true,
+        displayOrder: 1,
+      },
+      {
+        id: "update",
+        question: "Can I update the website myself?",
+        answer:
+          "Yes. We build with easy-to-manage structures and provide training so you can update content, images, and pages on your own.",
+        visible: true,
+        displayOrder: 2,
+      },
+      {
+        id: "responsive",
+        question: "Will my website be mobile responsive?",
+        answer:
+          "Every website we deliver is fully responsive and works beautifully across desktops, laptops, tablets, and mobile devices.",
+        visible: true,
+        displayOrder: 3,
+      },
+      {
+        id: "info",
+        question: "What information do you need to get started?",
+        answer:
+          "We'll need your brand assets, a short brief about your business goals, any reference websites you like, and your content or a plan for it.",
+        visible: true,
+        displayOrder: 4,
+      },
+      {
+        id: "hosting",
+        question: "Do you provide domain and hosting?",
+        answer:
+          "We help you choose and set up a reliable domain and hosting provider. Hosting costs are billed by the provider directly, keeping ownership in your hands.",
+        visible: true,
+        displayOrder: 5,
+      },
+      {
+        id: "support",
+        question: "Do you offer after-sales support?",
+        answer:
+          "Yes. Every custom website includes 3 months of free support for fixes and small changes, with affordable ongoing plans available afterwards.",
+        visible: true,
+        displayOrder: 6,
+      },
     ] satisfies FaqItem[],
   },
   finalCta: {
@@ -700,16 +1103,58 @@ export const pricingPage = {
 
   compareTitle: "Compare All Plans",
   compareRows: [
-    { id: "type", label: "Website Type", starter: "Pre-built Template", business: "Pre-built Template", custom: "Fully Custom" },
-    { id: "domain", label: "Domain", starter: "Mini Store Subdomain", business: "Your Own Domain", custom: "Your Own Domain" },
-    { id: "setup", label: "Setup / Development Fee", starter: "—", business: "₹4,999 One-time", custom: "Starting from ₹25,000" },
-    { id: "sub", label: "Subscription / Maintenance", starter: "₹999/month or ₹9,999/year", business: "₹999/month or ₹9,999/year", custom: "As per requirement" },
-    { id: "pages", label: "Pages", starter: "Up to 5 Pages", business: "Up to 20 Pages", custom: "Based on project scope" },
-    { id: "custom", label: "Customization", starter: "Limited", business: "Moderate", custom: "Fully Custom" },
+    {
+      id: "type",
+      label: "Website Type",
+      starter: "Pre-built Template",
+      business: "Pre-built Template",
+      custom: "Fully Custom",
+    },
+    {
+      id: "domain",
+      label: "Domain",
+      starter: "Mini Store Subdomain",
+      business: "Your Own Domain",
+      custom: "Your Own Domain",
+    },
+    {
+      id: "setup",
+      label: "Setup / Development Fee",
+      starter: "—",
+      business: "₹4,999 One-time",
+      custom: "Starting from ₹25,000",
+    },
+    {
+      id: "sub",
+      label: "Subscription / Maintenance",
+      starter: "₹999/month or ₹9,999/year",
+      business: "₹999/month or ₹9,999/year",
+      custom: "As per requirement",
+    },
+    {
+      id: "pages",
+      label: "Pages",
+      starter: "Up to 5 Pages",
+      business: "Up to 20 Pages",
+      custom: "Based on project scope",
+    },
+    {
+      id: "custom",
+      label: "Customization",
+      starter: "Limited",
+      business: "Moderate",
+      custom: "Fully Custom",
+    },
     { id: "adv", label: "Advanced Features", starter: "no", business: "yes", custom: "yes" },
     { id: "ecom", label: "E-commerce", starter: "no", business: "yes", custom: "yes" },
     { id: "admin", label: "Admin Panel", starter: "no", business: "no", custom: "If Required" },
-    { id: "support", label: "Support", starter: "Email Support", business: "Priority Support", custom: "Based on Agreement" },
+    {
+      id: "support",
+      label: "Support",
+      starter: "Email Support",
+      business: "Priority Support",
+      custom: "Based on Agreement",
+    },
   ] satisfies CompareRow[],
 
   commonFeatures: {
@@ -719,32 +1164,128 @@ export const pricingPage = {
       { id: "ssl", label: "SSL Security Included", icon: "shield", visible: true, displayOrder: 2 },
       { id: "speed", label: "Speed Optimized", icon: "gauge", visible: true, displayOrder: 3 },
       { id: "backup", label: "Regular Backups", icon: "backup", visible: true, displayOrder: 4 },
-      { id: "browser", label: "Browser Compatibility", icon: "browser", visible: true, displayOrder: 5 },
-      { id: "monitor", label: "Uptime Monitoring", icon: "monitor", visible: true, displayOrder: 6 },
+      {
+        id: "browser",
+        label: "Browser Compatibility",
+        icon: "browser",
+        visible: true,
+        displayOrder: 5,
+      },
+      {
+        id: "monitor",
+        label: "Uptime Monitoring",
+        icon: "monitor",
+        visible: true,
+        displayOrder: 6,
+      },
     ] satisfies CommonFeature[],
   },
 
   addOns: {
     title: "Popular Add-ons (Optional)",
     items: [
-      { id: "pages", label: "Additional Pages", price: "₹999 / Page", icon: "pages", visible: true, displayOrder: 1 },
-      { id: "content", label: "Content Writing", price: "₹1,499 / Page", icon: "content", visible: true, displayOrder: 2 },
-      { id: "ecom", label: "E-commerce Functionality", price: "₹4,999+", icon: "cart", visible: true, displayOrder: 3 },
-      { id: "logo", label: "Logo Design", price: "₹1,499", icon: "logo", visible: true, displayOrder: 4 },
-      { id: "integ", label: "Advanced Integrations", price: "Custom Quote", icon: "plug", visible: true, displayOrder: 5 },
-      { id: "maint", label: "Monthly Maintenance Package", price: "₹1,999 / month", icon: "wrench", visible: true, displayOrder: 6 },
+      {
+        id: "pages",
+        label: "Additional Pages",
+        price: "₹999 / Page",
+        icon: "pages",
+        visible: true,
+        displayOrder: 1,
+      },
+      {
+        id: "content",
+        label: "Content Writing",
+        price: "₹1,499 / Page",
+        icon: "content",
+        visible: true,
+        displayOrder: 2,
+      },
+      {
+        id: "ecom",
+        label: "E-commerce Functionality",
+        price: "₹4,999+",
+        icon: "cart",
+        visible: true,
+        displayOrder: 3,
+      },
+      {
+        id: "logo",
+        label: "Logo Design",
+        price: "₹1,499",
+        icon: "logo",
+        visible: true,
+        displayOrder: 4,
+      },
+      {
+        id: "integ",
+        label: "Advanced Integrations",
+        price: "Custom Quote",
+        icon: "plug",
+        visible: true,
+        displayOrder: 5,
+      },
+      {
+        id: "maint",
+        label: "Monthly Maintenance Package",
+        price: "₹1,999 / month",
+        icon: "wrench",
+        visible: true,
+        displayOrder: 6,
+      },
     ] satisfies AddOn[],
   },
 
   faq: {
     title: "Frequently Asked Questions",
     items: [
-      { id: "diff", question: "What is the difference between Starter and Business plans?", answer: "Starter uses a Mini Store subdomain (yourbusiness.ministore.in) on a simple monthly or yearly subscription. Business uses a pre-built template on your own custom domain (yourbusiness.com) with a one-time setup charge plus an ongoing subscription for hosting and maintenance.", visible: true, displayOrder: 1 },
-      { id: "upgrade", question: "Can I upgrade my plan later?", answer: "Yes. You can move from Starter to Business, or from Business to a fully Custom Website at any time. We help you migrate your content and settings so nothing is lost.", visible: true, displayOrder: 2 },
-      { id: "domain", question: "Do you provide domain and hosting?", answer: "Starter includes the Mini Store subdomain and hosting. Business includes hosting and SSL; you can connect a domain you already own or register a new one — domain registration cost is billed separately by the domain provider. Custom Website domain, hosting, and maintenance are decided as part of your project quote.", visible: true, displayOrder: 3 },
-      { id: "hidden", question: "Are there any hidden charges?", answer: "No. Setup fees, subscriptions, and optional add-ons are shown separately on this page. Third-party costs like domain registration or premium integrations are always disclosed before you commit.", visible: true, displayOrder: 4 },
-      { id: "mobile", question: "Will my website be mobile responsive?", answer: "Yes. Every plan — Starter, Business, and Custom — delivers a fully responsive website that works on desktops, laptops, tablets, and mobile devices.", visible: true, displayOrder: 5 },
-      { id: "after", question: "Do you offer after-sales support?", answer: "Yes. Starter includes email support, Business includes priority support, and Custom Website support is defined by your selected support agreement. Maintenance add-ons are available for all plans.", visible: true, displayOrder: 6 },
+      {
+        id: "diff",
+        question: "What is the difference between Starter and Business plans?",
+        answer:
+          "Starter uses a Mini Store subdomain (yourbusiness.ministore.in) on a simple monthly or yearly subscription. Business uses a pre-built template on your own custom domain (yourbusiness.com) with a one-time setup charge plus an ongoing subscription for hosting and maintenance.",
+        visible: true,
+        displayOrder: 1,
+      },
+      {
+        id: "upgrade",
+        question: "Can I upgrade my plan later?",
+        answer:
+          "Yes. You can move from Starter to Business, or from Business to a fully Custom Website at any time. We help you migrate your content and settings so nothing is lost.",
+        visible: true,
+        displayOrder: 2,
+      },
+      {
+        id: "domain",
+        question: "Do you provide domain and hosting?",
+        answer:
+          "Starter includes the Mini Store subdomain and hosting. Business includes hosting and SSL; you can connect a domain you already own or register a new one — domain registration cost is billed separately by the domain provider. Custom Website domain, hosting, and maintenance are decided as part of your project quote.",
+        visible: true,
+        displayOrder: 3,
+      },
+      {
+        id: "hidden",
+        question: "Are there any hidden charges?",
+        answer:
+          "No. Setup fees, subscriptions, and optional add-ons are shown separately on this page. Third-party costs like domain registration or premium integrations are always disclosed before you commit.",
+        visible: true,
+        displayOrder: 4,
+      },
+      {
+        id: "mobile",
+        question: "Will my website be mobile responsive?",
+        answer:
+          "Yes. Every plan — Starter, Business, and Custom — delivers a fully responsive website that works on desktops, laptops, tablets, and mobile devices.",
+        visible: true,
+        displayOrder: 5,
+      },
+      {
+        id: "after",
+        question: "Do you offer after-sales support?",
+        answer:
+          "Yes. Starter includes email support, Business includes priority support, and Custom Website support is defined by your selected support agreement. Maintenance add-ons are available for all plans.",
+        visible: true,
+        displayOrder: 6,
+      },
     ] satisfies FaqItem[],
   },
 
@@ -776,7 +1317,12 @@ export const aboutPage = {
       { id: "pricing", label: "Affordable Pricing", icon: "tag" as const },
       { id: "support", label: "Reliable Support", icon: "headset" as const },
     ],
-    image: { src: aboutHeroImg, alt: "Mini Store responsive website preview", width: 1280, height: 960 },
+    image: {
+      src: aboutHeroImg,
+      alt: "Mini Store responsive website preview",
+      width: 1280,
+      height: 960,
+    },
   },
   mission: {
     eyebrow: "WHY WE EXIST",
@@ -784,50 +1330,175 @@ export const aboutPage = {
     description:
       "Many businesses struggle to get a professional website because of high costs, complicated processes, or lack of technical knowledge. Mini Store exists to change that.",
     principles: [
-      { id: "affordable", title: "Affordable for Everyone", description: "We believe every business deserves a professional website at a fair price.", icon: "wallet" as const, tone: "violet" as AboutTone },
-      { id: "time", title: "Save Time", description: "Our ready-made templates and simple process help you go online in no time.", icon: "clock" as const, tone: "green" as AboutTone },
-      { id: "notech", title: "No Technical Skills Needed", description: "You don't need to code or design. We handle the technical part for you.", icon: "code" as const, tone: "orange" as AboutTone },
-      { id: "growth", title: "Focus on Growth", description: "We take care of your website so you can focus on what matters most — your business.", icon: "chart" as const, tone: "blue" as AboutTone },
+      {
+        id: "affordable",
+        title: "Affordable for Everyone",
+        description: "We believe every business deserves a professional website at a fair price.",
+        icon: "wallet" as const,
+        tone: "violet" as AboutTone,
+      },
+      {
+        id: "time",
+        title: "Save Time",
+        description: "Our ready-made templates and simple process help you go online in no time.",
+        icon: "clock" as const,
+        tone: "green" as AboutTone,
+      },
+      {
+        id: "notech",
+        title: "No Technical Skills Needed",
+        description: "You don't need to code or design. We handle the technical part for you.",
+        icon: "code" as const,
+        tone: "orange" as AboutTone,
+      },
+      {
+        id: "growth",
+        title: "Focus on Growth",
+        description:
+          "We take care of your website so you can focus on what matters most — your business.",
+        icon: "chart" as const,
+        tone: "blue" as AboutTone,
+      },
     ],
   },
   capabilities: {
     eyebrow: "WHAT WE DO",
     title: "Everything You Need to Build Your Online Presence",
     items: [
-      { id: "templates", title: "Website Templates", description: "Beautiful, modern and conversion-ready templates for all types of businesses.", icon: "monitor" as const, tone: "violet" as AboutTone, href: "/templates" },
-      { id: "custom", title: "Custom Websites", description: "100% custom websites built to match your brand and business goals.", icon: "pen" as const, tone: "green" as AboutTone, href: "/custom-websites" },
-      { id: "performance", title: "Reliable Performance", description: "Fast, secure and mobile responsive websites that deliver the best experience.", icon: "shield" as const, tone: "amber" as AboutTone },
-      { id: "support", title: "Ongoing Support", description: "We're here to support you every step of the way, even after your website is live.", icon: "headset" as const, tone: "blue" as AboutTone },
+      {
+        id: "templates",
+        title: "Website Templates",
+        description:
+          "Beautiful, modern and conversion-ready templates for all types of businesses.",
+        icon: "monitor" as const,
+        tone: "violet" as AboutTone,
+        href: "/templates",
+      },
+      {
+        id: "custom",
+        title: "Custom Websites",
+        description: "100% custom websites built to match your brand and business goals.",
+        icon: "pen" as const,
+        tone: "green" as AboutTone,
+        href: "/custom-websites",
+      },
+      {
+        id: "performance",
+        title: "Reliable Performance",
+        description:
+          "Fast, secure and mobile responsive websites that deliver the best experience.",
+        icon: "shield" as const,
+        tone: "amber" as AboutTone,
+      },
+      {
+        id: "support",
+        title: "Ongoing Support",
+        description:
+          "We're here to support you every step of the way, even after your website is live.",
+        icon: "headset" as const,
+        tone: "blue" as AboutTone,
+      },
     ],
   },
   journey: {
     eyebrow: "HOW MINI STORE WORKS FOR YOU",
     title: "Simple Steps. Great Results.",
     steps: [
-      { id: "choose", number: 1, title: "Choose", description: "Pick a template or choose a custom website option.", icon: "search" as const, tone: "violet" as AboutTone },
-      { id: "share", number: 2, title: "Share Details", description: "Share your requirements, content and any preferences.", icon: "file" as const, tone: "green" as AboutTone },
-      { id: "build", number: 3, title: "We Build", description: "Our team designs and develops your website with care.", icon: "pen" as const, tone: "amber" as AboutTone },
-      { id: "review", number: 4, title: "Review", description: "You review the website and we make any necessary changes.", icon: "eye" as const, tone: "blue" as AboutTone },
-      { id: "live", number: 5, title: "Go Live", description: "Your website goes live and your business is ready to grow.", icon: "rocket" as const, tone: "violet" as AboutTone },
+      {
+        id: "choose",
+        number: 1,
+        title: "Choose",
+        description: "Pick a template or choose a custom website option.",
+        icon: "search" as const,
+        tone: "violet" as AboutTone,
+      },
+      {
+        id: "share",
+        number: 2,
+        title: "Share Details",
+        description: "Share your requirements, content and any preferences.",
+        icon: "file" as const,
+        tone: "green" as AboutTone,
+      },
+      {
+        id: "build",
+        number: 3,
+        title: "We Build",
+        description: "Our team designs and develops your website with care.",
+        icon: "pen" as const,
+        tone: "amber" as AboutTone,
+      },
+      {
+        id: "review",
+        number: 4,
+        title: "Review",
+        description: "You review the website and we make any necessary changes.",
+        icon: "eye" as const,
+        tone: "blue" as AboutTone,
+      },
+      {
+        id: "live",
+        number: 5,
+        title: "Go Live",
+        description: "Your website goes live and your business is ready to grow.",
+        icon: "rocket" as const,
+        tone: "violet" as AboutTone,
+      },
     ],
   },
   promises: {
     eyebrow: "OUR PROMISE",
     title: "Why Businesses Trust Mini Store",
     items: [
-      { id: "transparent", title: "Transparent Pricing", description: "No hidden surprises. What you see is what you pay.", icon: "shield-check" as const, tone: "violet" as AboutTone },
-      { id: "secure", title: "Secure & Reliable", description: "We use best practices to keep your website safe and secure.", icon: "lock" as const, tone: "green" as AboutTone },
-      { id: "customer", title: "Customer First", description: "Your success is our priority. We listen, care and deliver.", icon: "users" as const, tone: "blue" as AboutTone },
-      { id: "quality", title: "Quality Focused", description: "We focus on clean design, performance and the best user experience.", icon: "rocket" as const, tone: "amber" as AboutTone },
-      { id: "longterm", title: "Long-term Support", description: "We don't just build. We build relationships that last.", icon: "refresh" as const, tone: "violet" as AboutTone },
+      {
+        id: "transparent",
+        title: "Transparent Pricing",
+        description: "No hidden surprises. What you see is what you pay.",
+        icon: "shield-check" as const,
+        tone: "violet" as AboutTone,
+      },
+      {
+        id: "secure",
+        title: "Secure & Reliable",
+        description: "We use best practices to keep your website safe and secure.",
+        icon: "lock" as const,
+        tone: "green" as AboutTone,
+      },
+      {
+        id: "customer",
+        title: "Customer First",
+        description: "Your success is our priority. We listen, care and deliver.",
+        icon: "users" as const,
+        tone: "blue" as AboutTone,
+      },
+      {
+        id: "quality",
+        title: "Quality Focused",
+        description: "We focus on clean design, performance and the best user experience.",
+        icon: "rocket" as const,
+        tone: "amber" as AboutTone,
+      },
+      {
+        id: "longterm",
+        title: "Long-term Support",
+        description: "We don't just build. We build relationships that last.",
+        icon: "refresh" as const,
+        tone: "violet" as AboutTone,
+      },
     ],
   },
   cta: {
     title: "Let's Build Something Great Together",
-    description: "Whether you need a template or a fully custom website, we're here to bring your ideas to life.",
+    description:
+      "Whether you need a template or a fully custom website, we're here to bring your ideas to life.",
     benefits: ["Free Consultation", "No Obligation", "Quick Response"],
     primary: { label: "Get in Touch", href: "/contact" },
-    illustration: { src: aboutCtaImg, alt: "Team collaborating around a laptop", width: 1024, height: 768 },
+    illustration: {
+      src: aboutCtaImg,
+      alt: "Team collaborating around a laptop",
+      width: 1024,
+      height: 768,
+    },
   },
 };
 
@@ -879,7 +1550,12 @@ export const contactPage = {
       { id: "friendly", label: "Friendly Support", icon: "smile" as const },
       { id: "noobligation", label: "No Obligation", icon: "check" as const },
     ],
-    image: { src: contactHeroImg, alt: "Contact Mini Store illustration", width: 1024, height: 1024 },
+    image: {
+      src: contactHeroImg,
+      alt: "Contact Mini Store illustration",
+      width: 1024,
+      height: 1024,
+    },
   },
 
   form: {
@@ -924,9 +1600,30 @@ export const contactPage = {
     eyebrow: "WHAT HAPPENS NEXT?",
     title: "We keep it simple and transparent.",
     steps: [
-      { id: "receive", number: 1, title: "We Receive Your Message", description: "We receive your message and understand your requirement.", icon: "file" as const, tone: "violet" as AboutTone },
-      { id: "review", number: 2, title: "Our Team Reviews It", description: "Our team reviews the details and prepares the best next step for you.", icon: "users" as const, tone: "green" as AboutTone },
-      { id: "reply", number: 3, title: "We Get Back to You", description: "We contact you with the right solution and next steps.", icon: "send" as const, tone: "amber" as AboutTone },
+      {
+        id: "receive",
+        number: 1,
+        title: "We Receive Your Message",
+        description: "We receive your message and understand your requirement.",
+        icon: "file" as const,
+        tone: "violet" as AboutTone,
+      },
+      {
+        id: "review",
+        number: 2,
+        title: "Our Team Reviews It",
+        description: "Our team reviews the details and prepares the best next step for you.",
+        icon: "users" as const,
+        tone: "green" as AboutTone,
+      },
+      {
+        id: "reply",
+        number: 3,
+        title: "We Get Back to You",
+        description: "We contact you with the right solution and next steps.",
+        icon: "send" as const,
+        tone: "amber" as AboutTone,
+      },
     ],
   },
 
@@ -934,19 +1631,45 @@ export const contactPage = {
     eyebrow: "QUICK ANSWERS",
     title: "Frequently Asked Questions",
     items: [
-      { id: "respond", question: "How soon will you respond?", answer: "We aim to reply during business hours, Monday to Saturday. Most queries are answered within a few hours." },
-      { id: "custom", question: "Do you provide template customization?", answer: "Yes. Business plans include moderate customization, and our Custom Website service can extend any template to fit your brand and requirements." },
-      { id: "request", question: "Can I request a custom website?", answer: "Absolutely. Choose Custom Website in the form and share your requirements — we'll get back with a scope and quote." },
-      { id: "support", question: "Do you offer support after my website is live?", answer: "Yes. Every plan includes support, and optional maintenance add-ons are available so your website stays fast, secure, and up to date." },
+      {
+        id: "respond",
+        question: "How soon will you respond?",
+        answer:
+          "We aim to reply during business hours, Monday to Saturday. Most queries are answered within a few hours.",
+      },
+      {
+        id: "custom",
+        question: "Do you provide template customization?",
+        answer:
+          "Yes. Business plans include moderate customization, and our Custom Website service can extend any template to fit your brand and requirements.",
+      },
+      {
+        id: "request",
+        question: "Can I request a custom website?",
+        answer:
+          "Absolutely. Choose Custom Website in the form and share your requirements — we'll get back with a scope and quote.",
+      },
+      {
+        id: "support",
+        question: "Do you offer support after my website is live?",
+        answer:
+          "Yes. Every plan includes support, and optional maintenance add-ons are available so your website stays fast, secure, and up to date.",
+      },
     ],
   },
 
   cta: {
     title: "Let's build something amazing together",
-    description: "Whether you need a template or a fully custom website, we're ready to bring your ideas to life.",
+    description:
+      "Whether you need a template or a fully custom website, we're ready to bring your ideas to life.",
     benefits: ["Free Consultation", "No Obligation", "Quick Response"],
     primary: { label: "Get in Touch" }, // scrolls to form; no href
-    illustration: { src: aboutCtaImg, alt: "Team collaborating together", width: 1024, height: 768 },
+    illustration: {
+      src: aboutCtaImg,
+      alt: "Team collaborating together",
+      width: 1024,
+      height: 768,
+    },
   },
 };
 
@@ -966,7 +1689,12 @@ export const howItWorksPage = {
       { id: "transparent", label: "Transparent", icon: "shield" as const },
       { id: "always", label: "Always Here", icon: "headset" as const },
     ],
-    image: { src: aboutHeroImg, alt: "Mini Store responsive website preview on laptop and phone", width: 1280, height: 960 },
+    image: {
+      src: aboutHeroImg,
+      alt: "Mini Store responsive website preview on laptop and phone",
+      width: 1280,
+      height: 960,
+    },
   },
   process: {
     eyebrow: "OUR PROCESS",
@@ -974,13 +1702,63 @@ export const howItWorksPage = {
     description:
       "From choosing your path to going live, we handle every step so you can focus on growing your business.",
     steps: [
-      { id: "choose", number: "01", title: "Choose Your Path", description: "Choose between a ready-made template or a fully custom website.", icon: "path" as const, tone: "violet" as HowTone },
-      { id: "select", number: "02", title: "Select Template or Custom", description: "Browse templates or tell us what you need. We'll suggest the best solution.", icon: "browser" as const, tone: "green" as HowTone },
-      { id: "share", number: "03", title: "Share Your Details", description: "Share your business information, content, and any specific requirements.", icon: "form" as const, tone: "orange" as HowTone },
-      { id: "build", number: "04", title: "We Build Your Website", description: "Our team designs and develops your website with care and attention to detail.", icon: "code" as const, tone: "blue" as HowTone },
-      { id: "review", number: "05", title: "Review & Feedback", description: "You review the website and share your feedback. We make any agreed changes.", icon: "review" as const, tone: "violet" as HowTone },
-      { id: "live", number: "06", title: "Go Live", description: "Once you're happy, we launch your website and make it live.", icon: "rocket" as const, tone: "green" as HowTone },
-      { id: "support", number: "07", title: "Ongoing Support", description: "Support continues based on your selected plan or project agreement.", icon: "headset" as const, tone: "orange" as HowTone },
+      {
+        id: "choose",
+        number: "01",
+        title: "Choose Your Path",
+        description: "Choose between a ready-made template or a fully custom website.",
+        icon: "path" as const,
+        tone: "violet" as HowTone,
+      },
+      {
+        id: "select",
+        number: "02",
+        title: "Select Template or Custom",
+        description: "Browse templates or tell us what you need. We'll suggest the best solution.",
+        icon: "browser" as const,
+        tone: "green" as HowTone,
+      },
+      {
+        id: "share",
+        number: "03",
+        title: "Share Your Details",
+        description: "Share your business information, content, and any specific requirements.",
+        icon: "form" as const,
+        tone: "orange" as HowTone,
+      },
+      {
+        id: "build",
+        number: "04",
+        title: "We Build Your Website",
+        description:
+          "Our team designs and develops your website with care and attention to detail.",
+        icon: "code" as const,
+        tone: "blue" as HowTone,
+      },
+      {
+        id: "review",
+        number: "05",
+        title: "Review & Feedback",
+        description: "You review the website and share your feedback. We make any agreed changes.",
+        icon: "review" as const,
+        tone: "violet" as HowTone,
+      },
+      {
+        id: "live",
+        number: "06",
+        title: "Go Live",
+        description: "Once you're happy, we launch your website and make it live.",
+        icon: "rocket" as const,
+        tone: "green" as HowTone,
+      },
+      {
+        id: "support",
+        number: "07",
+        title: "Ongoing Support",
+        description: "Support continues based on your selected plan or project agreement.",
+        icon: "headset" as const,
+        tone: "orange" as HowTone,
+      },
     ],
   },
   values: {
@@ -988,10 +1766,38 @@ export const howItWorksPage = {
     title: "Built Around You",
     description: "We focus on what matters most — your success.",
     items: [
-      { id: "customer", title: "Customer First", description: "Your goals are our priority. We listen, understand and deliver based on the agreed requirements.", icon: "target" as const, tone: "violet" as HowTone },
-      { id: "notech", title: "No Technical Stress", description: "You don't need to worry about the technical side. We guide you through the process.", icon: "shield" as const, tone: "green" as HowTone },
-      { id: "fast", title: "Fast & Efficient", description: "Our streamlined process helps move your website from idea to launch efficiently.", icon: "bolt" as const, tone: "orange" as HowTone },
-      { id: "growth", title: "Focus on Growth", description: "We handle the website process so you can focus on running and growing your business.", icon: "chart" as const, tone: "blue" as HowTone },
+      {
+        id: "customer",
+        title: "Customer First",
+        description:
+          "Your goals are our priority. We listen, understand and deliver based on the agreed requirements.",
+        icon: "target" as const,
+        tone: "violet" as HowTone,
+      },
+      {
+        id: "notech",
+        title: "No Technical Stress",
+        description:
+          "You don't need to worry about the technical side. We guide you through the process.",
+        icon: "shield" as const,
+        tone: "green" as HowTone,
+      },
+      {
+        id: "fast",
+        title: "Fast & Efficient",
+        description:
+          "Our streamlined process helps move your website from idea to launch efficiently.",
+        icon: "bolt" as const,
+        tone: "orange" as HowTone,
+      },
+      {
+        id: "growth",
+        title: "Focus on Growth",
+        description:
+          "We handle the website process so you can focus on running and growing your business.",
+        icon: "chart" as const,
+        tone: "blue" as HowTone,
+      },
     ],
   },
   cta: {
@@ -999,6 +1805,11 @@ export const howItWorksPage = {
     description: "Let's build a website that helps your business grow. We're ready when you are!",
     benefits: ["Free Consultation", "No Obligation", "Quick Response"],
     primary: { label: "Get in Touch", href: "/contact" },
-    illustration: { src: aboutCtaImg, alt: "Team collaborating on a website project", width: 1024, height: 768 },
+    illustration: {
+      src: aboutCtaImg,
+      alt: "Team collaborating on a website project",
+      width: 1024,
+      height: 768,
+    },
   },
 };

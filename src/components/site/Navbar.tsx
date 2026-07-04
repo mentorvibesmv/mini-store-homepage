@@ -66,7 +66,6 @@ export function Navbar() {
           })}
         </nav>
 
-
         <div className="flex items-center gap-1 sm:gap-2">
           <button
             aria-label="Search"

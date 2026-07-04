@@ -1,8 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Check, Tag, Headphones, Wallet, Clock, Code2, BarChart3,
-  Monitor, PenTool, ShieldCheck, Search, FileText, Eye, Rocket,
-  Lock, Users, RefreshCw, ArrowRight, type LucideIcon,
+  Check,
+  Tag,
+  Headphones,
+  Wallet,
+  Clock,
+  Code2,
+  BarChart3,
+  Monitor,
+  PenTool,
+  ShieldCheck,
+  Search,
+  FileText,
+  Eye,
+  Rocket,
+  Lock,
+  Users,
+  RefreshCw,
+  ArrowRight,
+  type LucideIcon,
 } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Button } from "@/components/site";
@@ -13,9 +29,17 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About Us — Mini Store" },
-      { name: "description", content: "Mini Store makes professional websites simple, affordable and accessible for every business. Learn about our mission, process, and promise." },
+      {
+        name: "description",
+        content:
+          "Mini Store makes professional websites simple, affordable and accessible for every business. Learn about our mission, process, and promise.",
+      },
       { property: "og:title", content: "About Us — Mini Store" },
-      { property: "og:description", content: "One platform for templates and custom websites — built to help businesses of all sizes grow online without technical complexity." },
+      {
+        property: "og:description",
+        content:
+          "One platform for templates and custom websites — built to help businesses of all sizes grow online without technical complexity.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -25,19 +49,35 @@ export const Route = createFileRoute("/about")({
 
 // ---------- icon + tone maps ----------
 const trustIcon: Record<string, LucideIcon> = {
-  check: Check, tag: Tag, headset: Headphones,
+  check: Check,
+  tag: Tag,
+  headset: Headphones,
 };
 const principleIcon: Record<string, LucideIcon> = {
-  wallet: Wallet, clock: Clock, code: Code2, chart: BarChart3,
+  wallet: Wallet,
+  clock: Clock,
+  code: Code2,
+  chart: BarChart3,
 };
 const capabilityIcon: Record<string, LucideIcon> = {
-  monitor: Monitor, pen: PenTool, shield: ShieldCheck, headset: Headphones,
+  monitor: Monitor,
+  pen: PenTool,
+  shield: ShieldCheck,
+  headset: Headphones,
 };
 const journeyIcon: Record<string, LucideIcon> = {
-  search: Search, file: FileText, pen: PenTool, eye: Eye, rocket: Rocket,
+  search: Search,
+  file: FileText,
+  pen: PenTool,
+  eye: Eye,
+  rocket: Rocket,
 };
 const promiseIcon: Record<string, LucideIcon> = {
-  "shield-check": ShieldCheck, lock: Lock, users: Users, rocket: Rocket, refresh: RefreshCw,
+  "shield-check": ShieldCheck,
+  lock: Lock,
+  users: Users,
+  rocket: Rocket,
+  refresh: RefreshCw,
 };
 
 const toneSoft: Record<string, string> = {
@@ -128,11 +168,23 @@ function AboutHero() {
 }
 
 // ---------- Section eyebrow header ----------
-function EyebrowHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
+function EyebrowHeader({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: string;
+}) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{eyebrow}</div>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{title}</h2>
+      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+        {eyebrow}
+      </div>
+      <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        {title}
+      </h2>
       {description && (
         <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">{description}</p>
       )}
@@ -159,11 +211,18 @@ function MissionSection() {
                     toneSoft[p.tone].split(" ")[0],
                   )}
                 >
-                  <div className={cn("mx-auto grid h-14 w-14 place-items-center rounded-full", toneSolid[p.tone])}>
+                  <div
+                    className={cn(
+                      "mx-auto grid h-14 w-14 place-items-center rounded-full",
+                      toneSolid[p.tone],
+                    )}
+                  >
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="mt-5 text-[15px] font-semibold text-foreground">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {p.description}
+                  </p>
                 </div>
               );
             })}
@@ -186,17 +245,28 @@ function CapabilitiesSection() {
             const Icon = capabilityIcon[item.icon];
             const inner = (
               <div className="h-full rounded-2xl border border-border bg-card p-6 text-center transition-all hover:-translate-y-1 hover:border-foreground/15 hover:shadow-soft">
-                <div className={cn("mx-auto grid h-14 w-14 place-items-center rounded-2xl", toneSoft[item.tone])}>
+                <div
+                  className={cn(
+                    "mx-auto grid h-14 w-14 place-items-center rounded-2xl",
+                    toneSoft[item.tone],
+                  )}
+                >
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-5 text-[15px] font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
               </div>
             );
             return item.href ? (
-              <a key={item.id} href={item.href} className="block h-full">{inner}</a>
+              <a key={item.id} href={item.href} className="block h-full">
+                {inner}
+              </a>
             ) : (
-              <div key={item.id} className="h-full">{inner}</div>
+              <div key={item.id} className="h-full">
+                {inner}
+              </div>
             );
           })}
         </div>
@@ -220,13 +290,20 @@ function JourneySection() {
               const Icon = journeyIcon[s.icon];
               return (
                 <li key={s.id} className="relative text-center">
-                  <div className={cn("relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full", toneSoft[s.tone])}>
+                  <div
+                    className={cn(
+                      "relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full",
+                      toneSoft[s.tone],
+                    )}
+                  >
                     <Icon className="h-7 w-7" />
                   </div>
                   <div className="mt-5 text-sm font-semibold text-foreground">
                     {s.number}. {s.title}
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {s.description}
+                  </p>
                 </li>
               );
             })}
@@ -250,11 +327,18 @@ function PromiseSection() {
               const Icon = promiseIcon[it.icon];
               return (
                 <div key={it.id} className="text-center">
-                  <div className={cn("mx-auto grid h-14 w-14 place-items-center rounded-full", toneSoft[it.tone])}>
+                  <div
+                    className={cn(
+                      "mx-auto grid h-14 w-14 place-items-center rounded-full",
+                      toneSoft[it.tone],
+                    )}
+                  >
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="mt-4 text-[15px] font-semibold text-foreground">{it.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{it.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {it.description}
+                  </p>
                 </div>
               );
             })}

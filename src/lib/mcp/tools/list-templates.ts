@@ -11,8 +11,16 @@ export default defineTool({
     category: z
       .string()
       .optional()
-      .describe("Optional category label to filter by. Use list_categories to discover valid labels."),
-    limit: z.number().int().min(1).max(50).optional().describe("Max number of templates to return (default 20)."),
+      .describe(
+        "Optional category label to filter by. Use list_categories to discover valid labels.",
+      ),
+    limit: z
+      .number()
+      .int()
+      .min(1)
+      .max(50)
+      .optional()
+      .describe("Max number of templates to return (default 20)."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ category, limit }) => {

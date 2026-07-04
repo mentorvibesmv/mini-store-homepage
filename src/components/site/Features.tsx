@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils";
 
 const toneClass: Record<Feature["tone"], { bg: string; icon: string }> = {
   violet: { bg: "bg-tone-violet", icon: "bg-primary text-primary-foreground" },
-  blue:   { bg: "bg-tone-blue",   icon: "bg-[oklch(0.55_0.18_240)] text-white" },
-  pink:   { bg: "bg-tone-pink",   icon: "bg-[oklch(0.6_0.18_355)] text-white" },
-  green:  { bg: "bg-tone-green",  icon: "bg-[oklch(0.52_0.14_155)] text-white" },
-  amber:  { bg: "bg-tone-amber",  icon: "bg-[oklch(0.6_0.16_75)] text-white" },
-  sky:    { bg: "bg-tone-sky",    icon: "bg-[oklch(0.55_0.15_220)] text-white" },
+  blue: { bg: "bg-tone-blue", icon: "bg-[oklch(0.55_0.18_240)] text-white" },
+  pink: { bg: "bg-tone-pink", icon: "bg-[oklch(0.6_0.18_355)] text-white" },
+  green: { bg: "bg-tone-green", icon: "bg-[oklch(0.52_0.14_155)] text-white" },
+  amber: { bg: "bg-tone-amber", icon: "bg-[oklch(0.6_0.16_75)] text-white" },
+  sky: { bg: "bg-tone-sky", icon: "bg-[oklch(0.55_0.15_220)] text-white" },
 };
 
 export function Features() {
@@ -29,7 +29,12 @@ export function Features() {
                   tones.bg,
                 )}
               >
-                <span className={cn("grid h-11 w-11 place-items-center rounded-xl shadow-soft", tones.icon)}>
+                <span
+                  className={cn(
+                    "grid h-11 w-11 place-items-center rounded-xl shadow-soft",
+                    tones.icon,
+                  )}
+                >
                   <Icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 text-[16px] font-semibold leading-snug text-foreground">

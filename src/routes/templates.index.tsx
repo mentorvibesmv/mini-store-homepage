@@ -1,6 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section } from "@/components/site/primitives";
@@ -23,16 +22,16 @@ import {
 const PAGE_SIZE = 8;
 
 const searchSchema = z.object({
-  q: fallback(z.string(), "").default(""),
-  category: fallback(z.string(), "all").default("all"),
-  sort: fallback(
-    z.enum(["featured", "newest", "popular", "price-asc", "price-desc"]),
-    "featured",
-  ).default("featured"),
+  q: z.string().catch("").default(""),
+  category: z.string().catch("all").default("all"),
+  sort: z
+    .enum(["featured", "newest", "popular", "price-asc", "price-desc"])
+    .catch("featured")
+    .default("featured"),
 });
 
 export const Route = createFileRoute("/templates/")({
-  validateSearch: zodValidator(searchSchema),
+  validateSearch: searchSchema,
   head: () => ({
     meta: [
       { title: "Templates Marketplace — Mini Store" },
@@ -102,13 +101,17 @@ function TemplatesPage() {
   const canLoadMore = filtered.length > visible.length;
 
   const isFiltered = q.trim() !== "" || (category !== "all" && category !== "");
-  const categoryLabel =
-    filterCategories.find((c) => c.id === category)?.label ?? "all";
+  const categoryLabel = filterCategories.find((c) => c.id === category)?.label ?? "all";
 
-  const updateSearch = (patch: Partial<{ q: string; category: string; sort: SortOption["id"] }>) => {
+  const updateSearch = (
+    patch: Partial<{ q: string; category: string; sort: SortOption["id"] }>,
+  ) => {
     setPageSize(PAGE_SIZE);
     navigate({
-      search: (prev: { q: string; category: string; sort: SortOption["id"] }) => ({ ...prev, ...patch }),
+      search: (prev: { q: string; category: string; sort: SortOption["id"] }) => ({
+        ...prev,
+        ...patch,
+      }),
     });
   };
 
@@ -117,8 +120,7 @@ function TemplatesPage() {
     navigate({ search: { q: "", category: "all", sort: "featured" } });
   };
 
-  const currentSort: SortOption["id"] =
-    sortOptions.find((o) => o.id === sort)?.id ?? "featured";
+  const currentSort: SortOption["id"] = sortOptions.find((o) => o.id === sort)?.id ?? "featured";
 
   return (
     <SiteLayout>
@@ -154,11 +156,7 @@ function TemplatesPage() {
             <>
               <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {visible.map((t) => (
-                  <TemplateCard
-                    key={t.id}
-                    template={t}
-                    onQuickPreview={setPreviewTemplate}
-                  />
+                  <TemplateCard key={t.id} template={t} onQuickPreview={setPreviewTemplate} />
                 ))}
               </div>
 

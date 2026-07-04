@@ -1,7 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Check, ShieldCheck, Headphones, GitFork, LayoutTemplate, FileEdit,
-  Code2, ClipboardCheck, Rocket, Target, Zap, BarChart3, ArrowRight,
+  Check,
+  ShieldCheck,
+  Headphones,
+  GitFork,
+  LayoutTemplate,
+  FileEdit,
+  Code2,
+  ClipboardCheck,
+  Rocket,
+  Target,
+  Zap,
+  BarChart3,
+  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -13,9 +24,17 @@ export const Route = createFileRoute("/how-it-works")({
   head: () => ({
     meta: [
       { title: "How It Works — Mini Store" },
-      { name: "description", content: "See how Mini Store works from choosing a template or custom website to going live — a simple, transparent 7-step process." },
+      {
+        name: "description",
+        content:
+          "See how Mini Store works from choosing a template or custom website to going live — a simple, transparent 7-step process.",
+      },
       { property: "og:title", content: "How It Works — Mini Store" },
-      { property: "og:description", content: "A simple, transparent process for launching your business website — from choosing your path to ongoing support." },
+      {
+        property: "og:description",
+        content:
+          "A simple, transparent process for launching your business website — from choosing your path to ongoing support.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -24,14 +43,24 @@ export const Route = createFileRoute("/how-it-works")({
 });
 
 const heroIcon: Record<string, LucideIcon> = {
-  check: Check, shield: ShieldCheck, headset: Headphones,
+  check: Check,
+  shield: ShieldCheck,
+  headset: Headphones,
 };
 const stepIcon: Record<string, LucideIcon> = {
-  path: GitFork, browser: LayoutTemplate, form: FileEdit, code: Code2,
-  review: ClipboardCheck, rocket: Rocket, headset: Headphones,
+  path: GitFork,
+  browser: LayoutTemplate,
+  form: FileEdit,
+  code: Code2,
+  review: ClipboardCheck,
+  rocket: Rocket,
+  headset: Headphones,
 };
 const valueIcon: Record<string, LucideIcon> = {
-  target: Target, shield: ShieldCheck, bolt: Zap, chart: BarChart3,
+  target: Target,
+  shield: ShieldCheck,
+  bolt: Zap,
+  chart: BarChart3,
 };
 
 const toneSoft: Record<string, string> = {
@@ -114,11 +143,23 @@ function HowHero() {
 }
 
 // ---------- Section header ----------
-function EyebrowHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
+function EyebrowHeader({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: string;
+}) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{eyebrow}</div>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{title}</h2>
+      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+        {eyebrow}
+      </div>
+      <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        {title}
+      </h2>
       {description && (
         <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">{description}</p>
       )}
@@ -141,7 +182,12 @@ function ProcessJourney() {
               const Icon = stepIcon[s.icon] ?? Rocket;
               return (
                 <div key={s.id} className="relative flex items-center justify-center">
-                  <div className={cn("grid h-20 w-20 place-items-center rounded-full", toneSoft[s.tone])}>
+                  <div
+                    className={cn(
+                      "grid h-20 w-20 place-items-center rounded-full",
+                      toneSoft[s.tone],
+                    )}
+                  >
                     <Icon className="h-8 w-8" />
                   </div>
                   {i < p.steps.length - 1 && (
@@ -196,16 +242,18 @@ function ProcessJourney() {
   );
 }
 
-function StepIconLg({ step }: { step: typeof howItWorksPage.process.steps[number] }) {
+function StepIconLg({ step }: { step: (typeof howItWorksPage.process.steps)[number] }) {
   const Icon = stepIcon[step.icon] ?? Rocket;
   return (
-    <div className={cn("grid h-16 w-16 shrink-0 place-items-center rounded-full", toneSoft[step.tone])}>
+    <div
+      className={cn("grid h-16 w-16 shrink-0 place-items-center rounded-full", toneSoft[step.tone])}
+    >
       <Icon className="h-7 w-7" />
     </div>
   );
 }
 
-function StepCard({ step }: { step: typeof howItWorksPage.process.steps[number] }) {
+function StepCard({ step }: { step: (typeof howItWorksPage.process.steps)[number] }) {
   return (
     <div className="relative h-full rounded-2xl border border-border bg-card p-4 pt-6 text-center transition-all hover:-translate-y-0.5 hover:border-foreground/15 hover:shadow-soft">
       <span
@@ -237,11 +285,18 @@ function BuiltAroundYou() {
                 key={item.id}
                 className="h-full rounded-2xl border border-border bg-card p-6 text-center transition-all hover:-translate-y-1 hover:border-foreground/15 hover:shadow-soft"
               >
-                <div className={cn("mx-auto grid h-14 w-14 place-items-center rounded-2xl", toneSoft[item.tone])}>
+                <div
+                  className={cn(
+                    "mx-auto grid h-14 w-14 place-items-center rounded-2xl",
+                    toneSoft[item.tone],
+                  )}
+                >
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-5 text-[15px] font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
               </div>
             );
           })}

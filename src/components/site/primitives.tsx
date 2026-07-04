@@ -2,16 +2,9 @@ import type { ReactNode, HTMLAttributes, AnchorHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 // -------- Container --------
-export function Container({
-  className,
-  children,
-  ...rest
-}: HTMLAttributes<HTMLDivElement>) {
+export function Container({ className, children, ...rest }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div
-      className={cn("mx-auto w-full max-w-[1240px] px-6 sm:px-8 lg:px-10", className)}
-      {...rest}
-    >
+    <div className={cn("mx-auto w-full max-w-[1240px] px-6 sm:px-8 lg:px-10", className)} {...rest}>
       {children}
     </div>
   );
@@ -28,23 +21,14 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      className={cn("scroll-mt-24 py-10 sm:py-12 lg:py-14", className)}
-    >
+    <section id={id} className={cn("scroll-mt-24 py-10 sm:py-12 lg:py-14", className)}>
       {children}
     </section>
   );
 }
 
 // -------- Badge --------
-export function Badge({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function Badge({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <span
       className={cn(
@@ -93,11 +77,7 @@ export function SectionTitle({
       <h2 className="text-3xl font-bold leading-[1.15] text-foreground sm:text-4xl lg:text-[40px]">
         {title}
       </h2>
-      {description && (
-        <p className="mt-4 text-base text-muted-foreground">
-          {description}
-        </p>
-      )}
+      {description && <p className="mt-4 text-base text-muted-foreground">{description}</p>}
     </div>
   );
 }
@@ -126,14 +106,10 @@ export function Button({
       "bg-primary-gradient text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5",
     secondary:
       "bg-card text-foreground border border-border hover:border-foreground/20 hover:-translate-y-0.5 shadow-soft",
-    ghost:
-      "text-foreground hover:bg-muted",
+    ghost: "text-foreground hover:bg-muted",
   };
   return (
-    <a
-      className={cn(base, sizes[size], variants[variant], className)}
-      {...rest}
-    >
+    <a className={cn(base, sizes[size], variants[variant], className)} {...rest}>
       {children}
     </a>
   );

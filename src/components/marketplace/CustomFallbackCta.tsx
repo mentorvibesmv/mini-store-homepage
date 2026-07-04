@@ -19,7 +19,10 @@ export function CustomFallbackCta() {
               </p>
               <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
                 {marketplaceCta.benefits.map((b) => (
-                  <li key={b} className="flex items-center gap-2 text-sm font-medium text-foreground">
+                  <li
+                    key={b}
+                    className="flex items-center gap-2 text-sm font-medium text-foreground"
+                  >
                     <span className="grid h-5 w-5 place-items-center rounded-full bg-primary text-primary-foreground">
                       <Check className="h-3 w-3" />
                     </span>

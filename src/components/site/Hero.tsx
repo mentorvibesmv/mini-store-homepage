@@ -38,7 +38,12 @@ export function Hero() {
           <div className="fade-up-delay-3 mt-8 flex flex-wrap items-center gap-3">
             <Button href={hero.primary.href} size="lg" className="group">
               {hero.primary.label}
-              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span
+                aria-hidden
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
+                →
+              </span>
             </Button>
             <Button href={hero.secondary.href} size="lg" variant="secondary">
               {hero.secondary.label}
@@ -49,7 +54,10 @@ export function Hero() {
             {hero.benefits.map((b) => {
               const Icon = trustIcon[b.id] ?? Check;
               return (
-                <li key={b.id} className="flex items-center gap-2 text-[13px] font-medium text-foreground">
+                <li
+                  key={b.id}
+                  className="flex items-center gap-2 text-[13px] font-medium text-foreground"
+                >
                   <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary-soft text-primary">
                     <Icon className="h-3.5 w-3.5" />
                   </span>
@@ -62,16 +70,43 @@ export function Hero() {
 
         {/* RIGHT — Devices */}
         <div className="relative fade-up-delay-2">
-          <div aria-hidden className="absolute inset-x-6 -bottom-8 h-28 rounded-[50%] bg-primary/20 blur-3xl" />
+          <div
+            aria-hidden
+            className="absolute inset-x-6 -bottom-8 h-28 rounded-[50%] bg-primary/20 blur-3xl"
+          />
           <div className="relative mx-auto aspect-[5/4] w-full max-w-[720px] lg:max-w-none">
             <div className="absolute inset-x-[4%] top-[8%] float-slow drop-shadow-[0_36px_60px_rgba(76,29,149,0.22)]">
-              <img src={laptop.src} alt={laptop.alt} width={laptop.width} height={laptop.height} fetchPriority="high" className="h-auto w-full select-none" draggable={false} />
+              <img
+                src={laptop.src}
+                alt={laptop.alt}
+                width={laptop.width}
+                height={laptop.height}
+                fetchPriority="high"
+                className="h-auto w-full select-none"
+                draggable={false}
+              />
             </div>
             <div className="absolute right-[-4%] top-[-2%] w-[36%] rotate-[6deg] float-slower drop-shadow-[0_24px_48px_rgba(30,27,75,0.25)]">
-              <img src={tablet.src} alt={tablet.alt} width={tablet.width} height={tablet.height} loading="lazy" className="h-auto w-full select-none" draggable={false} />
+              <img
+                src={tablet.src}
+                alt={tablet.alt}
+                width={tablet.width}
+                height={tablet.height}
+                loading="lazy"
+                className="h-auto w-full select-none"
+                draggable={false}
+              />
             </div>
             <div className="absolute left-[-3%] top-[22%] w-[23%] -rotate-[8deg] float-slow drop-shadow-[0_24px_40px_rgba(30,27,75,0.28)]">
-              <img src={mobile.src} alt={mobile.alt} width={mobile.width} height={mobile.height} loading="lazy" className="h-auto w-full select-none" draggable={false} />
+              <img
+                src={mobile.src}
+                alt={mobile.alt}
+                width={mobile.width}
+                height={mobile.height}
+                loading="lazy"
+                className="h-auto w-full select-none"
+                draggable={false}
+              />
             </div>
           </div>
         </div>
