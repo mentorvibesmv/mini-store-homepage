@@ -11,14 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as CustomWebsitesRouteImport } from './routes/custom-websites'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as TemplatesSlugIndexRouteImport } from './routes/templates.$slug.index'
 import { Route as TemplatesSlugPreviewRouteImport } from './routes/templates.$slug.preview'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const TemplatesRoute = TemplatesRouteImport.update({
   id: '/templates',
@@ -28,6 +32,11 @@ const TemplatesRoute = TemplatesRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -60,6 +69,18 @@ const TemplatesIndexRoute = TemplatesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => TemplatesRoute,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const TemplatesSlugIndexRoute = TemplatesSlugIndexRouteImport.update({
   id: '/$slug/',
   path: '/$slug/',
@@ -70,6 +91,12 @@ const TemplatesSlugPreviewRoute = TemplatesSlugPreviewRouteImport.update({
   path: '/$slug/preview',
   getParentRoute: () => TemplatesRoute,
 } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -77,9 +104,13 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/custom-websites': typeof CustomWebsitesRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
   '/templates': typeof TemplatesRouteWithChildren
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/templates/': typeof TemplatesIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
   '/templates/$slug/': typeof TemplatesSlugIndexRoute
 }
@@ -89,8 +120,12 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/custom-websites': typeof CustomWebsitesRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/templates': typeof TemplatesIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
   '/templates/$slug': typeof TemplatesSlugIndexRoute
 }
@@ -101,9 +136,13 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/custom-websites': typeof CustomWebsitesRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
   '/templates': typeof TemplatesRouteWithChildren
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/templates/': typeof TemplatesIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
   '/templates/$slug/': typeof TemplatesSlugIndexRoute
 }
@@ -115,9 +154,13 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-websites'
     | '/how-it-works'
+    | '/mcp'
     | '/pricing'
     | '/templates'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/templates/'
+    | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
     | '/templates/$slug/'
   fileRoutesByTo: FileRoutesByTo
@@ -127,8 +170,12 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-websites'
     | '/how-it-works'
+    | '/mcp'
     | '/pricing'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/templates'
+    | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
     | '/templates/$slug'
   id:
@@ -138,9 +185,13 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-websites'
     | '/how-it-works'
+    | '/mcp'
     | '/pricing'
     | '/templates'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/templates/'
+    | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
     | '/templates/$slug/'
   fileRoutesById: FileRoutesById
@@ -151,8 +202,12 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CustomWebsitesRoute: typeof CustomWebsitesRoute
   HowItWorksRoute: typeof HowItWorksRoute
+  McpRoute: typeof McpRoute
   PricingRoute: typeof PricingRoute
   TemplatesRoute: typeof TemplatesRouteWithChildren
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -169,6 +224,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-it-works': {
@@ -213,6 +275,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesIndexRouteImport
       parentRoute: typeof TemplatesRoute
     }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/templates/$slug/': {
       id: '/templates/$slug/'
       path: '/$slug'
@@ -226,6 +302,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/templates/$slug/preview'
       preLoaderRoute: typeof TemplatesSlugPreviewRouteImport
       parentRoute: typeof TemplatesRoute
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -252,8 +335,13 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CustomWebsitesRoute: CustomWebsitesRoute,
   HowItWorksRoute: HowItWorksRoute,
+  McpRoute: McpRoute,
   PricingRoute: PricingRoute,
   TemplatesRoute: TemplatesRouteWithChildren,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

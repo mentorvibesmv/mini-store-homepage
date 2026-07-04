@@ -15,7 +15,7 @@
       {
         "name": "list_templates",
         "title": "List website templates",
-        "description": "List available Mini Store website templates, optionally filtered by category id (e.g. restaurant, fashion, medical, realestate, fitness, education, portfolio).",
+        "description": "List available Mini Store website templates, optionally filtered by category label (e.g. Restaurant, Fashion, Medical).",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -26,7 +26,7 @@
           "type": "object",
           "properties": {
             "category": {
-              "description": "Optional category id to filter by. Use list_categories to discover valid ids.",
+              "description": "Optional category label to filter by. Use list_categories to discover valid labels.",
               "type": "string"
             },
             "limit": {
@@ -42,7 +42,7 @@
       {
         "name": "list_categories",
         "title": "List template categories",
-        "description": "List all Mini Store template categories with their ids and labels.",
+        "description": "List all Mini Store template categories with their ids and display labels.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,

@@ -6,36 +6,41 @@ export default defineTool({
   name: "list_templates",
   title: "List website templates",
   description:
-    "List available Mini Store website templates, optionally filtered by category id (e.g. restaurant, fashion, medical, realestate, fitness, education, portfolio).",
+    "List available Mini Store website templates, optionally filtered by category label (e.g. Restaurant, Fashion, Medical).",
   inputSchema: {
     category: z
       .string()
       .optional()
-      .describe("Optional category id to filter by. Use list_categories to discover valid ids."),
+      .describe("Optional category label to filter by. Use list_categories to discover valid labels."),
     limit: z.number().int().min(1).max(50).optional().describe("Max number of templates to return (default 20)."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ category, limit }) => {
-    const validCategoryIds = new Set(categories.map((c) => c.id));
-    if (category && !validCategoryIds.has(category as never)) {
-      return {
-        content: [
-          {
-            type: "text",
-            text: `Unknown category "${category}". Valid ids: ${categories.map((c) => c.id).join(", ")}.`,
-          },
-        ],
-        isError: true,
-      };
+    if (category) {
+      const validLabels = new Set(categories.map((c) => c.label.toLowerCase()));
+      if (!validLabels.has(category.toLowerCase())) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Unknown category "${category}". Valid labels: ${categories.map((c) => c.label).join(", ")}.`,
+            },
+          ],
+          isError: true,
+        };
+      }
     }
-    const filtered = category ? templates.filter((t) => t.category === category) : templates;
+    const filtered = category
+      ? templates.filter((t) => t.category.toLowerCase() === category.toLowerCase() && t.visible)
+      : templates.filter((t) => t.visible);
     const items = filtered.slice(0, limit ?? 20).map((t) => ({
       slug: t.slug,
-      name: t.name,
+      title: t.title,
       category: t.category,
-      price: t.price,
-      description: t.description,
-      badges: t.badges,
+      priceLabel: t.priceLabel,
+      shortDescription: t.shortDescription,
+      rating: t.rating,
+      tags: t.tags,
     }));
     return {
       content: [{ type: "text", text: JSON.stringify(items, null, 2) }],
