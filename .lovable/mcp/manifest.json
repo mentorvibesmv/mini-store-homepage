@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "mini-store-mcp",
+      "version": "0.1.0",
+      "title": "Mini Store MCP"
+    },
+    "tools": [
+      {
+        "name": "list_templates",
+        "title": "List website templates",
+        "description": "List available Mini Store website templates, optionally filtered by category id (e.g. restaurant, fashion, medical, realestate, fitness, education, portfolio).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "category": {
+              "description": "Optional category id to filter by. Use list_categories to discover valid ids.",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Max number of templates to return (default 20).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_categories",
+        "title": "List template categories",
+        "description": "List all Mini Store template categories with their ids and labels.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_template",
+        "title": "Get website template details",
+        "description": "Fetch full details for a single Mini Store website template by its slug.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The template slug (e.g. 'bella-vista', 'urban-threads')."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
