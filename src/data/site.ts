@@ -728,13 +728,13 @@ export const customWebsitesPage = {
       "3 Months Free Support",
     ],
     pricing: {
-      label: "Packages Starting From",
-      price: "₹25,000",
-      note: "One-time development charge • Final price depends on features and project requirements.",
+      label: "Custom Website Pricing",
+      price: "Custom Quote",
+      note: "Custom quote based on your requirements.",
       benefits: ["Full Ownership", "Custom Design", "Scalable & Future Ready"],
       cta: { label: "Get Custom Website Quote", href: customRequestHref },
       illustration: { src: customPriceIllus, alt: "Website mockup illustration" },
-      badge: "Starting ₹25,000",
+      badge: "Custom Quote",
     },
   },
   recentWork: {
