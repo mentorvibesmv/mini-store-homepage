@@ -45,14 +45,8 @@ export function TemplateCard({
 
         <h3 className="text-[17px] font-semibold text-foreground">{template.title}</h3>
 
-        <div className="flex items-center justify-between text-xs">
-          <span className="inline-flex items-center gap-1 text-muted-foreground">
-            <Star className="h-3.5 w-3.5 fill-current text-[oklch(0.75_0.15_85)]" />
-            <span className="font-medium text-foreground">{template.rating}</span>
-            <span>({template.reviews})</span>
-          </span>
-          <span className="text-lg font-bold text-foreground">{template.priceLabel}</span>
-        </div>
+        <p className="text-xs text-muted-foreground line-clamp-2">{template.shortDescription}</p>
+
 
         <div className="mt-auto flex items-center gap-2 pt-2">
           <Link
