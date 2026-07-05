@@ -42,7 +42,7 @@ export const hero = {
   headlineLines: ["Build Your Business", "Website ", "Than Ever"],
   headlineGradientWord: "Faster",
   description:
-    "Buy premium templates, tailor them to your brand, or commission a fully custom build. One studio, every stage of your website.",
+    "Browse ready-made website designs, choose a Mini Store plan, or request a separate custom website quote — all in one place.",
   primary: { label: "Browse Templates", href: "/templates" },
   secondary: { label: "Request Custom Website", href: "/custom-websites" },
   benefits: [
