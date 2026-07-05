@@ -1425,7 +1425,7 @@ export const contactPage = {
       weekend: "Sunday: Closed",
     },
     liveChat: { enabled: false, statusLabel: "Coming Soon" },
-    responseGuidance: "We usually reply within a few hours.",
+    responseGuidance: "We reply during our business hours.",
   },
 
   hero: {
