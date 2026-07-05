@@ -371,14 +371,11 @@ function CustomCard({ plan }: { plan: typeof pricingPage.plans.custom }) {
         Icon={planIconMap[plan.icon]}
       />
       <div className="mt-6">
-        <div className="text-[12px] font-medium text-muted-foreground">Starting from</div>
+        <div className="text-[12px] font-medium text-muted-foreground">Pricing</div>
         <div className="mt-1 flex items-baseline gap-1">
-          <span className={cn("text-[40px] font-bold leading-none", t.price)}>
+          <span className={cn("text-[28px] font-bold leading-tight", t.price)}>
             {plan.startingPrice}
           </span>
-        </div>
-        <div className="mt-1.5 text-[12.5px] text-muted-foreground">
-          One-time development charge
         </div>
         <div className="mt-2 text-[12.5px] text-muted-foreground">{plan.pricingNote}</div>
       </div>
