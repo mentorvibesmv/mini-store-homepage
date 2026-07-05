@@ -1435,9 +1435,9 @@ export const contactPage = {
     description:
       "Have a question, need help, or want to start a project? Fill out the form and our team will get back to you as soon as possible.",
     trustPoints: [
-      { id: "quick", label: "Quick Response", icon: "check" as const },
+      { id: "real", label: "Real People", icon: "check" as const },
       { id: "friendly", label: "Friendly Support", icon: "smile" as const },
-      { id: "noobligation", label: "No Obligation", icon: "check" as const },
+      { id: "transparent", label: "Transparent Pricing", icon: "check" as const },
     ],
     image: {
       src: contactHeroImg,
