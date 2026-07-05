@@ -466,7 +466,7 @@ export const sortOptions: SortOption[] = [
 export const marketplaceCta = {
   title: "Can't find the right fit?",
   description: "Tell us what your business needs and we'll create a website around it.",
-  benefits: ["100% Custom Design", "Fast Delivery", "Dedicated Support"],
+  benefits: ["100% Custom Design", "Built for your brand", "Ongoing Support"],
   cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
