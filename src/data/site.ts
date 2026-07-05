@@ -1181,7 +1181,7 @@ export const pricingPage = {
   finalCta: {
     title: "Still not sure which plan is right for you?",
     description: "Let's discuss your requirements and help you choose the best solution.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     cta: { label: "Talk to Our Expert", href: customRequestHref },
     illustration: { src: customCtaIllus, alt: "Consultation illustration" },
   },
