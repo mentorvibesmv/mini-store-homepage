@@ -427,11 +427,11 @@ export const customCta = {
 
 // -------------------- Marketplace (Templates page) --------------------
 export const marketplaceHero = {
-  badge: "Website Template Marketplace",
+  badge: "Website Design Gallery",
   titleLine1: "Find the right",
   titleLine2: "starting point.",
   description:
-    "Explore premium website templates designed for real businesses, then make them your own.",
+    "Browse website designs made for real businesses. Choose a starting design and pair it with a Mini Store plan.",
   previews: [
     { id: "restaurant", src: tplRestaurant, alt: "Restaurant template preview" },
     { id: "realestate", src: tplRealEstate, alt: "Real estate template preview" },
