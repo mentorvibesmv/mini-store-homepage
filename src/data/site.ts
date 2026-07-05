@@ -1692,7 +1692,7 @@ export const howItWorksPage = {
   cta: {
     title: "Ready to Get Started?",
     description: "Let's build a website that helps your business grow. We're ready when you are!",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     primary: { label: "Get in Touch", href: "/contact" },
     illustration: {
       src: aboutCtaImg,
