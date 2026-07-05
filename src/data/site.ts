@@ -1029,13 +1029,13 @@ export const pricingPage = {
       label: "Setup / Development Fee",
       starter: "—",
       business: "₹4,999 One-time",
-      custom: "Starting from ₹25,000",
+      custom: "Custom Quote",
     },
     {
       id: "sub",
       label: "Subscription / Maintenance",
-      starter: "₹999/month or ₹9,999/year",
-      business: "₹999/month or ₹9,999/year",
+      starter: "₹299/month or ₹2,999/year",
+      business: "₹599/month or ₹5,999/year",
       custom: "As per requirement",
     },
     {
