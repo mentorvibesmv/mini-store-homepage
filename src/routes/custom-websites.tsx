@@ -42,7 +42,7 @@ export const Route = createFileRoute("/custom-websites")({
       {
         name: "description",
         content:
-          "We build stunning, fully custom websites for your unique business. 100% custom design, fast delivery, dedicated support.",
+          "We design and build fully custom websites for your business — 100% custom design built around your brand.",
       },
       { property: "og:title", content: "Custom Websites — Mini Store" },
       {
