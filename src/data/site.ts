@@ -69,40 +69,8 @@ export type Stat = {
   tone: StatTone;
 };
 
-export const stats: Stat[] = [
-  {
-    id: "templates",
-    value: "240+",
-    title: "Templates",
-    description: "Ready-to-use designs",
-    icon: "templates",
-    tone: "violet",
-  },
-  {
-    id: "customers",
-    value: "18k+",
-    title: "Happy Customers",
-    description: "Across 40+ countries",
-    icon: "customers",
-    tone: "blue",
-  },
-  {
-    id: "projects",
-    value: "3.4k",
-    title: "Projects Shipped",
-    description: "Delivered on time",
-    icon: "projects",
-    tone: "green",
-  },
-  {
-    id: "satisfaction",
-    value: "99%",
-    title: "Satisfaction",
-    description: "Loved by our clients",
-    icon: "star",
-    tone: "orange",
-  },
-];
+// Stats intentionally empty — no verified figures to display yet.
+export const stats: Stat[] = [];
 
 // -------------------- Categories --------------------
 export type Category = {
@@ -134,8 +102,8 @@ export type TemplateTech = {
 export type TemplateMeta = {
   pagesCount?: string; // e.g. "12+ Ready Pages"
   customization?: string; // e.g. "Easy with Drag & Drop"
-  support?: string; // e.g. "6 Months Included"
-  updates?: string; // e.g. "Lifetime Free Updates"
+  support?: string;
+  updates?: string;
 };
 
 export type Template = {
@@ -145,11 +113,6 @@ export type Template = {
   shortDescription: string;
   fullDescription?: string;
   category: string; // matches Category.label
-  price: number; // numeric for sorting
-  priceLabel: string;
-  rating: number;
-  reviews: number;
-  customerCount?: string; // e.g. "1,245+ Happy Customers"
   image: string;
   gallery?: string[];
   benefits?: string[];
@@ -176,11 +139,6 @@ export const templates: Template[] = [
     fullDescription:
       "Lumina is a modern restaurant website template crafted for fine dining, cafes, bistros, and culinary businesses. It comes with a beautiful menu layout, reservation system, chef showcase, and more.",
     category: "Restaurant",
-    price: 49,
-    priceLabel: "$49",
-    rating: 4.9,
-    reviews: 128,
-    customerCount: "1,245+ Happy Customers",
     image: tplRestaurant,
     gallery: [tplRestaurant, tplFashion, tplMedical, tplRealEstate],
     benefits: [
@@ -189,7 +147,6 @@ export const templates: Template[] = [
       "Easy to Customize",
       "SEO Optimized",
       "Fast Loading",
-      "Lifetime Updates",
     ],
     pagesIncluded: [
       "Home",
@@ -228,8 +185,6 @@ export const templates: Template[] = [
     meta: {
       pagesCount: "12+ Ready Pages",
       customization: "Easy with Drag & Drop",
-      support: "6 Months Included",
-      updates: "Lifetime Free Updates",
     },
     tags: ["restaurant", "food", "menu", "reservations"],
     featured: true,
@@ -245,10 +200,6 @@ export const templates: Template[] = [
     title: "Auréa Fashion",
     shortDescription: "Editorial fashion boutique with lookbook, product grid, and campaign hero.",
     category: "Fashion",
-    price: 59,
-    priceLabel: "$59",
-    rating: 4.8,
-    reviews: 96,
     image: tplFashion,
     tags: ["fashion", "boutique", "editorial", "lookbook"],
     featured: false,
@@ -265,10 +216,6 @@ export const templates: Template[] = [
     shortDescription:
       "Trusted medical clinic site with services, doctors, and appointment booking.",
     category: "Medical",
-    price: 54,
-    priceLabel: "$54",
-    rating: 4.9,
-    reviews: 74,
     image: tplMedical,
     tags: ["medical", "clinic", "doctors", "healthcare"],
     featured: false,
@@ -284,10 +231,6 @@ export const templates: Template[] = [
     title: "Haven Real Estate",
     shortDescription: "Modern real estate template with property listings, filters, and agents.",
     category: "Real Estate",
-    price: 69,
-    priceLabel: "$69",
-    rating: 5.0,
-    reviews: 52,
     image: tplRealEstate,
     tags: ["real estate", "property", "listings", "agents"],
     featured: false,
@@ -303,10 +246,6 @@ export const templates: Template[] = [
     title: "PowerFit Gym",
     shortDescription: "Bold fitness studio site with class schedules, trainers, and memberships.",
     category: "Fitness",
-    price: 49,
-    priceLabel: "$49",
-    rating: 4.7,
-    reviews: 41,
     image: tplRestaurant,
     tags: ["fitness", "gym", "trainers", "classes"],
     featured: false,
@@ -322,10 +261,6 @@ export const templates: Template[] = [
     title: "EduVision Academy",
     shortDescription: "Modern education platform with courses, faculty, and enrollment flow.",
     category: "Education",
-    price: 49,
-    priceLabel: "$49",
-    rating: 4.8,
-    reviews: 63,
     image: tplFashion,
     tags: ["education", "academy", "courses", "learning"],
     featured: false,
@@ -341,10 +276,6 @@ export const templates: Template[] = [
     title: "Alex Portfolio",
     shortDescription: "Minimal creative portfolio for designers and freelancers.",
     category: "Portfolio",
-    price: 39,
-    priceLabel: "$39",
-    rating: 4.9,
-    reviews: 37,
     image: tplMedical,
     tags: ["portfolio", "designer", "freelance", "minimal"],
     featured: false,
@@ -360,10 +291,6 @@ export const templates: Template[] = [
     title: "Creative Studio",
     shortDescription: "Agency-grade portfolio for creative studios with case studies.",
     category: "Portfolio",
-    price: 59,
-    priceLabel: "$59",
-    rating: 4.8,
-    reviews: 88,
     image: tplRealEstate,
     tags: ["portfolio", "agency", "case studies", "creative"],
     featured: true,
@@ -379,10 +306,6 @@ export const templates: Template[] = [
     title: "Bistro Noir",
     shortDescription: "Elegant fine-dining restaurant template with tasting menu.",
     category: "Restaurant",
-    price: 55,
-    priceLabel: "$55",
-    rating: 4.7,
-    reviews: 44,
     image: tplRestaurant,
     tags: ["restaurant", "fine dining", "menu", "wine"],
     featured: false,
@@ -398,10 +321,6 @@ export const templates: Template[] = [
     title: "Atelier Mode",
     shortDescription: "Luxury fashion atelier with campaign storytelling and shop.",
     category: "Fashion",
-    price: 65,
-    priceLabel: "$65",
-    rating: 4.9,
-    reviews: 59,
     image: tplFashion,
     tags: ["fashion", "luxury", "atelier", "shop"],
     featured: false,
@@ -417,10 +336,6 @@ export const templates: Template[] = [
     title: "Meridian Realty",
     shortDescription: "Premium property showcase with map view and mortgage tools.",
     category: "Real Estate",
-    price: 79,
-    priceLabel: "$79",
-    rating: 4.8,
-    reviews: 47,
     image: tplRealEstate,
     tags: ["real estate", "premium", "map", "mortgage"],
     featured: false,
@@ -436,10 +351,6 @@ export const templates: Template[] = [
     title: "WellCare Clinic",
     shortDescription: "Friendly family clinic template with insurance and telehealth.",
     category: "Medical",
-    price: 49,
-    priceLabel: "$49",
-    rating: 4.6,
-    reviews: 33,
     image: tplMedical,
     tags: ["medical", "clinic", "telehealth", "family"],
     featured: false,
@@ -491,8 +402,8 @@ export const features: Feature[] = [
   },
   {
     id: "updates",
-    title: "Lifetime Updates Free & Regular",
-    description: "One purchase, forever kept fresh with new features.",
+    title: "Updates & Maintenance Included",
+    description: "We keep your website updated and running smoothly as part of your plan.",
     icon: "refresh",
     tone: "amber",
   },
@@ -543,16 +454,13 @@ export const filterCategories: FilterCategory[] = [
 ];
 
 export type SortOption = {
-  id: "featured" | "newest" | "popular" | "price-asc" | "price-desc";
+  id: "featured" | "newest";
   label: string;
 };
 
 export const sortOptions: SortOption[] = [
   { id: "featured", label: "Featured" },
   { id: "newest", label: "Newest" },
-  { id: "popular", label: "Most Popular" },
-  { id: "price-asc", label: "Price: Low to High" },
-  { id: "price-desc", label: "Price: High to Low" },
 ];
 
 export const marketplaceCta = {
@@ -820,13 +728,13 @@ export const customWebsitesPage = {
       "3 Months Free Support",
     ],
     pricing: {
-      label: "Packages Starting From",
-      price: "₹25,000",
-      note: "One-time development charge • Final price depends on features and project requirements.",
+      label: "Custom Website Pricing",
+      price: "Custom Quote",
+      note: "Custom quote based on your requirements.",
       benefits: ["Full Ownership", "Custom Design", "Scalable & Future Ready"],
       cta: { label: "Get Custom Website Quote", href: customRequestHref },
       illustration: { src: customPriceIllus, alt: "Website mockup illustration" },
-      badge: "Starting ₹25,000",
+      badge: "Custom Quote",
     },
   },
   recentWork: {
@@ -1021,14 +929,13 @@ export const pricingPage = {
   plans: {
     starter: {
       id: "starter",
-      name: "Starter Store",
+      name: "Mini Store Basic",
       subtitle: "Pre-built template with Mini Store subdomain",
       planType: "Subscription Plan",
       tone: "green",
       icon: "cart",
-      monthlyPrice: "₹999",
-      annualPrice: "₹9,999",
-      annualSaving: "Save 17%",
+      monthlyPrice: "₹299",
+      annualPrice: "₹2,999",
       domain: { label: "Your site will be like", example: "yourbusiness.ministore.in" },
       features: [
         "Pre-built Website Template",
@@ -1041,22 +948,22 @@ export const pricingPage = {
         "Maintenance & Updates Included",
         "Email Support",
       ],
-      cta: { label: "Choose Starter Plan", href: "/pricing/start?plan=starter" },
+      cta: { label: "Choose Mini Store Basic", href: "/pricing/start?plan=starter" },
       visible: true,
       displayOrder: 1,
     } satisfies StarterPlan,
 
     business: {
       id: "business",
-      name: "Business Website",
+      name: "Mini Store Commerce Managed",
       subtitle: "Pre-built template with your own domain",
       planType: "One-time Setup + Subscription",
       tone: "blue",
       icon: "briefcase",
       setupPrice: "₹4,999",
       setupNote: "One-time setup charge",
-      monthlyPrice: "₹999",
-      annualPrice: "₹9,999",
+      monthlyPrice: "₹599",
+      annualPrice: "₹5,999",
       domain: { label: "Use your own domain like", example: "yourbusiness.com" },
       features: [
         "Premium Pre-built Templates",
@@ -1069,7 +976,7 @@ export const pricingPage = {
         "Security & Regular Updates",
         "Priority Support",
       ],
-      cta: { label: "Choose Business Plan", href: "/pricing/start?plan=business" },
+      cta: { label: "Choose Commerce Managed", href: "/pricing/start?plan=business" },
       popular: true,
       visible: true,
       displayOrder: 2,
@@ -1079,11 +986,11 @@ export const pricingPage = {
       id: "custom",
       name: "Custom Website",
       subtitle: "Fully custom website built for your business",
-      planType: "One-time Development",
+      planType: "Custom Quote",
       tone: "violet",
       icon: "code",
-      startingPrice: "₹25,000",
-      pricingNote: "Final price depends on features and project requirements.",
+      startingPrice: "Custom Quote",
+      pricingNote: "Custom quote based on your requirements.",
       features: [
         "100% Custom Design & Development",
         "Custom Domain Support",
@@ -1122,13 +1029,13 @@ export const pricingPage = {
       label: "Setup / Development Fee",
       starter: "—",
       business: "₹4,999 One-time",
-      custom: "Starting from ₹25,000",
+      custom: "Custom Quote",
     },
     {
       id: "sub",
       label: "Subscription / Maintenance",
-      starter: "₹999/month or ₹9,999/year",
-      business: "₹999/month or ₹9,999/year",
+      starter: "₹299/month or ₹2,999/year",
+      business: "₹599/month or ₹5,999/year",
       custom: "As per requirement",
     },
     {
@@ -1240,9 +1147,9 @@ export const pricingPage = {
     items: [
       {
         id: "diff",
-        question: "What is the difference between Starter and Business plans?",
+        question: "What is the difference between Mini Store Basic and Commerce Managed?",
         answer:
-          "Starter uses a Mini Store subdomain (yourbusiness.ministore.in) on a simple monthly or yearly subscription. Business uses a pre-built template on your own custom domain (yourbusiness.com) with a one-time setup charge plus an ongoing subscription for hosting and maintenance.",
+          "Mini Store Basic uses a Mini Store subdomain (yourbusiness.ministore.in) on a simple monthly or yearly subscription. Mini Store Commerce Managed uses a pre-built template on your own custom domain (yourbusiness.com) with a one-time setup charge plus an ongoing subscription for hosting and maintenance.",
         visible: true,
         displayOrder: 1,
       },
@@ -1250,7 +1157,7 @@ export const pricingPage = {
         id: "upgrade",
         question: "Can I upgrade my plan later?",
         answer:
-          "Yes. You can move from Starter to Business, or from Business to a fully Custom Website at any time. We help you migrate your content and settings so nothing is lost.",
+          "Yes. You can move from Mini Store Basic to Commerce Managed, or from Commerce Managed to a fully Custom Website at any time. We help you migrate your content and settings so nothing is lost.",
         visible: true,
         displayOrder: 2,
       },
@@ -1258,9 +1165,17 @@ export const pricingPage = {
         id: "domain",
         question: "Do you provide domain and hosting?",
         answer:
-          "Starter includes the Mini Store subdomain and hosting. Business includes hosting and SSL; you can connect a domain you already own or register a new one — domain registration cost is billed separately by the domain provider. Custom Website domain, hosting, and maintenance are decided as part of your project quote.",
+          "Mini Store Basic includes the Mini Store subdomain and hosting. Commerce Managed includes hosting and SSL; you can connect a domain you already own or register a new one — domain registration cost is billed separately by the domain provider. Custom Website domain, hosting, and maintenance are decided as part of your project quote.",
         visible: true,
         displayOrder: 3,
+      },
+      {
+        id: "billing",
+        question: "How does billing work?",
+        answer:
+          "Subscription payments are collected in advance. Auto-renewal is only enabled with your explicit consent — otherwise we send you expiry reminders before your plan ends.",
+        visible: true,
+        displayOrder: 4,
       },
       {
         id: "hidden",
@@ -1268,23 +1183,23 @@ export const pricingPage = {
         answer:
           "No. Setup fees, subscriptions, and optional add-ons are shown separately on this page. Third-party costs like domain registration or premium integrations are always disclosed before you commit.",
         visible: true,
-        displayOrder: 4,
+        displayOrder: 5,
       },
       {
         id: "mobile",
         question: "Will my website be mobile responsive?",
         answer:
-          "Yes. Every plan — Starter, Business, and Custom — delivers a fully responsive website that works on desktops, laptops, tablets, and mobile devices.",
+          "Yes. Every plan — Mini Store Basic, Commerce Managed, and Custom Website — delivers a fully responsive website that works on desktops, laptops, tablets, and mobile devices.",
         visible: true,
-        displayOrder: 5,
+        displayOrder: 6,
       },
       {
         id: "after",
         question: "Do you offer after-sales support?",
         answer:
-          "Yes. Starter includes email support, Business includes priority support, and Custom Website support is defined by your selected support agreement. Maintenance add-ons are available for all plans.",
+          "Yes. Mini Store Basic includes email support, Commerce Managed includes priority support, and Custom Website support is defined by your selected support agreement. Maintenance add-ons are available for all plans.",
         visible: true,
-        displayOrder: 6,
+        displayOrder: 7,
       },
     ] satisfies FaqItem[],
   },

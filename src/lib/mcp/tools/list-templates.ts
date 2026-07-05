@@ -45,9 +45,7 @@ export default defineTool({
       slug: t.slug,
       title: t.title,
       category: t.category,
-      priceLabel: t.priceLabel,
       shortDescription: t.shortDescription,
-      rating: t.rating,
       tags: t.tags,
     }));
     return {

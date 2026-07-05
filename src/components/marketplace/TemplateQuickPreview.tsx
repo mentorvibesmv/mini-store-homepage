@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Star, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -36,19 +36,13 @@ export function TemplateQuickPreview({
                   <span className="rounded-full bg-primary-soft px-2.5 py-1 font-medium text-primary">
                     {template.category}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-muted-foreground">
-                    <Star className="h-3.5 w-3.5 fill-current text-[oklch(0.75_0.15_85)]" />
-                    <span className="font-medium text-foreground">{template.rating}</span>
-                    <span>({template.reviews} reviews)</span>
-                  </span>
                 </div>
                 <DialogTitle className="text-xl font-bold">{template.title}</DialogTitle>
                 <DialogDescription className="text-sm text-muted-foreground">
                   {template.shortDescription}
                 </DialogDescription>
               </DialogHeader>
-              <div className="mt-5 flex items-center justify-between">
-                <span className="text-2xl font-bold text-foreground">{template.priceLabel}</span>
+              <div className="mt-5 flex items-center justify-end">
                 <Link
                   to="/templates/$slug/preview"
                   params={{ slug: template.slug }}

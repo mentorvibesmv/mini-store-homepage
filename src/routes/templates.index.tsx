@@ -24,10 +24,7 @@ const PAGE_SIZE = 8;
 const searchSchema = z.object({
   q: z.string().catch("").default(""),
   category: z.string().catch("all").default("all"),
-  sort: z
-    .enum(["featured", "newest", "popular", "price-asc", "price-desc"])
-    .catch("featured")
-    .default("featured"),
+  sort: z.enum(["featured", "newest"]).catch("featured").default("featured"),
 });
 
 export const Route = createFileRoute("/templates/")({
@@ -56,12 +53,6 @@ function sortTemplates(list: Template[], sort: SortOption["id"]): Template[] {
   switch (sort) {
     case "newest":
       return arr.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-    case "popular":
-      return arr.sort((a, b) => b.reviews - a.reviews);
-    case "price-asc":
-      return arr.sort((a, b) => a.price - b.price);
-    case "price-desc":
-      return arr.sort((a, b) => b.price - a.price);
     case "featured":
     default:
       return arr.sort((a, b) => {
