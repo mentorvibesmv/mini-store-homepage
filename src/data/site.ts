@@ -375,7 +375,7 @@ export const features: Feature[] = [
   {
     id: "design",
     title: "Modern & Unique Designs",
-    description: "Crafted by senior designers with a premium editorial aesthetic.",
+    description: "Crafted with a clean, modern editorial aesthetic.",
     icon: "sparkles",
     tone: "violet",
   },
@@ -409,8 +409,8 @@ export const features: Feature[] = [
   },
   {
     id: "support",
-    title: "Dedicated Support We're Here to Help",
-    description: "Real people, real answers — usually within a few hours.",
+    title: "Support When You Need It",
+    description: "Reach real people through the support channels included in your plan.",
     icon: "life-buoy",
     tone: "sky",
   },
