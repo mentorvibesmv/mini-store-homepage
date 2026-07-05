@@ -250,20 +250,6 @@ function TemplateDetailsPage() {
                 {template.title}
               </h1>
 
-              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-                <span className="inline-flex items-center gap-1.5">
-                  <Star className="h-4 w-4 fill-current text-[oklch(0.75_0.15_85)]" />
-                  <span className="font-semibold text-foreground">{template.rating}</span>
-                  <span className="text-muted-foreground">({template.reviews} Reviews)</span>
-                </span>
-                {template.customerCount && (
-                  <>
-                    <span className="text-border">|</span>
-                    <span className="text-muted-foreground">{template.customerCount}</span>
-                  </>
-                )}
-              </div>
-
               <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-muted-foreground">
                 {template.fullDescription ?? template.shortDescription}
               </p>
@@ -279,9 +265,7 @@ function TemplateDetailsPage() {
                 ))}
               </ul>
 
-              <div className="mt-8 text-4xl font-bold text-primary">{template.priceLabel}</div>
-
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   to="/templates/$slug/preview"
                   params={{ slug: template.slug }}
@@ -297,9 +281,12 @@ function TemplateDetailsPage() {
                 </Link>
               </div>
 
-              <p className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground">
-                <ShieldCheck className="h-4 w-4 text-primary" />
-                One-time payment, lifetime access. No subscription.
+              <p className="mt-4 text-xs text-muted-foreground">
+                This design is offered as part of your Mini Store plan — see{" "}
+                <Link to="/pricing" className="text-primary hover:underline">
+                  pricing
+                </Link>{" "}
+                for details.
               </p>
             </div>
           </div>
@@ -309,7 +296,7 @@ function TemplateDetailsPage() {
       {/* Value strip */}
       <Section className="py-4">
         <Container>
-          <div className="grid gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft sm:grid-cols-2">
             <ValueItem
               tone="violet"
               icon={<FileText className="h-5 w-5" />}
@@ -321,18 +308,6 @@ function TemplateDetailsPage() {
               icon={<Wand2 className="h-5 w-5" />}
               title="Customization"
               value={meta.customization}
-            />
-            <ValueItem
-              tone="green"
-              icon={<LifeBuoy className="h-5 w-5" />}
-              title="Support"
-              value={meta.support}
-            />
-            <ValueItem
-              tone="amber"
-              icon={<RefreshCw className="h-5 w-5" />}
-              title="Updates"
-              value={meta.updates}
             />
           </div>
         </Container>
