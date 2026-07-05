@@ -472,7 +472,7 @@ export const marketplaceCta = {
 
 // -------------------- Footer --------------------
 export const footer = {
-  tagline: "Premium templates and custom websites for ambitious brands.",
+  tagline: "Website designs and custom website services for growing businesses.",
   columns: [
     {
       id: "products",
@@ -482,7 +482,6 @@ export const footer = {
         { label: "Custom Websites", href: "/custom-websites" },
         { label: "Pricing", href: "/pricing" },
         { label: "How It Works", href: "/how-it-works" },
-        { label: "Become an Affiliate", href: "/#" },
       ],
     },
     {
@@ -491,34 +490,9 @@ export const footer = {
       links: [
         { label: "About Us", href: "/about" },
         { label: "Contact", href: "/contact" },
-        { label: "Reviews", href: "/#" },
-        { label: "Careers", href: "/#" },
-      ],
-    },
-    {
-      id: "support",
-      title: "Support",
-      links: [
-        { label: "Help Center", href: "/#" },
-        { label: "Documentation", href: "/#" },
-        { label: "Community", href: "/#" },
-        { label: "Status", href: "/#" },
       ],
     },
   ],
-  newsletter: {
-    title: "Newsletter",
-    description: "Get new templates and updates. One email per month.",
-    placeholder: "you@studio.com",
-    cta: "Subscribe",
-  },
-  socials: [
-    { id: "x", label: "X", href: "/#" },
-    { id: "in", label: "LinkedIn", href: "/#" },
-    { id: "dr", label: "Dribbble", href: "/#" },
-    { id: "ig", label: "Instagram", href: "/#" },
-  ],
-  payments: ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay"],
   legal: `© ${new Date().getFullYear()} Mini Store. All rights reserved.`,
 };
 
