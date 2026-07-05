@@ -808,7 +808,7 @@ export const customWebsitesPage = {
   finalCta: {
     title: "Ready to grow your business online?",
     description: "Let's build a website that represents your brand and drives real results.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     cta: { label: "Request Custom Website", href: customRequestHref },
     illustration: { src: customCtaIllus, alt: "Custom website chat illustration" },
   },
