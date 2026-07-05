@@ -69,7 +69,6 @@ const DEFAULT_BENEFITS = [
   "Easy to Customize",
   "SEO Optimized",
   "Fast Loading",
-  "Lifetime Updates",
 ];
 const DEFAULT_PAGES = [
   "Home",
@@ -103,8 +102,6 @@ const DEFAULT_TECH: TemplateTech[] = [
 const DEFAULT_META = {
   pagesCount: "10+ Ready Pages",
   customization: "Easy with Drag & Drop",
-  support: "6 Months Included",
-  updates: "Lifetime Free Updates",
 };
 
 const TONE_BG: Record<TemplateTech["tone"], string> = {
