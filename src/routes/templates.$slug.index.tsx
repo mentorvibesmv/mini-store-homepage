@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import {
-  Star,
   Check,
   ExternalLink,
   Sliders,
@@ -10,8 +9,6 @@ import {
   FileText,
   Wand2,
   LifeBuoy,
-  RefreshCw,
-  ShieldCheck,
   Home as HomeIcon,
   ChevronRight as CrumbSep,
 } from "lucide-react";
