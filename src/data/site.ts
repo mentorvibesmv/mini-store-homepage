@@ -102,8 +102,8 @@ export type TemplateTech = {
 export type TemplateMeta = {
   pagesCount?: string; // e.g. "12+ Ready Pages"
   customization?: string; // e.g. "Easy with Drag & Drop"
-  support?: string; // e.g. "6 Months Included"
-  updates?: string; // e.g. "Lifetime Free Updates"
+  support?: string;
+  updates?: string;
 };
 
 export type Template = {
