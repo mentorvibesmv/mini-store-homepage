@@ -17,7 +17,7 @@ export type NavItem = { id: string; label: string; href: string };
 
 export const brand = {
   name: "Mini Store",
-  tagline: "Premium website templates & custom builds",
+  tagline: "Website designs and custom website services",
   logoMark: "M",
 };
 
