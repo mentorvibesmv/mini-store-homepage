@@ -43,7 +43,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Simple, transparent pricing. Starter subscription from ₹999/month, Business from ₹4,999 setup, or fully custom websites from ₹25,000.",
+          "Simple, transparent pricing. Mini Store Basic from ₹299/month, Commerce Managed from ₹4,999 setup, or a Custom Website with a quote based on your requirements.",
       },
       { property: "og:title", content: "Pricing — Mini Store" },
       {
