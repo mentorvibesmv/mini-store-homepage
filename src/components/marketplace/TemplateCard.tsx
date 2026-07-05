@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Star, Eye, ExternalLink } from "lucide-react";
+import { Eye, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Template } from "@/data/site";
 
