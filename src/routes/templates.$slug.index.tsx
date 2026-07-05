@@ -8,7 +8,6 @@ import {
   ChevronRight,
   FileText,
   Wand2,
-  LifeBuoy,
   Home as HomeIcon,
   ChevronRight as CrumbSep,
 } from "lucide-react";
