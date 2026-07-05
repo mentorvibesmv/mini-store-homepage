@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Star, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import {
   Dialog,
   DialogContent,
