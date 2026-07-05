@@ -1524,7 +1524,7 @@ export const contactPage = {
         id: "respond",
         question: "How soon will you respond?",
         answer:
-          "We aim to reply during business hours, Monday to Saturday. Most queries are answered within a few hours.",
+          "We aim to reply during business hours, Monday to Saturday.",
       },
       {
         id: "custom",
