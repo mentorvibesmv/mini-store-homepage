@@ -420,8 +420,8 @@ export const features: Feature[] = [
 export const customCta = {
   title: "Need Something Unique?",
   description:
-    "Our senior team designs and ships fully bespoke websites — from brand systems to production code.",
-  benefits: ["Custom design", "Dedicated team", "Fast delivery"],
+    "We design and build fully bespoke websites — from brand systems to production code — around your business.",
+  benefits: ["Custom design", "Built for your brand", "Owned by you"],
   cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
