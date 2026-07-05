@@ -402,8 +402,8 @@ export const features: Feature[] = [
   },
   {
     id: "updates",
-    title: "Lifetime Updates Free & Regular",
-    description: "One purchase, forever kept fresh with new features.",
+    title: "Updates & Maintenance Included",
+    description: "We keep your website updated and running smoothly as part of your plan.",
     icon: "refresh",
     tone: "amber",
   },
