@@ -69,40 +69,8 @@ export type Stat = {
   tone: StatTone;
 };
 
-export const stats: Stat[] = [
-  {
-    id: "templates",
-    value: "240+",
-    title: "Templates",
-    description: "Ready-to-use designs",
-    icon: "templates",
-    tone: "violet",
-  },
-  {
-    id: "customers",
-    value: "18k+",
-    title: "Happy Customers",
-    description: "Across 40+ countries",
-    icon: "customers",
-    tone: "blue",
-  },
-  {
-    id: "projects",
-    value: "3.4k",
-    title: "Projects Shipped",
-    description: "Delivered on time",
-    icon: "projects",
-    tone: "green",
-  },
-  {
-    id: "satisfaction",
-    value: "99%",
-    title: "Satisfaction",
-    description: "Loved by our clients",
-    icon: "star",
-    tone: "orange",
-  },
-];
+// Stats intentionally empty — no verified figures to display yet.
+export const stats: Stat[] = [];
 
 // -------------------- Categories --------------------
 export type Category = {
