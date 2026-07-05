@@ -25,7 +25,7 @@ const searchSchema = z.object({
   q: z.string().catch("").default(""),
   category: z.string().catch("all").default("all"),
   sort: z
-    .enum(["featured", "newest", "popular", "price-asc", "price-desc"])
+    .enum(["featured", "newest"])
     .catch("featured")
     .default("featured"),
 });
