@@ -1229,7 +1229,7 @@ export const aboutPage = {
       {
         id: "time",
         title: "Save Time",
-        description: "Our ready-made templates and simple process help you A simpler path to getting online.",
+        description: "Our ready-made templates and simple process help you find a simpler path to getting online.",
         icon: "clock" as const,
         tone: "green" as AboutTone,
       },
