@@ -799,7 +799,7 @@ export const customWebsitesPage = {
         id: "support",
         question: "Do you offer after-sales support?",
         answer:
-          "Yes. Every custom website includes 3 months of free support for fixes and small changes, with affordable ongoing plans available afterwards.",
+          "Every standard custom website includes a 30-day warranty. Ongoing maintenance plans are available after the warranty period.",
         visible: true,
         displayOrder: 6,
       },
