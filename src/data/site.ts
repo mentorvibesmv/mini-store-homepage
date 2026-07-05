@@ -1147,9 +1147,9 @@ export const pricingPage = {
     items: [
       {
         id: "diff",
-        question: "What is the difference between Starter and Business plans?",
+        question: "What is the difference between Mini Store Basic and Commerce Managed?",
         answer:
-          "Starter uses a Mini Store subdomain (yourbusiness.ministore.in) on a simple monthly or yearly subscription. Business uses a pre-built template on your own custom domain (yourbusiness.com) with a one-time setup charge plus an ongoing subscription for hosting and maintenance.",
+          "Mini Store Basic uses a Mini Store subdomain (yourbusiness.ministore.in) on a simple monthly or yearly subscription. Mini Store Commerce Managed uses a pre-built template on your own custom domain (yourbusiness.com) with a one-time setup charge plus an ongoing subscription for hosting and maintenance.",
         visible: true,
         displayOrder: 1,
       },
@@ -1157,7 +1157,7 @@ export const pricingPage = {
         id: "upgrade",
         question: "Can I upgrade my plan later?",
         answer:
-          "Yes. You can move from Starter to Business, or from Business to a fully Custom Website at any time. We help you migrate your content and settings so nothing is lost.",
+          "Yes. You can move from Mini Store Basic to Commerce Managed, or from Commerce Managed to a fully Custom Website at any time. We help you migrate your content and settings so nothing is lost.",
         visible: true,
         displayOrder: 2,
       },
@@ -1165,9 +1165,17 @@ export const pricingPage = {
         id: "domain",
         question: "Do you provide domain and hosting?",
         answer:
-          "Starter includes the Mini Store subdomain and hosting. Business includes hosting and SSL; you can connect a domain you already own or register a new one — domain registration cost is billed separately by the domain provider. Custom Website domain, hosting, and maintenance are decided as part of your project quote.",
+          "Mini Store Basic includes the Mini Store subdomain and hosting. Commerce Managed includes hosting and SSL; you can connect a domain you already own or register a new one — domain registration cost is billed separately by the domain provider. Custom Website domain, hosting, and maintenance are decided as part of your project quote.",
         visible: true,
         displayOrder: 3,
+      },
+      {
+        id: "billing",
+        question: "How does billing work?",
+        answer:
+          "Subscription payments are collected in advance. Auto-renewal is only enabled with your explicit consent — otherwise we send you expiry reminders before your plan ends.",
+        visible: true,
+        displayOrder: 4,
       },
       {
         id: "hidden",
@@ -1175,23 +1183,23 @@ export const pricingPage = {
         answer:
           "No. Setup fees, subscriptions, and optional add-ons are shown separately on this page. Third-party costs like domain registration or premium integrations are always disclosed before you commit.",
         visible: true,
-        displayOrder: 4,
+        displayOrder: 5,
       },
       {
         id: "mobile",
         question: "Will my website be mobile responsive?",
         answer:
-          "Yes. Every plan — Starter, Business, and Custom — delivers a fully responsive website that works on desktops, laptops, tablets, and mobile devices.",
+          "Yes. Every plan — Mini Store Basic, Commerce Managed, and Custom Website — delivers a fully responsive website that works on desktops, laptops, tablets, and mobile devices.",
         visible: true,
-        displayOrder: 5,
+        displayOrder: 6,
       },
       {
         id: "after",
         question: "Do you offer after-sales support?",
         answer:
-          "Yes. Starter includes email support, Business includes priority support, and Custom Website support is defined by your selected support agreement. Maintenance add-ons are available for all plans.",
+          "Yes. Mini Store Basic includes email support, Commerce Managed includes priority support, and Custom Website support is defined by your selected support agreement. Maintenance add-ons are available for all plans.",
         visible: true,
-        displayOrder: 6,
+        displayOrder: 7,
       },
     ] satisfies FaqItem[],
   },
