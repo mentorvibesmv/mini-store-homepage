@@ -552,8 +552,8 @@ export const customWebsitesPage = {
       "Stand out online with a custom website designed to match your brand, engage your audience, and grow your business.",
     benefits: [
       { id: "design", label: "100% Custom Design", icon: "palette" },
-      { id: "delivery", label: "Fast Delivery", icon: "zap" },
-      { id: "support", label: "Dedicated Support", icon: "headset" },
+      { id: "yours", label: "Built for Your Brand", icon: "check" },
+      { id: "support", label: "Ongoing Support", icon: "headset" },
     ] satisfies CustomBenefit[],
     primary: { label: "Request Custom Website", href: customRequestHref },
     secondary: { label: "How It Works", href: "#process" },
