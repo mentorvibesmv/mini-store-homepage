@@ -1550,8 +1550,8 @@ export const contactPage = {
   cta: {
     title: "Let's build something amazing together",
     description:
-      "Whether you need a template or a fully custom website, we're ready to bring your ideas to life.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+      "Whether you'd like to start from a ready-made design or request a fully custom website, we're ready to bring your ideas to life.",
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     primary: { label: "Get in Touch" }, // scrolls to form; no href
     illustration: {
       src: aboutCtaImg,
