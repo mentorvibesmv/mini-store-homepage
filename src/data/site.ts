@@ -454,16 +454,13 @@ export const filterCategories: FilterCategory[] = [
 ];
 
 export type SortOption = {
-  id: "featured" | "newest" | "popular" | "price-asc" | "price-desc";
+  id: "featured" | "newest";
   label: string;
 };
 
 export const sortOptions: SortOption[] = [
   { id: "featured", label: "Featured" },
   { id: "newest", label: "Newest" },
-  { id: "popular", label: "Most Popular" },
-  { id: "price-asc", label: "Price: Low to High" },
-  { id: "price-desc", label: "Price: High to Low" },
 ];
 
 export const marketplaceCta = {
