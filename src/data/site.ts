@@ -895,7 +895,7 @@ export const pricingPage = {
     trust: [
       { id: "clear", label: "Clear Pricing", icon: "shield" as const },
       { id: "flex", label: "Flexible Options", icon: "check" as const },
-      { id: "support", label: "Dedicated Support", icon: "headset" as const },
+      { id: "support", label: "Ongoing Support", icon: "headset" as const },
     ],
     visual: { src: customHero, alt: "Mini Store website preview on desktop and mobile" },
   },
