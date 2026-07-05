@@ -421,7 +421,7 @@ export const customCta = {
   title: "Need Something Unique?",
   description:
     "We design and build fully bespoke websites — from brand systems to production code — around your business.",
-  benefits: ["Custom design", "Built for your brand", "Owned by you"],
+  benefits: ["Custom design", "Built for your brand", "Built Around Your Needs"],
   cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
@@ -1229,7 +1229,7 @@ export const aboutPage = {
       {
         id: "time",
         title: "Save Time",
-        description: "Our ready-made templates and simple process help you go online in no time.",
+        description: "Our ready-made templates and simple process help you find a simpler path to getting online.",
         icon: "clock" as const,
         tone: "green" as AboutTone,
       },
