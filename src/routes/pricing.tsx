@@ -293,8 +293,7 @@ function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter }) {
           <span className="text-[14px] text-muted-foreground">/month</span>
         </div>
         <div className="mt-1.5 text-[12.5px] text-muted-foreground">
-          or {plan.annualPrice} /year{" "}
-          {plan.annualSaving && <span className="text-foreground/70">({plan.annualSaving})</span>}
+          or {plan.annualPrice} /year
         </div>
       </div>
       <DomainBox
