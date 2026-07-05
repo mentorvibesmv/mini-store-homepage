@@ -113,11 +113,6 @@ export type Template = {
   shortDescription: string;
   fullDescription?: string;
   category: string; // matches Category.label
-  price: number; // numeric for sorting
-  priceLabel: string;
-  rating: number;
-  reviews: number;
-  customerCount?: string; // e.g. "1,245+ Happy Customers"
   image: string;
   gallery?: string[];
   benefits?: string[];
