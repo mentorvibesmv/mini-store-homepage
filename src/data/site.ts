@@ -1297,7 +1297,7 @@ export const aboutPage = {
         id: "choose",
         number: 1,
         title: "Choose",
-        description: "Pick a template or choose a custom website option.",
+        description: "Choose a starting design or request a custom website.",
         icon: "search" as const,
         tone: "violet" as AboutTone,
       },
