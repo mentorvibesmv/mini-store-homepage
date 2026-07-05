@@ -31,17 +31,17 @@ export const Route = createFileRoute("/templates/")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Templates Marketplace — Mini Store" },
+      { title: "Templates Gallery — Mini Store" },
       {
         name: "description",
         content:
-          "Explore premium website templates for restaurants, fashion, real estate, medical, fitness, education, portfolio and more.",
+          "Browse website designs for restaurants, fashion, real estate, medical, fitness, education, portfolio and more.",
       },
-      { property: "og:title", content: "Templates Marketplace — Mini Store" },
+      { property: "og:title", content: "Templates Gallery — Mini Store" },
       {
         property: "og:description",
         content:
-          "Explore premium website templates designed for real businesses, then make them your own.",
+          "Browse website designs made for real businesses, then make them your own with a Mini Store plan.",
       },
     ],
   }),
