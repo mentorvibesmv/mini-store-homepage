@@ -17,7 +17,7 @@ export type NavItem = { id: string; label: string; href: string };
 
 export const brand = {
   name: "Mini Store",
-  tagline: "Premium website templates & custom builds",
+  tagline: "Website designs and custom website services",
   logoMark: "M",
 };
 
@@ -42,7 +42,7 @@ export const hero = {
   headlineLines: ["Build Your Business", "Website ", "Than Ever"],
   headlineGradientWord: "Faster",
   description:
-    "Buy premium templates, tailor them to your brand, or commission a fully custom build. One studio, every stage of your website.",
+    "Browse ready-made website designs, choose a Mini Store plan, or request a separate custom website quote — all in one place.",
   primary: { label: "Browse Templates", href: "/templates" },
   secondary: { label: "Request Custom Website", href: "/custom-websites" },
   benefits: [
@@ -375,7 +375,7 @@ export const features: Feature[] = [
   {
     id: "design",
     title: "Modern & Unique Designs",
-    description: "Crafted by senior designers with a premium editorial aesthetic.",
+    description: "Crafted with a clean, modern editorial aesthetic.",
     icon: "sparkles",
     tone: "violet",
   },
@@ -409,8 +409,8 @@ export const features: Feature[] = [
   },
   {
     id: "support",
-    title: "Dedicated Support We're Here to Help",
-    description: "Real people, real answers — usually within a few hours.",
+    title: "Support When You Need It",
+    description: "Reach real people through the support channels included in your plan.",
     icon: "life-buoy",
     tone: "sky",
   },
@@ -420,18 +420,18 @@ export const features: Feature[] = [
 export const customCta = {
   title: "Need Something Unique?",
   description:
-    "Our senior team designs and ships fully bespoke websites — from brand systems to production code.",
-  benefits: ["Custom design", "Dedicated team", "Fast delivery"],
+    "We design and build fully bespoke websites — from brand systems to production code — around your business.",
+  benefits: ["Custom design", "Built for your brand", "Owned by you"],
   cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
 // -------------------- Marketplace (Templates page) --------------------
 export const marketplaceHero = {
-  badge: "Website Template Marketplace",
+  badge: "Website Design Gallery",
   titleLine1: "Find the right",
   titleLine2: "starting point.",
   description:
-    "Explore premium website templates designed for real businesses, then make them your own.",
+    "Browse website designs made for real businesses. Choose a starting design and pair it with a Mini Store plan.",
   previews: [
     { id: "restaurant", src: tplRestaurant, alt: "Restaurant template preview" },
     { id: "realestate", src: tplRealEstate, alt: "Real estate template preview" },
@@ -466,13 +466,13 @@ export const sortOptions: SortOption[] = [
 export const marketplaceCta = {
   title: "Can't find the right fit?",
   description: "Tell us what your business needs and we'll create a website around it.",
-  benefits: ["100% Custom Design", "Fast Delivery", "Dedicated Support"],
+  benefits: ["100% Custom Design", "Built for your brand", "Ongoing Support"],
   cta: { label: "Request Custom Website", href: "/custom-websites" },
 };
 
 // -------------------- Footer --------------------
 export const footer = {
-  tagline: "Premium templates and custom websites for ambitious brands.",
+  tagline: "Website designs and custom website services for growing businesses.",
   columns: [
     {
       id: "products",
@@ -482,7 +482,6 @@ export const footer = {
         { label: "Custom Websites", href: "/custom-websites" },
         { label: "Pricing", href: "/pricing" },
         { label: "How It Works", href: "/how-it-works" },
-        { label: "Become an Affiliate", href: "/#" },
       ],
     },
     {
@@ -491,34 +490,9 @@ export const footer = {
       links: [
         { label: "About Us", href: "/about" },
         { label: "Contact", href: "/contact" },
-        { label: "Reviews", href: "/#" },
-        { label: "Careers", href: "/#" },
-      ],
-    },
-    {
-      id: "support",
-      title: "Support",
-      links: [
-        { label: "Help Center", href: "/#" },
-        { label: "Documentation", href: "/#" },
-        { label: "Community", href: "/#" },
-        { label: "Status", href: "/#" },
       ],
     },
   ],
-  newsletter: {
-    title: "Newsletter",
-    description: "Get new templates and updates. One email per month.",
-    placeholder: "you@studio.com",
-    cta: "Subscribe",
-  },
-  socials: [
-    { id: "x", label: "X", href: "/#" },
-    { id: "in", label: "LinkedIn", href: "/#" },
-    { id: "dr", label: "Dribbble", href: "/#" },
-    { id: "ig", label: "Instagram", href: "/#" },
-  ],
-  payments: ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay"],
   legal: `© ${new Date().getFullYear()} Mini Store. All rights reserved.`,
 };
 
@@ -578,8 +552,8 @@ export const customWebsitesPage = {
       "Stand out online with a custom website designed to match your brand, engage your audience, and grow your business.",
     benefits: [
       { id: "design", label: "100% Custom Design", icon: "palette" },
-      { id: "delivery", label: "Fast Delivery", icon: "zap" },
-      { id: "support", label: "Dedicated Support", icon: "headset" },
+      { id: "yours", label: "Built for Your Brand", icon: "check" },
+      { id: "support", label: "Ongoing Support", icon: "headset" },
     ] satisfies CustomBenefit[],
     primary: { label: "Request Custom Website", href: customRequestHref },
     secondary: { label: "How It Works", href: "#process" },
@@ -834,7 +808,7 @@ export const customWebsitesPage = {
   finalCta: {
     title: "Ready to grow your business online?",
     description: "Let's build a website that represents your brand and drives real results.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     cta: { label: "Request Custom Website", href: customRequestHref },
     illustration: { src: customCtaIllus, alt: "Custom website chat illustration" },
   },
@@ -921,7 +895,7 @@ export const pricingPage = {
     trust: [
       { id: "clear", label: "Clear Pricing", icon: "shield" as const },
       { id: "flex", label: "Flexible Options", icon: "check" as const },
-      { id: "support", label: "Dedicated Support", icon: "headset" as const },
+      { id: "support", label: "Ongoing Support", icon: "headset" as const },
     ],
     visual: { src: customHero, alt: "Mini Store website preview on desktop and mobile" },
   },
@@ -1207,7 +1181,7 @@ export const pricingPage = {
   finalCta: {
     title: "Still not sure which plan is right for you?",
     description: "Let's discuss your requirements and help you choose the best solution.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     cta: { label: "Talk to Our Expert", href: customRequestHref },
     illustration: { src: customCtaIllus, alt: "Consultation illustration" },
   },
@@ -1323,7 +1297,7 @@ export const aboutPage = {
         id: "choose",
         number: 1,
         title: "Choose",
-        description: "Pick a template or choose a custom website option.",
+        description: "Choose a starting design or request a custom website.",
         icon: "search" as const,
         tone: "violet" as AboutTone,
       },
@@ -1405,8 +1379,8 @@ export const aboutPage = {
   cta: {
     title: "Let's Build Something Great Together",
     description:
-      "Whether you need a template or a fully custom website, we're here to bring your ideas to life.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+      "Whether you'd like to start from a ready-made design or request a fully custom website, we're here to bring your ideas to life.",
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     primary: { label: "Get in Touch", href: "/contact" },
     illustration: {
       src: aboutCtaImg,
@@ -1451,7 +1425,7 @@ export const contactPage = {
       weekend: "Sunday: Closed",
     },
     liveChat: { enabled: false, statusLabel: "Coming Soon" },
-    responseGuidance: "We usually reply within a few hours.",
+    responseGuidance: "We reply during our business hours.",
   },
 
   hero: {
@@ -1461,9 +1435,9 @@ export const contactPage = {
     description:
       "Have a question, need help, or want to start a project? Fill out the form and our team will get back to you as soon as possible.",
     trustPoints: [
-      { id: "quick", label: "Quick Response", icon: "check" as const },
+      { id: "real", label: "Real People", icon: "check" as const },
       { id: "friendly", label: "Friendly Support", icon: "smile" as const },
-      { id: "noobligation", label: "No Obligation", icon: "check" as const },
+      { id: "transparent", label: "Transparent Pricing", icon: "check" as const },
     ],
     image: {
       src: contactHeroImg,
@@ -1549,8 +1523,7 @@ export const contactPage = {
       {
         id: "respond",
         question: "How soon will you respond?",
-        answer:
-          "We aim to reply during business hours, Monday to Saturday. Most queries are answered within a few hours.",
+        answer: "We aim to reply during business hours, Monday to Saturday.",
       },
       {
         id: "custom",
@@ -1576,8 +1549,8 @@ export const contactPage = {
   cta: {
     title: "Let's build something amazing together",
     description:
-      "Whether you need a template or a fully custom website, we're ready to bring your ideas to life.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+      "Whether you'd like to start from a ready-made design or request a fully custom website, we're ready to bring your ideas to life.",
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     primary: { label: "Get in Touch" }, // scrolls to form; no href
     illustration: {
       src: aboutCtaImg,
@@ -1718,7 +1691,7 @@ export const howItWorksPage = {
   cta: {
     title: "Ready to Get Started?",
     description: "Let's build a website that helps your business grow. We're ready when you are!",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     primary: { label: "Get in Touch", href: "/contact" },
     illustration: {
       src: aboutCtaImg,
