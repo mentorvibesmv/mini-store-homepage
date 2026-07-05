@@ -24,10 +24,7 @@ const PAGE_SIZE = 8;
 const searchSchema = z.object({
   q: z.string().catch("").default(""),
   category: z.string().catch("all").default("all"),
-  sort: z
-    .enum(["featured", "newest"])
-    .catch("featured")
-    .default("featured"),
+  sort: z.enum(["featured", "newest"]).catch("featured").default("featured"),
 });
 
 export const Route = createFileRoute("/templates/")({
