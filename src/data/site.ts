@@ -699,7 +699,7 @@ export const customWebsitesPage = {
       "Basic On-Page SEO",
       "Social Media Integration",
       "Training & Documentation",
-      "3 Months Free Support",
+      "30-Day Warranty",
     ],
     pricing: {
       label: "Custom Website Pricing",
