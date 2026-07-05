@@ -77,18 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mini Store — Premium Website Templates & Custom Builds" },
+      { title: "Mini Store — Website Designs & Custom Websites" },
       {
         name: "description",
         content:
-          "Mini Store is a premium marketplace for website templates, tailored customizations, and fully custom builds by a senior design team.",
+          "Mini Store offers website designs and custom website services to help businesses launch and grow online.",
       },
       { name: "author", content: "Mini Store" },
-      { property: "og:title", content: "Mini Store — Premium Website Templates & Custom Builds" },
+      { property: "og:title", content: "Mini Store — Website Designs & Custom Websites" },
       {
         property: "og:description",
         content:
-          "Buy premium templates, customize existing ones, or commission a fully bespoke website.",
+          "Choose a website design and a Mini Store plan, or request a separate custom website quote.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
