@@ -1379,8 +1379,8 @@ export const aboutPage = {
   cta: {
     title: "Let's Build Something Great Together",
     description:
-      "Whether you need a template or a fully custom website, we're here to bring your ideas to life.",
-    benefits: ["Free Consultation", "No Obligation", "Quick Response"],
+      "Whether you'd like to start from a ready-made design or request a fully custom website, we're here to bring your ideas to life.",
+    benefits: ["Talk to our team", "Transparent pricing", "Clear next steps"],
     primary: { label: "Get in Touch", href: "/contact" },
     illustration: {
       src: aboutCtaImg,
