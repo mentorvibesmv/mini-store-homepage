@@ -39,24 +39,16 @@ function TemplatePreviewPage() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="flex flex-col gap-3 p-8 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-primary">
-                      {template.category}
-                    </p>
-                    <h1 className="mt-1 text-2xl font-bold text-foreground sm:text-3xl">
-                      {template.title}
-                    </h1>
-                    <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-                      {template.shortDescription}
-                    </p>
-                  </div>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-primary-gradient px-5 py-3 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:shadow-glow"
-                  >
-                    <ExternalLink className="h-4 w-4" /> Open Full Demo
-                  </a>
+                <div className="p-8">
+                  <p className="text-xs font-medium uppercase tracking-wider text-primary">
+                    {template.category}
+                  </p>
+                  <h1 className="mt-1 text-2xl font-bold text-foreground sm:text-3xl">
+                    {template.title}
+                  </h1>
+                  <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+                    {template.shortDescription}
+                  </p>
                 </div>
               </>
             ) : (
