@@ -40,6 +40,9 @@ export const Route = createFileRoute("/pricing_/start")({
 
 function PricingStartPage() {
   const { plan, billing, design } = Route.useSearch();
+  const validDesign = design
+    ? templates.find((t) => t.slug === design && t.visible)?.slug
+    : undefined;
 
   return (
     <SiteLayout>
