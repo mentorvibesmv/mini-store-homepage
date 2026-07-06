@@ -110,6 +110,7 @@ function PlanSummary({
     designSlug !== undefined
       ? templates.find((t) => t.slug === designSlug && t.visible)
       : undefined;
+  const validDesignSlug = design?.slug;
 
   return (
     <div className="mt-10 space-y-6">
