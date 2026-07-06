@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge, Button } from "@/components/site";
-import { pricingPage } from "@/data/site";
+import { pricingPage, templates } from "@/data/site";
 import {
   Accordion,
   AccordionItem,
