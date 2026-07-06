@@ -325,7 +325,7 @@ function FeatureList({ items }: { items: string[] }) {
   );
 }
 
-function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter }) {
+function StarterCard({ plan, billing }: { plan: typeof pricingPage.plans.starter; billing: Billing }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone}>
@@ -352,15 +352,16 @@ function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter }) {
       />
       <FeatureList items={plan.features} />
       <div className="mt-auto pt-6">
-        <a
-          href={plan.cta.href}
+        <Link
+          to="/pricing/start"
+          search={{ plan: "starter", billing }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
           )}
         >
           {plan.cta.label}
-        </a>
+        </Link>
       </div>
     </PlanShell>
   );
