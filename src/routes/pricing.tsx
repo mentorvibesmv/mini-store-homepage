@@ -367,7 +367,7 @@ function StarterCard({ plan, billing }: { plan: typeof pricingPage.plans.starter
   );
 }
 
-function BusinessCard({ plan }: { plan: typeof pricingPage.plans.business }) {
+function BusinessCard({ plan, billing }: { plan: typeof pricingPage.plans.business; billing: Billing }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone} popular={plan.popular}>
@@ -398,15 +398,16 @@ function BusinessCard({ plan }: { plan: typeof pricingPage.plans.business }) {
       />
       <FeatureList items={plan.features} />
       <div className="mt-auto pt-6">
-        <a
-          href={plan.cta.href}
+        <Link
+          to="/pricing/start"
+          search={{ plan: "business", billing }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
           )}
         >
           {plan.cta.label}
-        </a>
+        </Link>
       </div>
     </PlanShell>
   );
