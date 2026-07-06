@@ -50,7 +50,7 @@ function PricingStartPage() {
         <Container className="max-w-3xl">
           <Link
             to="/pricing"
-            search={design ? { design } : {}}
+            search={validDesign ? { design: validDesign } : {}}
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
