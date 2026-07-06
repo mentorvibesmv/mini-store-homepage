@@ -31,9 +31,8 @@ export const navigation: NavItem[] = [
 ];
 
 export const navActions = {
-  loginLabel: "Login",
-  ctaLabel: "Get Custom Website",
-  ctaHref: "/custom-websites",
+  ctaLabel: "See Plans",
+  ctaHref: "/pricing",
 };
 
 // -------------------- Hero --------------------

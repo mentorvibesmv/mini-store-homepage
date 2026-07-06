@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import { Search, ShoppingBag, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Container, Button } from "./primitives";
 import { brand, navigation, navActions } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -67,25 +67,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <button
-            aria-label="Search"
-            className="hidden h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
-          >
-            <Search className="h-[18px] w-[18px]" />
-          </button>
-          <a
-            href="#"
-            className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground sm:inline-block sm:px-2"
-          >
-            {navActions.loginLabel}
-          </a>
-          <button
-            aria-label="Cart"
-            className="relative hidden h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
-          >
-            <ShoppingBag className="h-[18px] w-[18px]" />
-            <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-          </button>
           <Button href={navActions.ctaHref} className="hidden md:inline-flex">
             {navActions.ctaLabel}
           </Button>
@@ -112,14 +93,8 @@ export function Navbar() {
                 {item.label}
               </a>
             ))}
-            <div className="mt-2 flex items-center gap-2">
-              <a
-                href="#"
-                className="flex-1 rounded-full border border-border px-4 py-2.5 text-center text-sm text-foreground"
-              >
-                {navActions.loginLabel}
-              </a>
-              <Button href={navActions.ctaHref} className="flex-1 justify-center">
+            <div className="mt-2">
+              <Button href={navActions.ctaHref} className="w-full justify-center">
                 {navActions.ctaLabel}
               </Button>
             </div>
