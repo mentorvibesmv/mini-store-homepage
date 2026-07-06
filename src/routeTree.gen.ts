@@ -18,7 +18,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
-import { Route as PricingStartRouteImport } from './routes/pricing.start'
+import { Route as PricingStartRouteImport } from './routes/pricing_.start'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as TemplatesSlugIndexRouteImport } from './routes/templates.$slug.index'
@@ -71,9 +71,9 @@ const TemplatesIndexRoute = TemplatesIndexRouteImport.update({
   getParentRoute: () => TemplatesRoute,
 } as any)
 const PricingStartRoute = PricingStartRouteImport.update({
-  id: '/start',
-  path: '/start',
-  getParentRoute: () => PricingRoute,
+  id: '/pricing_/start',
+  path: '/pricing/start',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
   Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
@@ -111,7 +111,7 @@ export interface FileRoutesByFullPath {
   '/custom-websites': typeof CustomWebsitesRoute
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
-  '/pricing': typeof PricingRouteWithChildren
+  '/pricing': typeof PricingRoute
   '/templates': typeof TemplatesRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -128,7 +128,7 @@ export interface FileRoutesByTo {
   '/custom-websites': typeof CustomWebsitesRoute
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
-  '/pricing': typeof PricingRouteWithChildren
+  '/pricing': typeof PricingRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/pricing/start': typeof PricingStartRoute
@@ -145,11 +145,11 @@ export interface FileRoutesById {
   '/custom-websites': typeof CustomWebsitesRoute
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
-  '/pricing': typeof PricingRouteWithChildren
+  '/pricing': typeof PricingRoute
   '/templates': typeof TemplatesRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
-  '/pricing/start': typeof PricingStartRoute
+  '/pricing_/start': typeof PricingStartRoute
   '/templates/': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
@@ -201,7 +201,7 @@ export interface FileRouteTypes {
     | '/templates'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
-    | '/pricing/start'
+    | '/pricing_/start'
     | '/templates/'
     | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
@@ -215,10 +215,11 @@ export interface RootRouteChildren {
   CustomWebsitesRoute: typeof CustomWebsitesRoute
   HowItWorksRoute: typeof HowItWorksRoute
   McpRoute: typeof McpRoute
-  PricingRoute: typeof PricingRouteWithChildren
+  PricingRoute: typeof PricingRoute
   TemplatesRoute: typeof TemplatesRouteWithChildren
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  PricingStartRoute: typeof PricingStartRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
@@ -287,12 +288,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesIndexRouteImport
       parentRoute: typeof TemplatesRoute
     }
-    '/pricing/start': {
-      id: '/pricing/start'
-      path: '/start'
+    '/pricing_/start': {
+      id: '/pricing_/start'
+      path: '/pricing/start'
       fullPath: '/pricing/start'
       preLoaderRoute: typeof PricingStartRouteImport
-      parentRoute: typeof PricingRoute
+      parentRoute: typeof rootRouteImport
     }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
@@ -332,17 +333,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface PricingRouteChildren {
-  PricingStartRoute: typeof PricingStartRoute
-}
-
-const PricingRouteChildren: PricingRouteChildren = {
-  PricingStartRoute: PricingStartRoute,
-}
-
-const PricingRouteWithChildren =
-  PricingRoute._addFileChildren(PricingRouteChildren)
-
 interface TemplatesRouteChildren {
   TemplatesIndexRoute: typeof TemplatesIndexRoute
   TemplatesSlugPreviewRoute: typeof TemplatesSlugPreviewRoute
@@ -366,11 +356,12 @@ const rootRouteChildren: RootRouteChildren = {
   CustomWebsitesRoute: CustomWebsitesRoute,
   HowItWorksRoute: HowItWorksRoute,
   McpRoute: McpRoute,
-  PricingRoute: PricingRouteWithChildren,
+  PricingRoute: PricingRoute,
   TemplatesRoute: TemplatesRouteWithChildren,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  PricingStartRoute: PricingStartRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
