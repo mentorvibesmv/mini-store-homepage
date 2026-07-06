@@ -45,9 +45,17 @@ export function Templates() {
                 <p className="text-xs text-muted-foreground line-clamp-2">{t.shortDescription}</p>
                 <div className="mt-auto flex items-center gap-2 pt-2">
                   <Link
-                    to="/templates/$slug/preview"
+                    to="/templates/$slug"
                     params={{ slug: t.slug }}
                     className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-primary-gradient px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:shadow-glow"
+                  >
+                    View Details
+                  </Link>
+                  <Link
+                    to="/templates/$slug/preview"
+                    params={{ slug: t.slug }}
+                    aria-label={`Live demo of ${t.title}`}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-background px-3 py-2.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/30"
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> Live Demo
                   </Link>
