@@ -224,9 +224,9 @@ function PlansSection() {
         <div className="flex justify-center">
           <BillingToggle value={billing} onChange={setBilling} />
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <StarterCard plan={starterWithHref} />
-          <BusinessCard plan={businessWithHref} />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <StarterCard plan={starterWithHref} billing={billing} />
+          <BusinessCard plan={businessWithHref} billing={billing} />
           <CustomCard plan={custom} />
         </div>
       </Container>
