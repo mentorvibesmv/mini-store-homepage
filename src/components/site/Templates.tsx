@@ -51,13 +51,6 @@ export function Templates() {
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> Live Demo
                   </Link>
-                  <Link
-                    to="/templates"
-                    aria-label="Quick preview"
-                    className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border bg-background text-foreground transition-all hover:border-foreground/30 hover:-translate-y-0.5"
-                  >
-                    <Eye className="h-4 w-4" />
-                  </Link>
                 </div>
               </div>
             </article>
