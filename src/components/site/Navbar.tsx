@@ -67,25 +67,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <button
-            aria-label="Search"
-            className="hidden h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
-          >
-            <Search className="h-[18px] w-[18px]" />
-          </button>
-          <a
-            href="#"
-            className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground sm:inline-block sm:px-2"
-          >
-            {navActions.loginLabel}
-          </a>
-          <button
-            aria-label="Cart"
-            className="relative hidden h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
-          >
-            <ShoppingBag className="h-[18px] w-[18px]" />
-            <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-          </button>
           <Button href={navActions.ctaHref} className="hidden md:inline-flex">
             {navActions.ctaLabel}
           </Button>
