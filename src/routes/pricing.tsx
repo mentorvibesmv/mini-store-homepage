@@ -233,18 +233,28 @@ function PlansSection() {
     <Section>
       <Container>
         {design && (
-          <div className="mx-auto mb-6 flex max-w-xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card px-5 py-3 shadow-soft">
-            <div className="min-w-0">
-              <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                Selected Design
-              </div>
-              <div className="mt-0.5 truncate text-[14px] font-semibold text-foreground">
-                {design.title}
+          <div className="mx-auto mb-8 flex max-w-2xl flex-col gap-4 rounded-2xl border border-primary/15 bg-primary-soft/40 p-5 shadow-soft sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:p-6">
+            <div className="flex items-center gap-4 sm:gap-5">
+              <img
+                src={design.image}
+                alt={design.title}
+                className="h-16 w-16 shrink-0 rounded-xl object-cover shadow-soft"
+              />
+              <div className="min-w-0">
+                <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-primary/80">
+                  Selected Design
+                </div>
+                <div className="mt-0.5 truncate text-[16px] font-bold text-foreground">
+                  {design.title}
+                </div>
+                <p className="mt-1 text-[13px] leading-snug text-muted-foreground">
+                  This design will be used with your selected plan.
+                </p>
               </div>
             </div>
             <Link
               to="/templates"
-              className="text-[13px] font-medium text-primary hover:underline"
+              className="inline-flex shrink-0 items-center justify-center self-start rounded-full border border-border bg-card px-5 py-2.5 text-[13px] font-medium text-foreground shadow-soft transition-colors hover:border-foreground/20 sm:self-auto"
             >
               Change Design
             </Link>
