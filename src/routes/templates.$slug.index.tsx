@@ -273,10 +273,11 @@ function TemplateDetailsPage() {
                   <ExternalLink className="h-4 w-4" /> Live Demo
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/pricing"
+                  search={{ design: template.slug }}
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-foreground/20"
                 >
-                  <Sliders className="h-4 w-4" /> Customize This Template
+                  <Sliders className="h-4 w-4" /> Use This Design
                 </Link>
               </div>
 

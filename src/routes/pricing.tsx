@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge, Button } from "@/components/site";
-import { pricingPage } from "@/data/site";
+import { pricingPage, templates } from "@/data/site";
 import {
   Accordion,
   AccordionItem,
@@ -37,6 +37,12 @@ import {
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/pricing")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    design:
+      typeof search.design === "string" && search.design.length > 0
+        ? search.design
+        : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Pricing — Mini Store" },
@@ -215,18 +221,41 @@ function BillingToggle({
 
 function PlansSection() {
   const { starter, business, custom } = pricingPage.plans;
+  const { design: designSlug } = Route.useSearch();
+  const design = designSlug
+    ? templates.find((t) => t.slug === designSlug && t.visible)
+    : undefined;
+  const validDesignSlug = design?.slug;
   const [billing, setBilling] = useState<Billing>("monthly");
   const starterWithHref = { ...starter, cta: { ...starter.cta, href: withBilling(starter.cta.href, billing) } };
   const businessWithHref = { ...business, cta: { ...business.cta, href: withBilling(business.cta.href, billing) } };
   return (
     <Section>
       <Container>
+        {design && (
+          <div className="mx-auto mb-6 flex max-w-xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card px-5 py-3 shadow-soft">
+            <div className="min-w-0">
+              <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                Selected Design
+              </div>
+              <div className="mt-0.5 truncate text-[14px] font-semibold text-foreground">
+                {design.title}
+              </div>
+            </div>
+            <Link
+              to="/templates"
+              className="text-[13px] font-medium text-primary hover:underline"
+            >
+              Change Design
+            </Link>
+          </div>
+        )}
         <div className="flex justify-center">
           <BillingToggle value={billing} onChange={setBilling} />
         </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <StarterCard plan={starterWithHref} billing={billing} />
-          <BusinessCard plan={businessWithHref} billing={billing} />
+          <StarterCard plan={starterWithHref} billing={billing} design={validDesignSlug} />
+          <BusinessCard plan={businessWithHref} billing={billing} design={validDesignSlug} />
           <CustomCard plan={custom} />
         </div>
       </Container>
@@ -325,7 +354,7 @@ function FeatureList({ items }: { items: string[] }) {
   );
 }
 
-function StarterCard({ plan, billing }: { plan: typeof pricingPage.plans.starter; billing: Billing }) {
+function StarterCard({ plan, billing, design }: { plan: typeof pricingPage.plans.starter; billing: Billing; design?: string }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone}>
@@ -354,7 +383,7 @@ function StarterCard({ plan, billing }: { plan: typeof pricingPage.plans.starter
       <div className="mt-auto pt-6">
         <Link
           to="/pricing/start"
-          search={{ plan: "starter", billing }}
+          search={{ plan: "starter", billing, ...(design ? { design } : {}) }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
@@ -367,7 +396,7 @@ function StarterCard({ plan, billing }: { plan: typeof pricingPage.plans.starter
   );
 }
 
-function BusinessCard({ plan, billing }: { plan: typeof pricingPage.plans.business; billing: Billing }) {
+function BusinessCard({ plan, billing, design }: { plan: typeof pricingPage.plans.business; billing: Billing; design?: string }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone} popular={plan.popular}>
@@ -400,7 +429,7 @@ function BusinessCard({ plan, billing }: { plan: typeof pricingPage.plans.busine
       <div className="mt-auto pt-6">
         <Link
           to="/pricing/start"
-          search={{ plan: "business", billing }}
+          search={{ plan: "business", billing, ...(design ? { design } : {}) }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
