@@ -11,10 +11,10 @@ function statusBadge(t: Template): { label: string; tone: string } | null {
 
 export function TemplateCard({
   template,
-  onQuickPreview,
+  onQuickPreview: _onQuickPreview,
 }: {
   template: Template;
-  onQuickPreview: (t: Template) => void;
+  onQuickPreview?: (t: Template) => void;
 }) {
   const badge = statusBadge(template);
 
@@ -46,31 +46,14 @@ export function TemplateCard({
 
         <p className="text-xs text-muted-foreground line-clamp-2">{template.shortDescription}</p>
 
-
-        <div className="mt-auto flex items-center gap-2 pt-2">
+        <div className="mt-auto pt-4">
           <Link
             to="/templates/$slug"
             params={{ slug: template.slug }}
-            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-primary-gradient px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:shadow-glow"
+            className="inline-flex h-11 w-full items-center justify-center rounded-full bg-primary-gradient px-5 text-sm font-medium text-primary-foreground shadow-soft transition-all hover:shadow-glow"
           >
             View Details
           </Link>
-          <Link
-            to="/templates/$slug/preview"
-            params={{ slug: template.slug }}
-            aria-label={`Live demo of ${template.title}`}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-background px-3 py-2.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/30"
-          >
-            <ExternalLink className="h-3.5 w-3.5" /> Live Demo
-          </Link>
-          <button
-            type="button"
-            aria-label={`Quick preview ${template.title}`}
-            onClick={() => onQuickPreview(template)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border bg-background text-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/30"
-          >
-            <Eye className="h-4 w-4" />
-          </button>
         </div>
       </div>
     </article>
