@@ -54,7 +54,7 @@ function PricingStartPage() {
           </Link>
 
           <div className="mt-6">
-            <Badge>Step 1 of 2 · Plan Selected</Badge>
+            <Badge>Plan Selected</Badge>
             <h1 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start Your Mini Store
             </h1>
