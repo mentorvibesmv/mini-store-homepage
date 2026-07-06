@@ -221,18 +221,41 @@ function BillingToggle({
 
 function PlansSection() {
   const { starter, business, custom } = pricingPage.plans;
+  const { design: designSlug } = Route.useSearch();
+  const design = designSlug
+    ? templates.find((t) => t.slug === designSlug && t.visible)
+    : undefined;
+  const validDesignSlug = design?.slug;
   const [billing, setBilling] = useState<Billing>("monthly");
   const starterWithHref = { ...starter, cta: { ...starter.cta, href: withBilling(starter.cta.href, billing) } };
   const businessWithHref = { ...business, cta: { ...business.cta, href: withBilling(business.cta.href, billing) } };
   return (
     <Section>
       <Container>
+        {design && (
+          <div className="mx-auto mb-6 flex max-w-xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card px-5 py-3 shadow-soft">
+            <div className="min-w-0">
+              <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                Selected Design
+              </div>
+              <div className="mt-0.5 truncate text-[14px] font-semibold text-foreground">
+                {design.title}
+              </div>
+            </div>
+            <Link
+              to="/templates"
+              className="text-[13px] font-medium text-primary hover:underline"
+            >
+              Change Design
+            </Link>
+          </div>
+        )}
         <div className="flex justify-center">
           <BillingToggle value={billing} onChange={setBilling} />
         </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <StarterCard plan={starterWithHref} billing={billing} />
-          <BusinessCard plan={businessWithHref} billing={billing} />
+          <StarterCard plan={starterWithHref} billing={billing} design={validDesignSlug} />
+          <BusinessCard plan={businessWithHref} billing={billing} design={validDesignSlug} />
           <CustomCard plan={custom} />
         </div>
       </Container>
