@@ -170,14 +170,63 @@ function PricingHero() {
 }
 
 // ---------- Plans ----------
+type Billing = "monthly" | "annual";
+
+function withBilling(href: string, billing: Billing): string {
+  const sep = href.includes("?") ? "&" : "?";
+  return `${href}${sep}billing=${billing}`;
+}
+
+function BillingToggle({
+  value,
+  onChange,
+}: {
+  value: Billing;
+  onChange: (v: Billing) => void;
+}) {
+  return (
+    <div
+      role="tablist"
+      aria-label="Billing cadence"
+      className="mx-auto mb-8 inline-flex items-center gap-1 rounded-full border border-border bg-card p-1 shadow-soft"
+    >
+      {(["monthly", "annual"] as const).map((opt) => {
+        const active = value === opt;
+        return (
+          <button
+            key={opt}
+            role="tab"
+            aria-selected={active}
+            onClick={() => onChange(opt)}
+            className={cn(
+              "rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors",
+              active
+                ? "bg-primary-gradient text-primary-foreground shadow-soft"
+                : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            {opt === "monthly" ? "Monthly" : "Annual"}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function PlansSection() {
   const { starter, business, custom } = pricingPage.plans;
+  const [billing, setBilling] = useState<Billing>("monthly");
+  const starterWithHref = { ...starter, cta: { ...starter.cta, href: withBilling(starter.cta.href, billing) } };
+  const businessWithHref = { ...business, cta: { ...business.cta, href: withBilling(business.cta.href, billing) } };
   return (
     <Section>
       <Container>
+        <div className="flex justify-center">
+          <BillingToggle value={billing} onChange={setBilling} />
+        </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <StarterCard plan={starter} />
-          <BusinessCard plan={business} />
+          <StarterCard plan={starterWithHref} />
+          <BusinessCard plan={businessWithHref} />
           <CustomCard plan={custom} />
         </div>
       </Container>
