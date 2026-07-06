@@ -37,6 +37,12 @@ import {
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/pricing")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    design:
+      typeof search.design === "string" && search.design.length > 0
+        ? search.design
+        : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Pricing — Mini Store" },
