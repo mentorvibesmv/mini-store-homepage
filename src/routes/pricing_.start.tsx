@@ -18,7 +18,7 @@ function parseDesign(v: unknown): string | undefined {
   return typeof v === "string" && v.length > 0 ? v : undefined;
 }
 
-export const Route = createFileRoute("/pricing/start")({
+export const Route = createFileRoute("/pricing_/start")({
   validateSearch: (search: Record<string, unknown>) => ({
     plan: parsePlan(search.plan),
     billing: parseBilling(search.billing),
