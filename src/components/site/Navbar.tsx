@@ -93,14 +93,8 @@ export function Navbar() {
                 {item.label}
               </a>
             ))}
-            <div className="mt-2 flex items-center gap-2">
-              <a
-                href="#"
-                className="flex-1 rounded-full border border-border px-4 py-2.5 text-center text-sm text-foreground"
-              >
-                {navActions.loginLabel}
-              </a>
-              <Button href={navActions.ctaHref} className="flex-1 justify-center">
+            <div className="mt-2">
+              <Button href={navActions.ctaHref} className="w-full justify-center">
                 {navActions.ctaLabel}
               </Button>
             </div>
