@@ -512,12 +512,12 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <label htmlFor={id} className="sr-only">
         {label}
         {required ? " (required)" : ""}
       </label>
-      <div className="relative">
+      <div className="relative min-w-0">
         <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         {children}
       </div>
@@ -525,6 +525,7 @@ function Field({
     </div>
   );
 }
+
 
 function Select({
   id,
