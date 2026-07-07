@@ -261,7 +261,7 @@ function ContactForm({
   };
 
   return (
-    <div className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+    <div className="min-w-0 rounded-3xl border border-border bg-card p-5 shadow-soft sm:p-8">
       <h2 className="text-xl font-semibold text-foreground sm:text-2xl">{f.title}</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         All fields marked with <span className="text-[oklch(0.6_0.2_25)]">*</span> are required
@@ -270,9 +270,10 @@ function ContactForm({
       <form
         noValidate
         onSubmit={onSubmit}
-        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+        className="mt-6 grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2"
         aria-describedby="contact-form-status"
       >
+
         {/* Honeypot (visually hidden) */}
         <div className="hidden" aria-hidden="true">
           <label>
