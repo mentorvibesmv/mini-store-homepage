@@ -185,10 +185,11 @@ function ContactMain({
   return (
     <Section className="pt-2">
       <Container>
-        <div ref={formRef} className="grid gap-6 lg:grid-cols-[1.55fr_1fr]">
+        <div ref={formRef} className="grid gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]">
           <ContactForm firstFieldRef={firstFieldRef} />
           <ContactMethods />
         </div>
+
       </Container>
     </Section>
   );
