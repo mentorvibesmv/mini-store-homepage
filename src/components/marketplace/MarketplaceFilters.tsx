@@ -29,9 +29,10 @@ export function MarketplaceFilters({
         </div>
 
         <div
-          className="-mx-4 flex snap-x gap-2 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-5 sm:px-5 lg:mx-0 lg:flex-1 lg:flex-wrap lg:overflow-visible lg:px-0 lg:pb-0"
+          className="flex snap-x gap-2 overflow-x-auto pb-1 lg:flex-1 lg:flex-wrap lg:overflow-visible lg:pb-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
+
           {filterCategories.map((c: FilterCategory) => {
             const active = category === c.id;
             return (
