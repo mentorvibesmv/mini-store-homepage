@@ -118,7 +118,7 @@ function CustomHero() {
       <Container className="relative grid items-center gap-10 pt-10 pb-8 sm:pt-14 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-16 lg:pb-12">
         <div className="fade-up">
           <Badge>{h.badge}</Badge>
-          <h1 className="mt-6 text-[38px] font-bold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-[54px] lg:leading-[1.06]">
+          <h1 className="mt-6 text-[32px] font-bold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-[54px] lg:leading-[1.06]">
             {h.titleLines[0]}
             <br />
             {h.titleLines[1]}

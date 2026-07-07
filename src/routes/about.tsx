@@ -123,7 +123,7 @@ function AboutHero() {
             <span className="inline-flex items-center rounded-full bg-primary-soft px-3.5 py-1.5 text-xs font-medium text-accent-foreground">
               {h.badge}
             </span>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">
+            <h1 className="mt-5 text-[32px] font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">
               {h.headingPre}
               <span
                 className="bg-gradient-to-r from-[oklch(0.55_0.22_290)] to-[oklch(0.55_0.2_240)] bg-clip-text text-transparent"

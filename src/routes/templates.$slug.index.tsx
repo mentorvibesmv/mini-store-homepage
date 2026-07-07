@@ -152,24 +152,24 @@ function TemplateDetailsPage() {
       {/* Breadcrumb */}
       <Container className="pt-6">
         <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
-            <li>
+          <ol className="flex min-w-0 items-center gap-1.5 text-sm text-muted-foreground">
+            <li className="shrink-0">
               <Link to="/" className="inline-flex items-center gap-1 hover:text-foreground">
-                <HomeIcon className="h-3.5 w-3.5" /> Home
+                <HomeIcon className="h-3.5 w-3.5 shrink-0" /> Home
               </Link>
             </li>
-            <li aria-hidden>
+            <li aria-hidden className="shrink-0">
               <CrumbSep className="h-3.5 w-3.5" />
             </li>
-            <li>
+            <li className="shrink-0">
               <Link to="/templates" className="hover:text-foreground">
                 Templates
               </Link>
             </li>
-            <li aria-hidden>
+            <li aria-hidden className="shrink-0">
               <CrumbSep className="h-3.5 w-3.5" />
             </li>
-            <li aria-current="page" className="font-medium text-foreground">
+            <li aria-current="page" className="min-w-0 flex-1 truncate font-medium text-foreground">
               {template.title}
             </li>
           </ol>
