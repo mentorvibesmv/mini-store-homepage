@@ -28,7 +28,11 @@ export function MarketplaceFilters({
           />
         </div>
 
-        <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 lg:mx-0 lg:flex-1 lg:flex-wrap lg:overflow-visible lg:pb-0">
+        <div
+          className="flex snap-x gap-2 overflow-x-auto pb-1 lg:flex-1 lg:flex-wrap lg:overflow-visible lg:pb-0"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+
           {filterCategories.map((c: FilterCategory) => {
             const active = category === c.id;
             return (
@@ -38,7 +42,7 @@ export function MarketplaceFilters({
                 onClick={() => onCategoryChange(c.id)}
                 aria-pressed={active}
                 className={cn(
-                  "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all",
+                  "shrink-0 snap-start whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all",
                   active
                     ? "bg-primary-gradient text-primary-foreground shadow-soft"
                     : "border border-border bg-background text-foreground hover:border-foreground/20 hover:bg-muted",
@@ -48,6 +52,7 @@ export function MarketplaceFilters({
               </button>
             );
           })}
+
         </div>
       </div>
     </div>

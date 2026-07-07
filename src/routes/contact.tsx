@@ -185,10 +185,11 @@ function ContactMain({
   return (
     <Section className="pt-2">
       <Container>
-        <div ref={formRef} className="grid gap-6 lg:grid-cols-[1.55fr_1fr]">
+        <div ref={formRef} className="grid gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]">
           <ContactForm firstFieldRef={firstFieldRef} />
           <ContactMethods />
         </div>
+
       </Container>
     </Section>
   );
@@ -260,7 +261,7 @@ function ContactForm({
   };
 
   return (
-    <div className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+    <div className="min-w-0 rounded-3xl border border-border bg-card p-5 shadow-soft sm:p-8">
       <h2 className="text-xl font-semibold text-foreground sm:text-2xl">{f.title}</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         All fields marked with <span className="text-[oklch(0.6_0.2_25)]">*</span> are required
@@ -269,9 +270,10 @@ function ContactForm({
       <form
         noValidate
         onSubmit={onSubmit}
-        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+        className="mt-6 grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2"
         aria-describedby="contact-form-status"
       >
+
         {/* Honeypot (visually hidden) */}
         <div className="hidden" aria-hidden="true">
           <label>
@@ -512,12 +514,12 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <label htmlFor={id} className="sr-only">
         {label}
         {required ? " (required)" : ""}
       </label>
-      <div className="relative">
+      <div className="relative min-w-0">
         <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         {children}
       </div>
@@ -525,6 +527,7 @@ function Field({
     </div>
   );
 }
+
 
 function Select({
   id,
@@ -637,7 +640,7 @@ function ContactMethods() {
   ].filter(Boolean) as MethodCard[];
 
   return (
-    <aside className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+    <aside className="min-w-0 rounded-3xl border border-border bg-card p-5 shadow-soft sm:p-8">
       <h2 className="text-xl font-semibold text-foreground sm:text-2xl">{m.title}</h2>
       <p className="mt-1 text-sm text-muted-foreground">{m.supporting}</p>
 
