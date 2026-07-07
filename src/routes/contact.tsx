@@ -640,7 +640,7 @@ function ContactMethods() {
   ].filter(Boolean) as MethodCard[];
 
   return (
-    <aside className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+    <aside className="min-w-0 rounded-3xl border border-border bg-card p-5 shadow-soft sm:p-8">
       <h2 className="text-xl font-semibold text-foreground sm:text-2xl">{m.title}</h2>
       <p className="mt-1 text-sm text-muted-foreground">{m.supporting}</p>
 
