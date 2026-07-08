@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as SetupRouteImport } from './routes/setup'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
@@ -28,6 +29,11 @@ import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[
 const TemplatesRoute = TemplatesRouteImport.update({
   id: '/templates',
   path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SetupRoute = SetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
+  '/setup': typeof SetupRoute
   '/templates': typeof TemplatesRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -129,6 +136,7 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
+  '/setup': typeof SetupRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/pricing/start': typeof PricingStartRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
+  '/setup': typeof SetupRoute
   '/templates': typeof TemplatesRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -165,6 +174,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/mcp'
     | '/pricing'
+    | '/setup'
     | '/templates'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/mcp'
     | '/pricing'
+    | '/setup'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/pricing/start'
@@ -198,6 +209,7 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/mcp'
     | '/pricing'
+    | '/setup'
     | '/templates'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -216,6 +228,7 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
   McpRoute: typeof McpRoute
   PricingRoute: typeof PricingRoute
+  SetupRoute: typeof SetupRoute
   TemplatesRoute: typeof TemplatesRouteWithChildren
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -230,6 +243,13 @@ declare module '@tanstack/react-router' {
       path: '/templates'
       fullPath: '/templates'
       preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setup': {
+      id: '/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof SetupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -357,6 +377,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowItWorksRoute: HowItWorksRoute,
   McpRoute: McpRoute,
   PricingRoute: PricingRoute,
+  SetupRoute: SetupRoute,
   TemplatesRoute: TemplatesRouteWithChildren,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
