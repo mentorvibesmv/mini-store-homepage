@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
+import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge, Button } from "@/components/site";
 import { templates } from "@/data/site";
+import { cn } from "@/lib/utils";
 
 type PlanId = "starter" | "business";
 type Billing = "monthly" | "annual";
@@ -32,6 +34,9 @@ const CATEGORIES = [
   "Portfolio",
   "Other",
 ];
+
+const NAME_MAX = 60;
+const NAME_COUNTER_THRESHOLD = 50;
 
 export const Route = createFileRoute("/setup")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -119,6 +124,45 @@ function ChoosePlanState() {
   );
 }
 
+// -- Validation helpers ---------------------------------------------------
+
+type NameError = "required" | "short" | "long" | null;
+type CategoryError = "required" | null;
+type PhoneError = "required" | "length" | "prefix" | null;
+
+function validateName(raw: string): NameError {
+  const trimmed = raw.trim();
+  if (trimmed.length === 0) return "required";
+  if (trimmed.length < 2) return "short";
+  if (trimmed.length > NAME_MAX) return "long";
+  return null;
+}
+
+function validateCategory(v: string): CategoryError {
+  return v === "" ? "required" : null;
+}
+
+function validatePhone(v: string): PhoneError {
+  if (v.length === 0) return "required";
+  if (v.length !== 10) return "length";
+  if (!/^[6-9]/.test(v)) return "prefix";
+  return null;
+}
+
+const NAME_MESSAGES: Record<Exclude<NameError, null>, string> = {
+  required: "Enter your business or store name.",
+  short: "Enter at least 2 characters.",
+  long: "Use 60 characters or fewer.",
+};
+const CATEGORY_MESSAGES: Record<Exclude<CategoryError, null>, string> = {
+  required: "Select a business category.",
+};
+const PHONE_MESSAGES: Record<Exclude<PhoneError, null>, string> = {
+  required: "Enter your WhatsApp number.",
+  length: "Enter a valid 10-digit mobile number.",
+  prefix: "Enter a valid Indian mobile number.",
+};
+
 function SetupContent({
   plan,
   billing,
@@ -130,6 +174,60 @@ function SetupContent({
   design: (typeof templates)[number] | undefined;
   validDesignSlug: string | undefined;
 }) {
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const [touched, setTouched] = useState({
+    name: false,
+    category: false,
+    phone: false,
+  });
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+  const [checkpointShown, setCheckpointShown] = useState(false);
+
+  const nameError = validateName(name);
+  const categoryError = validateCategory(category);
+  const phoneError = validatePhone(phone);
+  const allValid = !nameError && !categoryError && !phoneError;
+
+  const showNameError = (touched.name || attemptedSubmit) && !!nameError;
+  const showCategoryError =
+    (touched.category || attemptedSubmit) && !!categoryError;
+  const showPhoneError = (touched.phone || attemptedSubmit) && !!phoneError;
+
+  const nameTrimmedLen = name.trim().length;
+  const showNameCounter = name.length >= NAME_COUNTER_THRESHOLD;
+
+  const sanitizePhone = (raw: string) =>
+    raw.replace(/\D+/g, "").slice(-10).slice(0, 10);
+
+  const handlePhoneChange = (v: string) => {
+    setPhone(sanitizePhone(v));
+    if (checkpointShown) setCheckpointShown(false);
+  };
+
+  const handleContinue = () => {
+    if (!allValid) {
+      setAttemptedSubmit(true);
+      return;
+    }
+    setCheckpointShown(true);
+  };
+
+  const summaryItems = useMemo(
+    () =>
+      [
+        { label: "Selected Plan", value: PLAN_LABEL[plan] },
+        {
+          label: "Billing",
+          value: billing === "annual" ? "Annual billing" : "Monthly billing",
+        },
+        ...(design ? [{ label: "Selected Design", value: design.title }] : []),
+      ],
+    [plan, billing, design],
+  );
+
   return (
     <div className="mt-10 space-y-6">
       {/* Compact summary */}
@@ -139,20 +237,19 @@ function SetupContent({
           Your Selection
         </div>
         <dl className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <SummaryItem label="Selected Plan" value={PLAN_LABEL[plan]} />
-          <SummaryItem
-            label="Billing"
-            value={billing === "annual" ? "Annual billing" : "Monthly billing"}
-          />
-          {design && (
-            <SummaryItem label="Selected Design" value={design.title} />
-          )}
+          {summaryItems.map((s) => (
+            <SummaryItem key={s.label} label={s.label} value={s.value} />
+          ))}
         </dl>
       </div>
 
       {/* Form */}
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleContinue();
+        }}
+        noValidate
         className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8"
       >
         <h2 className="text-[18px] font-bold text-foreground">
@@ -163,22 +260,82 @@ function SetupContent({
         </p>
 
         <div className="mt-6 grid min-w-0 gap-5">
-          <Field label="Business / Store Name" htmlFor="store-name" required>
+          {/* Name */}
+          <Field
+            label="Business / Store Name"
+            htmlFor="store-name"
+            required
+            error={showNameError ? NAME_MESSAGES[nameError!] : undefined}
+            errorId="store-name-error"
+            hint={
+              showNameCounter ? (
+                <span
+                  className={cn(
+                    "text-[12px] tabular-nums",
+                    nameTrimmedLen > NAME_MAX
+                      ? "text-destructive"
+                      : "text-muted-foreground",
+                  )}
+                >
+                  {nameTrimmedLen}/{NAME_MAX}
+                </span>
+              ) : null
+            }
+          >
             <input
               id="store-name"
               type="text"
-              required
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+                if (checkpointShown) setCheckpointShown(false);
+              }}
+              onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+              maxLength={120}
+              autoComplete="organization"
               placeholder="e.g. Bava Fashion"
-              className="w-full min-w-0 rounded-xl border border-border bg-background px-4 py-3 text-[14px] text-foreground shadow-soft outline-none placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-ring/40"
+              aria-invalid={showNameError || undefined}
+              aria-describedby={showNameError ? "store-name-error" : undefined}
+              className={cn(
+                "w-full min-w-0 rounded-xl border bg-background px-4 py-3 text-[14px] text-foreground shadow-soft outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-ring/40",
+                showNameError
+                  ? "border-destructive/70 focus:border-destructive"
+                  : "border-border focus:border-primary/60",
+              )}
             />
           </Field>
 
-          <Field label="Business Category" htmlFor="business-category" required>
+          {/* Category */}
+          <Field
+            label="Business Category"
+            htmlFor="business-category"
+            required
+            error={
+              showCategoryError
+                ? CATEGORY_MESSAGES[categoryError!]
+                : undefined
+            }
+            errorId="business-category-error"
+          >
             <select
               id="business-category"
-              required
-              defaultValue=""
-              className="w-full min-w-0 rounded-xl border border-border bg-background px-4 py-3 text-[14px] text-foreground shadow-soft outline-none focus:border-primary/60 focus:ring-2 focus:ring-ring/40"
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+                setTouched((t) => ({ ...t, category: true }));
+                if (checkpointShown) setCheckpointShown(false);
+              }}
+              onBlur={() => setTouched((t) => ({ ...t, category: true }))}
+              aria-invalid={showCategoryError || undefined}
+              aria-describedby={
+                showCategoryError ? "business-category-error" : undefined
+              }
+              className={cn(
+                "w-full min-w-0 rounded-xl border bg-background px-4 py-3 text-[14px] text-foreground shadow-soft outline-none focus:ring-2 focus:ring-ring/40",
+                showCategoryError
+                  ? "border-destructive/70 focus:border-destructive"
+                  : "border-border focus:border-primary/60",
+              )}
             >
               <option value="" disabled>
                 Select a category
@@ -191,18 +348,46 @@ function SetupContent({
             </select>
           </Field>
 
-          <Field label="WhatsApp Number" htmlFor="whatsapp" required>
-            <div className="flex min-w-0 items-stretch overflow-hidden rounded-xl border border-border bg-background shadow-soft focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-ring/40">
-              <span className="inline-flex shrink-0 items-center gap-1 border-r border-border bg-primary-soft/60 px-3 text-[14px] font-medium text-foreground">
+          {/* WhatsApp */}
+          <Field
+            label="WhatsApp Number"
+            htmlFor="whatsapp"
+            required
+            error={showPhoneError ? PHONE_MESSAGES[phoneError!] : undefined}
+            errorId="whatsapp-error"
+          >
+            <div
+              className={cn(
+                "flex min-w-0 items-stretch overflow-hidden rounded-xl border bg-background shadow-soft focus-within:ring-2 focus-within:ring-ring/40",
+                showPhoneError
+                  ? "border-destructive/70 focus-within:border-destructive"
+                  : "border-border focus-within:border-primary/60",
+              )}
+            >
+              <span
+                aria-hidden="true"
+                className="inline-flex shrink-0 items-center gap-1 border-r border-border bg-primary-soft/60 px-3 text-[14px] font-medium text-foreground"
+              >
                 +91
               </span>
               <input
                 id="whatsapp"
                 type="tel"
-                inputMode="tel"
-                required
+                inputMode="numeric"
+                autoComplete="tel-national"
+                value={phone}
+                onChange={(e) => handlePhoneChange(e.target.value)}
+                onPaste={(e) => {
+                  e.preventDefault();
+                  const pasted = e.clipboardData.getData("text");
+                  handlePhoneChange(pasted);
+                }}
+                onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+                maxLength={10}
                 placeholder="98765 43210"
-                className="w-full min-w-0 bg-transparent px-4 py-3 text-[14px] text-foreground outline-none placeholder:text-muted-foreground"
+                aria-invalid={showPhoneError || undefined}
+                aria-describedby={showPhoneError ? "whatsapp-error" : undefined}
+                className="w-full min-w-0 bg-transparent px-4 py-3 text-[14px] tabular-nums text-foreground outline-none placeholder:text-muted-foreground"
               />
             </div>
           </Field>
@@ -223,15 +408,32 @@ function SetupContent({
           <div className="flex flex-col items-stretch gap-2 sm:items-end">
             <button
               type="button"
-              disabled
-              aria-disabled="true"
-              className="inline-flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground opacity-60 shadow-soft sm:w-auto"
+              onClick={handleContinue}
+              disabled={!allValid}
+              aria-disabled={!allValid}
+              className={cn(
+                "inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all sm:w-auto",
+                allValid
+                  ? "hover:-translate-y-0.5 hover:shadow-glow"
+                  : "cursor-not-allowed opacity-60",
+              )}
             >
               Continue
             </button>
-            <p className="text-[12.5px] text-muted-foreground sm:text-right">
-              Store details submission is the next step.
-            </p>
+            {checkpointShown && allValid ? (
+              <p
+                role="status"
+                aria-live="polite"
+                className="text-[12.5px] text-foreground sm:text-right"
+              >
+                Store details are ready. The next setup step will be added
+                next.
+              </p>
+            ) : (
+              <p className="text-[12.5px] text-muted-foreground sm:text-right">
+                Store details submission is the next step.
+              </p>
+            )}
           </div>
         </div>
       </form>
@@ -256,23 +458,41 @@ function Field({
   label,
   htmlFor,
   required,
+  error,
+  errorId,
+  hint,
   children,
 }: {
   label: string;
   htmlFor: string;
   required?: boolean;
+  error?: string;
+  errorId?: string;
+  hint?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <div className="min-w-0">
-      <label
-        htmlFor={htmlFor}
-        className="mb-1.5 block text-[13px] font-medium text-foreground"
-      >
-        {label}
-        {required && <span className="ml-0.5 text-primary">*</span>}
-      </label>
+      <div className="mb-1.5 flex items-baseline justify-between gap-3">
+        <label
+          htmlFor={htmlFor}
+          className="block text-[13px] font-medium text-foreground"
+        >
+          {label}
+          {required && <span className="ml-0.5 text-primary">*</span>}
+        </label>
+        {hint}
+      </div>
       {children}
+      {error && (
+        <p
+          id={errorId}
+          role="alert"
+          className="mt-1.5 text-[12.5px] text-destructive"
+        >
+          {error}
+        </p>
+      )}
     </div>
   );
 }
