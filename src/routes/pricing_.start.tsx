@@ -186,17 +186,17 @@ function PlanSummary({
           Change Plan
         </Link>
         <div className="flex flex-col items-start gap-2 sm:items-end">
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground opacity-60 shadow-soft"
+          <Link
+            to="/setup"
+            search={{
+              plan,
+              billing,
+              ...(validDesignSlug ? { design: validDesignSlug } : {}),
+            }}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow"
           >
             Continue Setup
-          </button>
-          <p className="text-[12.5px] text-muted-foreground">
-            Store setup is the next step in the V1 flow.
-          </p>
+          </Link>
         </div>
       </div>
     </div>
