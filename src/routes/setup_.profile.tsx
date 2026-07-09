@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
 import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -241,6 +241,7 @@ function ProfileForm({
   validDesignSlug: string | undefined;
 }) {
   const { draft, setBusinessProfile } = useOnboardingDraft();
+  const navigate = useNavigate();
   const store = draft.storeDetails!;
   const existing = draft.businessProfile;
 
@@ -256,7 +257,6 @@ function ProfileForm({
     ig: false,
   });
   const [attempted, setAttempted] = useState(false);
-  const [checkpointShown, setCheckpointShown] = useState(false);
 
   const descError = validateDesc(desc);
   const cityError = validateCity(city);
@@ -290,12 +290,17 @@ function ProfileForm({
       businessEmail: email.trim(),
       instagramUrl: normalizeInstagram(ig) ?? "",
     });
-    setCheckpointShown(true);
+    navigate({
+      to: "/setup/content",
+      search: {
+        plan,
+        billing,
+        ...(validDesignSlug ? { design: validDesignSlug } : {}),
+      },
+    });
   };
 
-  const clearCheckpoint = () => {
-    if (checkpointShown) setCheckpointShown(false);
-  };
+  const clearCheckpoint = () => {};
 
   return (
     <div className="mt-10 space-y-6">
@@ -503,20 +508,9 @@ function ProfileForm({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Business profile is ready. Your store content is the next
-                setup step.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                Your store content is the next setup step.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Continue to add your store content.
+            </p>
           </div>
         </div>
       </form>
