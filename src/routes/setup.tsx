@@ -175,9 +175,13 @@ function SetupContent({
   design: (typeof templates)[number] | undefined;
   validDesignSlug: string | undefined;
 }) {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
+  const { draft, setStoreDetails } = useOnboardingDraft();
+  const existing = draft.storeDetails;
+
+  const [name, setName] = useState(existing?.businessName ?? "");
+  const [category, setCategory] = useState(existing?.category ?? "");
+  const [phone, setPhone] = useState(existing?.whatsappNumber ?? "");
 
   const [touched, setTouched] = useState({
     name: false,
@@ -185,7 +189,6 @@ function SetupContent({
     phone: false,
   });
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
-  const [checkpointShown, setCheckpointShown] = useState(false);
 
   const nameError = validateName(name);
   const categoryError = validateCategory(category);
@@ -205,7 +208,6 @@ function SetupContent({
 
   const handlePhoneChange = (v: string) => {
     setPhone(sanitizePhone(v));
-    if (checkpointShown) setCheckpointShown(false);
   };
 
   const handleContinue = () => {
@@ -213,7 +215,19 @@ function SetupContent({
       setAttemptedSubmit(true);
       return;
     }
-    setCheckpointShown(true);
+    setStoreDetails({
+      businessName: name.trim(),
+      category,
+      whatsappNumber: phone,
+    });
+    navigate({
+      to: "/setup/profile",
+      search: {
+        plan,
+        billing,
+        ...(validDesignSlug ? { design: validDesignSlug } : {}),
+      },
+    });
   };
 
   const summaryItems = useMemo(
