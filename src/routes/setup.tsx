@@ -303,7 +303,6 @@ function SetupContent({
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
-                if (checkpointShown) setCheckpointShown(false);
               }}
               onBlur={() => setTouched((t) => ({ ...t, name: true }))}
               maxLength={120}
