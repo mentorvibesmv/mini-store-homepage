@@ -115,3 +115,12 @@ export function hasContentDetails(
     c.productsOrServices.trim().length >= 10
   );
 }
+
+// Brand & Style is "present" only if the required logoStatus field has a value.
+export function hasBrandDetails(
+  d: OnboardingDraft,
+): d is OnboardingDraft & { brandDetails: BrandDetailsDraft } {
+  const b = d.brandDetails;
+  return !!b && (b.logoStatus === "have" || b.logoStatus === "none");
+}
+

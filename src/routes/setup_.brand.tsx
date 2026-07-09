@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
 import { useMemo, useState } from "react";
+
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge } from "@/components/site";
 import { templates } from "@/data/site";
@@ -232,6 +233,7 @@ function BrandForm({
 }) {
   const { draft, setBrandDetails } = useOnboardingDraft();
   const existing = draft.brandDetails;
+  const navigate = useNavigate();
 
   const [logoStatus, setLogoStatus] = useState<LogoStatus | "">(
     existing?.logoStatus ?? "",
@@ -248,7 +250,6 @@ function BrandForm({
     notes: false,
   });
   const [attempted, setAttempted] = useState(false);
-  const [checkpointShown, setCheckpointShown] = useState(false);
 
   const logoError = logoStatus === "" ? "required" : null;
   const colorError = !isValidHexOrEmpty(brandColor) ? "invalid" : null;
@@ -262,9 +263,7 @@ function BrandForm({
 
   const notesLen = notes.length;
 
-  const clearCheckpoint = () => {
-    if (checkpointShown) setCheckpointShown(false);
-  };
+  const clearCheckpoint = () => {};
 
   const handleContinue = () => {
     if (!allValid) {
@@ -277,8 +276,12 @@ function BrandForm({
       stylePreference: stylePreference,
       specialDesignNotes: notes.trim(),
     });
-    setCheckpointShown(true);
+    navigate({
+      to: "/setup/review",
+      search: { plan, billing, design: validDesignSlug },
+    });
   };
+
 
   const summaryItems = useMemo(
     () => [
@@ -601,20 +604,10 @@ function BrandForm({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Brand preferences are ready. Review and confirmation is the
-                next setup step.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                Review and confirmation is the next setup step.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Review and confirmation is the next setup step.
+            </p>
+
           </div>
         </div>
       </form>
