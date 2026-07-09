@@ -508,20 +508,9 @@ function ProfileForm({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Business profile is ready. Your store content is the next
-                setup step.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                Your store content is the next setup step.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Continue to add your store content.
+            </p>
           </div>
         </div>
       </form>
