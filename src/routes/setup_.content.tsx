@@ -299,7 +299,7 @@ function ContentForm({
   );
 
   const clearCheckpoint = () => {
-    if (checkpointShown) setCheckpointShown(false);
+    // no-op retained for compatibility with existing onChange handlers
   };
 
   const handleContinue = () => {
@@ -312,8 +312,16 @@ function ContentForm({
       productsOrServices: products.trim(),
       aboutBusiness: about.trim(),
     });
-    setCheckpointShown(true);
+    void navigate({
+      to: "/setup/brand",
+      search: {
+        plan,
+        billing,
+        design: validDesignSlug,
+      },
+    });
   };
+
 
   return (
     <div className="mt-10 space-y-6">
