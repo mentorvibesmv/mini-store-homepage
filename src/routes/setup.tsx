@@ -1,10 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
 import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge, Button } from "@/components/site";
 import { templates } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { useOnboardingDraft } from "@/lib/onboarding-draft";
 
 type PlanId = "starter" | "business";
 type Billing = "monthly" | "annual";
@@ -174,9 +175,13 @@ function SetupContent({
   design: (typeof templates)[number] | undefined;
   validDesignSlug: string | undefined;
 }) {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
+  const { draft, setStoreDetails } = useOnboardingDraft();
+  const existing = draft.storeDetails;
+
+  const [name, setName] = useState(existing?.businessName ?? "");
+  const [category, setCategory] = useState(existing?.category ?? "");
+  const [phone, setPhone] = useState(existing?.whatsappNumber ?? "");
 
   const [touched, setTouched] = useState({
     name: false,
@@ -184,7 +189,6 @@ function SetupContent({
     phone: false,
   });
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
-  const [checkpointShown, setCheckpointShown] = useState(false);
 
   const nameError = validateName(name);
   const categoryError = validateCategory(category);
@@ -204,7 +208,6 @@ function SetupContent({
 
   const handlePhoneChange = (v: string) => {
     setPhone(sanitizePhone(v));
-    if (checkpointShown) setCheckpointShown(false);
   };
 
   const handleContinue = () => {
@@ -212,7 +215,19 @@ function SetupContent({
       setAttemptedSubmit(true);
       return;
     }
-    setCheckpointShown(true);
+    setStoreDetails({
+      businessName: name.trim(),
+      category,
+      whatsappNumber: phone,
+    });
+    navigate({
+      to: "/setup/profile",
+      search: {
+        plan,
+        billing,
+        ...(validDesignSlug ? { design: validDesignSlug } : {}),
+      },
+    });
   };
 
   const summaryItems = useMemo(
@@ -288,7 +303,6 @@ function SetupContent({
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
-                if (checkpointShown) setCheckpointShown(false);
               }}
               onBlur={() => setTouched((t) => ({ ...t, name: true }))}
               maxLength={120}
@@ -323,7 +337,6 @@ function SetupContent({
               onChange={(e) => {
                 setCategory(e.target.value);
                 setTouched((t) => ({ ...t, category: true }));
-                if (checkpointShown) setCheckpointShown(false);
               }}
               onBlur={() => setTouched((t) => ({ ...t, category: true }))}
               aria-invalid={showCategoryError || undefined}
@@ -420,20 +433,9 @@ function SetupContent({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Store details are ready. The next setup step will be added
-                next.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                Store details submission is the next step.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Continue to add your business profile.
+            </p>
           </div>
         </div>
       </form>
