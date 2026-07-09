@@ -50,7 +50,7 @@ function PricingStartPage() {
         <Container className="max-w-3xl">
           <Link
             to="/pricing"
-            search={validDesign ? { design: validDesign } : {}}
+            search={{ design: validDesign }}
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -180,7 +180,7 @@ function PlanSummary({
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <Link
           to="/pricing"
-          search={validDesignSlug ? { design: validDesignSlug } : {}}
+          search={{ design: validDesignSlug }}
           className="inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground shadow-soft transition-colors hover:border-foreground/20"
         >
           Change Plan
@@ -191,7 +191,7 @@ function PlanSummary({
             search={{
               plan,
               billing,
-              ...(validDesignSlug ? { design: validDesignSlug } : {}),
+              design: validDesignSlug,
             }}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow"
           >
