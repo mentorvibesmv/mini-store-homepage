@@ -604,20 +604,10 @@ function BrandForm({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Brand preferences are ready. Review and confirmation is the
-                next setup step.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                Review and confirmation is the next setup step.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Review and confirmation is the next setup step.
+            </p>
+
           </div>
         </div>
       </form>
