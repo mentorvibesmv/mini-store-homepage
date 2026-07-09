@@ -497,7 +497,7 @@ function ContentForm({
           </Field>
         </div>
 
-        <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Link
             to="/setup/profile"
             search={{
