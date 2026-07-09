@@ -257,6 +257,7 @@ function ContentForm({
   validDesignSlug: string | undefined;
 }) {
   const { draft, setContentDetails } = useOnboardingDraft();
+  const navigate = useNavigate();
   const existing = draft.contentDetails;
 
   const [tagline, setTagline] = useState(existing?.tagline ?? "");
@@ -269,7 +270,7 @@ function ContentForm({
     about: false,
   });
   const [attempted, setAttempted] = useState(false);
-  const [checkpointShown, setCheckpointShown] = useState(false);
+
 
   const taglineError = validateTagline(tagline);
   const productsError = validateProducts(products);
