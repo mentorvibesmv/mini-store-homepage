@@ -433,20 +433,9 @@ function SetupContent({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Store details are ready. The next setup step will be added
-                next.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                Store details submission is the next step.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Continue to add your business profile.
+            </p>
           </div>
         </div>
       </form>
