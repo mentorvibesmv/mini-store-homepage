@@ -19,6 +19,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
+import { Route as SetupReviewRouteImport } from './routes/setup_.review'
 import { Route as SetupProfileRouteImport } from './routes/setup_.profile'
 import { Route as SetupContentRouteImport } from './routes/setup_.content'
 import { Route as SetupBrandRouteImport } from './routes/setup_.brand'
@@ -78,6 +79,11 @@ const TemplatesIndexRoute = TemplatesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => TemplatesRoute,
+} as any)
+const SetupReviewRoute = SetupReviewRouteImport.update({
+  id: '/setup_/review',
+  path: '/setup/review',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SetupProfileRoute = SetupProfileRouteImport.update({
   id: '/setup_/profile',
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/setup/brand': typeof SetupBrandRoute
   '/setup/content': typeof SetupContentRoute
   '/setup/profile': typeof SetupProfileRoute
+  '/setup/review': typeof SetupReviewRoute
   '/templates/': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
@@ -164,6 +171,7 @@ export interface FileRoutesByTo {
   '/setup/brand': typeof SetupBrandRoute
   '/setup/content': typeof SetupContentRoute
   '/setup/profile': typeof SetupProfileRoute
+  '/setup/review': typeof SetupReviewRoute
   '/templates': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/setup_/brand': typeof SetupBrandRoute
   '/setup_/content': typeof SetupContentRoute
   '/setup_/profile': typeof SetupProfileRoute
+  '/setup_/review': typeof SetupReviewRoute
   '/templates/': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
@@ -209,6 +218,7 @@ export interface FileRouteTypes {
     | '/setup/brand'
     | '/setup/content'
     | '/setup/profile'
+    | '/setup/review'
     | '/templates/'
     | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
@@ -229,6 +239,7 @@ export interface FileRouteTypes {
     | '/setup/brand'
     | '/setup/content'
     | '/setup/profile'
+    | '/setup/review'
     | '/templates'
     | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/setup_/brand'
     | '/setup_/content'
     | '/setup_/profile'
+    | '/setup_/review'
     | '/templates/'
     | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
@@ -272,6 +284,7 @@ export interface RootRouteChildren {
   SetupBrandRoute: typeof SetupBrandRoute
   SetupContentRoute: typeof SetupContentRoute
   SetupProfileRoute: typeof SetupProfileRoute
+  SetupReviewRoute: typeof SetupReviewRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
@@ -346,6 +359,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/templates/'
       preLoaderRoute: typeof TemplatesIndexRouteImport
       parentRoute: typeof TemplatesRoute
+    }
+    '/setup_/review': {
+      id: '/setup_/review'
+      path: '/setup/review'
+      fullPath: '/setup/review'
+      preLoaderRoute: typeof SetupReviewRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/setup_/profile': {
       id: '/setup_/profile'
@@ -446,6 +466,7 @@ const rootRouteChildren: RootRouteChildren = {
   SetupBrandRoute: SetupBrandRoute,
   SetupContentRoute: SetupContentRoute,
   SetupProfileRoute: SetupProfileRoute,
+  SetupReviewRoute: SetupReviewRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
