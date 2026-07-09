@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
 import { useMemo, useState } from "react";
+
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge, Button } from "@/components/site";
 import { templates } from "@/data/site";
@@ -256,6 +257,7 @@ function ContentForm({
   validDesignSlug: string | undefined;
 }) {
   const { draft, setContentDetails } = useOnboardingDraft();
+  const navigate = useNavigate();
   const existing = draft.contentDetails;
 
   const [tagline, setTagline] = useState(existing?.tagline ?? "");
@@ -268,7 +270,7 @@ function ContentForm({
     about: false,
   });
   const [attempted, setAttempted] = useState(false);
-  const [checkpointShown, setCheckpointShown] = useState(false);
+
 
   const taglineError = validateTagline(tagline);
   const productsError = validateProducts(products);
@@ -297,7 +299,7 @@ function ContentForm({
   );
 
   const clearCheckpoint = () => {
-    if (checkpointShown) setCheckpointShown(false);
+    // no-op retained for compatibility with existing onChange handlers
   };
 
   const handleContinue = () => {
@@ -310,8 +312,16 @@ function ContentForm({
       productsOrServices: products.trim(),
       aboutBusiness: about.trim(),
     });
-    setCheckpointShown(true);
+    void navigate({
+      to: "/setup/brand",
+      search: {
+        plan,
+        billing,
+        design: validDesignSlug,
+      },
+    });
   };
+
 
   return (
     <div className="mt-10 space-y-6">
@@ -524,20 +534,10 @@ function ContentForm({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Store content is ready. The next setup step will be added
-                next.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                The next setup step will be added next.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Brand & Style is the next setup step.
+            </p>
+
           </div>
         </div>
       </form>

@@ -19,10 +19,21 @@ export type ContentDetailsDraft = {
   aboutBusiness: string;
 };
 
+export type LogoStatus = "have" | "none";
+export type StylePreference = "clean" | "bold" | "elegant" | "playful";
+
+export type BrandDetailsDraft = {
+  logoStatus: LogoStatus;
+  brandColor: string; // "" or normalized "#RRGGBB" uppercase
+  stylePreference: StylePreference | "";
+  specialDesignNotes: string;
+};
+
 export type OnboardingDraft = {
   storeDetails?: StoreDetailsDraft;
   businessProfile?: BusinessProfileDraft;
   contentDetails?: ContentDetailsDraft;
+  brandDetails?: BrandDetailsDraft;
 };
 
 type OnboardingDraftContextValue = {
@@ -30,6 +41,7 @@ type OnboardingDraftContextValue = {
   setStoreDetails: (v: StoreDetailsDraft) => void;
   setBusinessProfile: (v: BusinessProfileDraft) => void;
   setContentDetails: (v: ContentDetailsDraft) => void;
+  setBrandDetails: (v: BrandDetailsDraft) => void;
 };
 
 const OnboardingDraftContext = createContext<OnboardingDraftContextValue | null>(
@@ -44,6 +56,7 @@ export function OnboardingDraftProvider({ children }: { children: ReactNode }) {
     setStoreDetails: (v) => setDraft((d) => ({ ...d, storeDetails: v })),
     setBusinessProfile: (v) => setDraft((d) => ({ ...d, businessProfile: v })),
     setContentDetails: (v) => setDraft((d) => ({ ...d, contentDetails: v })),
+    setBrandDetails: (v) => setDraft((d) => ({ ...d, brandDetails: v })),
   };
 
   return (
@@ -87,5 +100,18 @@ export function hasBusinessProfile(
     !!b &&
     b.businessDescription.trim().length >= 20 &&
     b.cityOrServiceArea.trim().length >= 2
+  );
+}
+
+// Content Setup is "present" only if the two required fields meet minimum
+// length constraints matching the Content Setup validation.
+export function hasContentDetails(
+  d: OnboardingDraft,
+): d is OnboardingDraft & { contentDetails: ContentDetailsDraft } {
+  const c = d.contentDetails;
+  return (
+    !!c &&
+    c.tagline.trim().length >= 3 &&
+    c.productsOrServices.trim().length >= 10
   );
 }
