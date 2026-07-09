@@ -534,20 +534,10 @@ function ContentForm({
             >
               Continue
             </button>
-            {checkpointShown && allValid ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className="text-[12.5px] text-foreground sm:text-right"
-              >
-                Store content is ready. The next setup step will be added
-                next.
-              </p>
-            ) : (
-              <p className="text-[12.5px] text-muted-foreground sm:text-right">
-                The next setup step will be added next.
-              </p>
-            )}
+            <p className="text-[12.5px] text-muted-foreground sm:text-right">
+              Brand & Style is the next setup step.
+            </p>
+
           </div>
         </div>
       </form>
