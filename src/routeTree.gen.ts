@@ -20,6 +20,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
 import { Route as SetupProfileRouteImport } from './routes/setup_.profile'
+import { Route as SetupContentRouteImport } from './routes/setup_.content'
 import { Route as PricingStartRouteImport } from './routes/pricing_.start'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
@@ -82,6 +83,11 @@ const SetupProfileRoute = SetupProfileRouteImport.update({
   path: '/setup/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SetupContentRoute = SetupContentRouteImport.update({
+  id: '/setup_/content',
+  path: '/setup/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingStartRoute = PricingStartRouteImport.update({
   id: '/pricing_/start',
   path: '/pricing/start',
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/pricing/start': typeof PricingStartRoute
+  '/setup/content': typeof SetupContentRoute
   '/setup/profile': typeof SetupProfileRoute
   '/templates/': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/pricing/start': typeof PricingStartRoute
+  '/setup/content': typeof SetupContentRoute
   '/setup/profile': typeof SetupProfileRoute
   '/templates': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/pricing_/start': typeof PricingStartRoute
+  '/setup_/content': typeof SetupContentRoute
   '/setup_/profile': typeof SetupProfileRoute
   '/templates/': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/pricing/start'
+    | '/setup/content'
     | '/setup/profile'
     | '/templates/'
     | '/.mcp/invoke-tool/$tool'
@@ -206,6 +216,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/pricing/start'
+    | '/setup/content'
     | '/setup/profile'
     | '/templates'
     | '/.mcp/invoke-tool/$tool'
@@ -225,6 +236,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/pricing_/start'
+    | '/setup_/content'
     | '/setup_/profile'
     | '/templates/'
     | '/.mcp/invoke-tool/$tool'
@@ -245,6 +257,7 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   PricingStartRoute: typeof PricingStartRoute
+  SetupContentRoute: typeof SetupContentRoute
   SetupProfileRoute: typeof SetupProfileRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -328,6 +341,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SetupProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/setup_/content': {
+      id: '/setup_/content'
+      path: '/setup/content'
+      fullPath: '/setup/content'
+      preLoaderRoute: typeof SetupContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing_/start': {
       id: '/pricing_/start'
       path: '/pricing/start'
@@ -403,6 +423,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   PricingStartRoute: PricingStartRoute,
+  SetupContentRoute: SetupContentRoute,
   SetupProfileRoute: SetupProfileRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
