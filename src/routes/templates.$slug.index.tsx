@@ -283,7 +283,7 @@ function TemplateDetailsPage() {
 
               <p className="mt-4 text-xs text-muted-foreground">
                 This design is offered as part of your Mini Store plan — see{" "}
-                <Link to="/pricing" className="text-primary hover:underline">
+                <Link to="/pricing" search={{ design: undefined }} className="text-primary hover:underline">
                   pricing
                 </Link>{" "}
                 for details.

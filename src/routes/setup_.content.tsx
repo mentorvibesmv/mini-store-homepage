@@ -76,7 +76,7 @@ function ContentSetupPage() {
               search={{
                 plan,
                 billing,
-                ...(validDesignSlug ? { design: validDesignSlug } : {}),
+                design: validDesignSlug,
               }}
               className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
             >
@@ -160,7 +160,7 @@ function MissingStoreState({
           search={{
             plan,
             billing,
-            ...(validDesignSlug ? { design: validDesignSlug } : {}),
+            design: validDesignSlug,
           }}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow"
         >
@@ -194,7 +194,7 @@ function MissingProfileState({
           search={{
             plan,
             billing,
-            ...(validDesignSlug ? { design: validDesignSlug } : {}),
+            design: validDesignSlug,
           }}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow"
         >
@@ -503,7 +503,7 @@ function ContentForm({
             search={{
               plan,
               billing,
-              ...(validDesignSlug ? { design: validDesignSlug } : {}),
+              design: validDesignSlug,
             }}
             className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground shadow-soft transition-colors hover:border-foreground/20 sm:w-auto"
           >
