@@ -337,7 +337,6 @@ function SetupContent({
               onChange={(e) => {
                 setCategory(e.target.value);
                 setTouched((t) => ({ ...t, category: true }));
-                if (checkpointShown) setCheckpointShown(false);
               }}
               onBlur={() => setTouched((t) => ({ ...t, category: true }))}
               aria-invalid={showCategoryError || undefined}
