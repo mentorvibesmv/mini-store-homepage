@@ -233,6 +233,7 @@ function BrandForm({
 }) {
   const { draft, setBrandDetails } = useOnboardingDraft();
   const existing = draft.brandDetails;
+  const navigate = useNavigate();
 
   const [logoStatus, setLogoStatus] = useState<LogoStatus | "">(
     existing?.logoStatus ?? "",
@@ -249,7 +250,6 @@ function BrandForm({
     notes: false,
   });
   const [attempted, setAttempted] = useState(false);
-  const [checkpointShown, setCheckpointShown] = useState(false);
 
   const logoError = logoStatus === "" ? "required" : null;
   const colorError = !isValidHexOrEmpty(brandColor) ? "invalid" : null;
@@ -263,9 +263,7 @@ function BrandForm({
 
   const notesLen = notes.length;
 
-  const clearCheckpoint = () => {
-    if (checkpointShown) setCheckpointShown(false);
-  };
+  const clearCheckpoint = () => {};
 
   const handleContinue = () => {
     if (!allValid) {
@@ -278,8 +276,12 @@ function BrandForm({
       stylePreference: stylePreference,
       specialDesignNotes: notes.trim(),
     });
-    setCheckpointShown(true);
+    navigate({
+      to: "/setup/review",
+      search: { plan, billing, design: validDesignSlug },
+    });
   };
+
 
   const summaryItems = useMemo(
     () => [
