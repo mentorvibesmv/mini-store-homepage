@@ -393,7 +393,7 @@ function StarterCard({ plan, billing, design }: { plan: typeof pricingPage.plans
       <div className="mt-auto pt-6">
         <Link
           to="/pricing/start"
-          search={{ plan: "starter", billing, ...(design ? { design } : {}) }}
+          search={{ plan: "starter", billing, design }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
@@ -439,7 +439,7 @@ function BusinessCard({ plan, billing, design }: { plan: typeof pricingPage.plan
       <div className="mt-auto pt-6">
         <Link
           to="/pricing/start"
-          search={{ plan: "business", billing, ...(design ? { design } : {}) }}
+          search={{ plan: "business", billing, design }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
