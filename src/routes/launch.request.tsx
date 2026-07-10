@@ -382,7 +382,8 @@ function RequestContent({
             </div>
           </div>
 
-          {/* Contact form */}
+          {/* Contact form (idle) */}
+          {!isOpened && (
           <form
             noValidate
             onSubmit={(e) => e.preventDefault()}
