@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Template } from "@/data/site";
+import { isLaunchableSlug } from "@/lib/launch/renderer-registry";
 
 function statusBadge(t: Template): { label: string; tone: string } | null {
   if (t.featured) return { label: "Featured", tone: "bg-tone-amber text-[oklch(0.48_0.13_75)]" };
