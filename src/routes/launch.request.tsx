@@ -418,7 +418,17 @@ function RequestContent({
               </label>
             </div>
 
-            <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-8 text-center sm:text-left">
+              <Link
+                to="/setup/review"
+                search={{ plan, billing, design: designSlug }}
+                className="text-[13px] font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+              >
+                Edit Store Details
+              </Link>
+            </div>
+
+            <div className="mt-4 flex flex-col-reverse gap-3 sm:mt-6 sm:flex-row sm:items-center sm:justify-between">
               <Link
                 to="/store/preview"
                 search={{ plan, billing, design: designSlug }}
@@ -449,15 +459,6 @@ function RequestContent({
             </div>
           </form>
 
-          <div className="mt-6 text-center">
-            <Link
-              to="/setup/review"
-              search={{ plan, billing, design: designSlug }}
-              className="text-[13px] font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
-            >
-              Edit Store Details
-            </Link>
-          </div>
         </Container>
       </Section>
     </SiteLayout>
