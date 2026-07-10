@@ -153,7 +153,14 @@ type FailureCopy = {
   title: string;
   body: string;
   actionLabel: string;
-  to: "/pricing" | "/setup" | "/setup/profile" | "/setup/content" | "/setup/brand" | "/setup/review";
+  to:
+    | "/pricing"
+    | "/templates"
+    | "/setup"
+    | "/setup/profile"
+    | "/setup/content"
+    | "/setup/brand"
+    | "/setup/review";
 };
 
 function copyForReason(reason: LaunchFailureReason): FailureCopy {
@@ -195,19 +202,19 @@ function copyForReason(reason: LaunchFailureReason): FailureCopy {
         to: "/setup/brand",
       };
     case "missing_design":
-    case "invalid_design":
       return {
         title: "Choose a Design First",
-        body: "Pick a design to preview your Mini Store.",
-        actionLabel: "Browse Designs",
-        to: "/pricing",
+        body: "Select a design before preparing your store preview.",
+        actionLabel: "Browse Templates",
+        to: "/templates",
       };
+    case "invalid_design":
     case "template_not_resolved":
       return {
-        title: "Design Unavailable",
-        body: "The selected design could not be loaded. Please pick another.",
-        actionLabel: "Browse Designs",
-        to: "/pricing",
+        title: "Design Not Available",
+        body: "The selected design is no longer available.",
+        actionLabel: "Browse Templates",
+        to: "/templates",
       };
   }
 }
@@ -219,14 +226,18 @@ function FailureState({
 }: {
   reason: LaunchFailureReason;
   plan: PlanId | undefined;
-  billing: Billing;
+  billing: Billing | undefined;
 }) {
   const copy = copyForReason(reason);
 
-  // Preserve plan/billing where they are already valid; the target route will
-  // ignore anything that no longer applies.
-  const search: Record<string, unknown> = { design: undefined };
-  if (plan) {
+  // Preserve plan/billing on onboarding/pricing targets when they are valid.
+  // /templates has its own (q/category/sort) search schema — do not forward
+  // plan/billing/design there.
+  const isTemplatesTarget = copy.to === "/templates";
+  const search: Record<string, unknown> = isTemplatesTarget
+    ? {}
+    : { design: undefined };
+  if (!isTemplatesTarget && plan && billing) {
     search.plan = plan;
     search.billing = billing;
   }
@@ -255,13 +266,11 @@ function FailureState({
 }
 
 function NotLaunchableState({
-  templateTitle,
   plan,
   billing,
   designSlug,
 }: {
-  templateTitle: string;
-  plan: PlanId | undefined;
+  plan: PlanId;
   billing: Billing;
   designSlug: string;
 }) {
@@ -272,31 +281,29 @@ function NotLaunchableState({
           Preview unavailable
         </p>
         <h1 className="mt-3 text-xl font-bold text-foreground">
-          {templateTitle} isn't launch-ready yet
+          This Design Is Not Launch-Ready Yet
         </h1>
         <p className="mx-auto mt-2 text-[14px] text-muted-foreground">
-          A live preview for this design is coming soon. You can pick a
-          different design to preview now.
+          Your store details are safe. Choose a launch-ready design to preview
+          your store.
         </p>
         <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Link
-            to="/pricing"
-            search={{ design: designSlug }}
+            to="/setup/review"
+            search={{ plan, billing, design: designSlug }}
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground shadow-soft transition-colors hover:border-foreground/20"
           >
-            Browse Designs
+            Back to Review
           </Link>
-          {plan && (
-            <Link
-              to="/setup/review"
-              search={{ plan, billing, design: designSlug }}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow"
-            >
-              Back to Review
-            </Link>
-          )}
+          <Link
+            to="/templates"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow"
+          >
+            Choose a Launch-Ready Design
+          </Link>
         </div>
       </div>
     </main>
   );
 }
+
