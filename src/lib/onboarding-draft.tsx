@@ -171,19 +171,27 @@ export function OnboardingDraftProvider({ children }: { children: ReactNode }) {
   // Start empty for SSR; hydrate from sessionStorage after mount to avoid
   // any hydration mismatch (sessionStorage is browser-only).
   const [draft, setDraft] = useState<OnboardingDraft>({});
+  const [hydrated, setHydrated] = useState(false);
   const hydratedRef = useRef(false);
 
   useEffect(() => {
     if (hydratedRef.current) return;
     hydratedRef.current = true;
-    const restored = hydrateFromStorage();
-    if (
-      restored.storeDetails ||
-      restored.businessProfile ||
-      restored.contentDetails ||
-      restored.brandDetails
-    ) {
-      setDraft(restored);
+    try {
+      const restored = hydrateFromStorage();
+      if (
+        restored.storeDetails ||
+        restored.businessProfile ||
+        restored.contentDetails ||
+        restored.brandDetails
+      ) {
+        setDraft(restored);
+      }
+    } catch {
+      // Swallow any unexpected error — we still mark hydration complete
+      // below so consumers never remain stuck on a false pre-hydration state.
+    } finally {
+      setHydrated(true);
     }
   }, []);
 
@@ -196,6 +204,7 @@ export function OnboardingDraftProvider({ children }: { children: ReactNode }) {
 
   const value: OnboardingDraftContextValue = {
     draft,
+    hydrated,
     // Editing an earlier section invalidates everything downstream — the
     // user must reconfirm the flow before a LaunchInput is built.
     setStoreDetails: (v) => setDraft(() => ({ storeDetails: v })),
