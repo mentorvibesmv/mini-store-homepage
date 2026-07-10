@@ -298,13 +298,41 @@ function RequestContent({
     trimmedEmail,
   ]);
 
+  const currentContextKey = useMemo(
+    () =>
+      buildContextKey({
+        businessName,
+        plan,
+        billing,
+        designSlug,
+        contactWhatsapp,
+      }),
+    [businessName, plan, billing, designSlug, contactWhatsapp],
+  );
+  const isOpened =
+    openedContextKey !== null && openedContextKey === currentContextKey;
+
   const handleContinueClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!allValid) {
       e.preventDefault();
       setAttempted(true);
+      return;
     }
-    // Otherwise the anchor's target="_blank" href opens the WhatsApp chat.
+    // Valid user-triggered click: persist context marker, transition to
+    // opened, allow the anchor to open WhatsApp normally.
+    writeHandoffMarker(currentContextKey);
+    if (openedContextKey !== currentContextKey) {
+      shouldFocusOpenedRef.current = true;
+      setOpenedContextKey(currentContextKey);
+    }
   };
+
+  useEffect(() => {
+    if (isOpened && shouldFocusOpenedRef.current) {
+      shouldFocusOpenedRef.current = false;
+      openedHeadingRef.current?.focus();
+    }
+  }, [isOpened]);
 
   return (
     <SiteLayout>
