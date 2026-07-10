@@ -19,6 +19,7 @@ export function TemplateCard({
   onQuickPreview?: (t: Template) => void;
 }) {
   const badge = statusBadge(template);
+  const launchReady = isLaunchableSlug(template.slug);
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
