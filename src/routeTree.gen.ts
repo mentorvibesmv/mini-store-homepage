@@ -25,6 +25,7 @@ import { Route as SetupProfileRouteImport } from './routes/setup_.profile'
 import { Route as SetupContentRouteImport } from './routes/setup_.content'
 import { Route as SetupBrandRouteImport } from './routes/setup_.brand'
 import { Route as PricingStartRouteImport } from './routes/pricing_.start'
+import { Route as LaunchRequestRouteImport } from './routes/launch.request'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as TemplatesSlugIndexRouteImport } from './routes/templates.$slug.index'
@@ -111,6 +112,11 @@ const PricingStartRoute = PricingStartRouteImport.update({
   path: '/pricing/start',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaunchRequestRoute = LaunchRequestRouteImport.update({
+  id: '/launch/request',
+  path: '/launch/request',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
   Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
     id: '/.well-known/oauth-protected-resource',
@@ -152,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/templates': typeof TemplatesRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/launch/request': typeof LaunchRequestRoute
   '/pricing/start': typeof PricingStartRoute
   '/setup/brand': typeof SetupBrandRoute
   '/setup/content': typeof SetupContentRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByTo {
   '/setup': typeof SetupRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/launch/request': typeof LaunchRequestRoute
   '/pricing/start': typeof PricingStartRoute
   '/setup/brand': typeof SetupBrandRoute
   '/setup/content': typeof SetupContentRoute
@@ -198,6 +206,7 @@ export interface FileRoutesById {
   '/templates': typeof TemplatesRouteWithChildren
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/launch/request': typeof LaunchRequestRoute
   '/pricing_/start': typeof PricingStartRoute
   '/setup_/brand': typeof SetupBrandRoute
   '/setup_/content': typeof SetupContentRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/templates'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/launch/request'
     | '/pricing/start'
     | '/setup/brand'
     | '/setup/content'
@@ -245,6 +255,7 @@ export interface FileRouteTypes {
     | '/setup'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/launch/request'
     | '/pricing/start'
     | '/setup/brand'
     | '/setup/content'
@@ -268,6 +279,7 @@ export interface FileRouteTypes {
     | '/templates'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/launch/request'
     | '/pricing_/start'
     | '/setup_/brand'
     | '/setup_/content'
@@ -292,6 +304,7 @@ export interface RootRouteChildren {
   TemplatesRoute: typeof TemplatesRouteWithChildren
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  LaunchRequestRoute: typeof LaunchRequestRoute
   PricingStartRoute: typeof PricingStartRoute
   SetupBrandRoute: typeof SetupBrandRoute
   SetupContentRoute: typeof SetupContentRoute
@@ -415,6 +428,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingStartRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/launch/request': {
+      id: '/launch/request'
+      path: '/launch/request'
+      fullPath: '/launch/request'
+      preLoaderRoute: typeof LaunchRequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
       path: '/.well-known/oauth-protected-resource'
@@ -482,6 +502,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  LaunchRequestRoute: LaunchRequestRoute,
   PricingStartRoute: PricingStartRoute,
   SetupBrandRoute: SetupBrandRoute,
   SetupContentRoute: SetupContentRoute,
