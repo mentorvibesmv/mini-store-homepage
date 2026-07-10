@@ -45,6 +45,7 @@ export type OnboardingDraft = {
 
 type OnboardingDraftContextValue = {
   draft: OnboardingDraft;
+  hydrated: boolean;
   setStoreDetails: (v: StoreDetailsDraft) => void;
   setBusinessProfile: (v: BusinessProfileDraft) => void;
   setContentDetails: (v: ContentDetailsDraft) => void;
