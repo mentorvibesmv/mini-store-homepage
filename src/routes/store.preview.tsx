@@ -25,8 +25,8 @@ type Billing = "monthly" | "annual";
 function parsePlan(v: unknown): PlanId | undefined {
   return v === "starter" || v === "business" ? v : undefined;
 }
-function parseBilling(v: unknown): Billing {
-  return v === "annual" ? "annual" : "monthly";
+function parseBilling(v: unknown): Billing | undefined {
+  return v === "monthly" || v === "annual" ? v : undefined;
 }
 function parseDesign(v: unknown): string | undefined {
   return typeof v === "string" && v.length > 0 ? v : undefined;
@@ -38,6 +38,7 @@ export const Route = createFileRoute("/store/preview")({
     billing: parseBilling(search.billing),
     design: parseDesign(search.design),
   }),
+
   head: () => ({
     meta: [
       { title: "Your Mini Store Preview" },
