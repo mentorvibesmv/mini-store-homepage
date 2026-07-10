@@ -200,7 +200,7 @@ function ReviewBody({
   const profile = draft.businessProfile!;
   const content = draft.contentDetails!;
   const brand = draft.brandDetails!;
-  const [confirmed, setConfirmed] = useState(false);
+
 
   const editSearch = { plan, billing, design: validDesignSlug };
 
