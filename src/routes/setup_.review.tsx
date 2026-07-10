@@ -1,6 +1,5 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
-import { useState } from "react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge } from "@/components/site";
 import { templates } from "@/data/site";
@@ -12,6 +11,7 @@ import {
   hasContentDetails,
   hasBrandDetails,
 } from "@/lib/onboarding-draft";
+
 
 type PlanId = "starter" | "business";
 type Billing = "monthly" | "annual";
@@ -200,7 +200,7 @@ function ReviewBody({
   const profile = draft.businessProfile!;
   const content = draft.contentDetails!;
   const brand = draft.brandDetails!;
-  const [confirmed, setConfirmed] = useState(false);
+
 
   const editSearch = { plan, billing, design: validDesignSlug };
 
@@ -327,31 +327,16 @@ function ReviewBody({
         >
           Back to Brand & Style
         </Link>
-        <div className="flex flex-col items-stretch gap-2 sm:items-end">
-          <button
-            type="button"
-            onClick={() => setConfirmed(true)}
-            className={cn(
-              "inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow sm:w-auto",
-            )}
-          >
-            Confirm & Prepare My Store
-          </button>
-          {confirmed ? (
-            <p
-              role="status"
-              aria-live="polite"
-              className="text-[12.5px] text-foreground sm:text-right"
-            >
-              Your store details are confirmed. Store preparation is the next
-              step.
-            </p>
-          ) : (
-            <p className="text-[12.5px] text-muted-foreground sm:text-right">
-              Store preparation is the next step.
-            </p>
+        <Link
+          to="/store/preview"
+          search={{ plan, billing, design: validDesignSlug }}
+          className={cn(
+            "inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow sm:w-auto",
           )}
-        </div>
+        >
+          Confirm & Prepare My Store
+        </Link>
+
       </div>
     </div>
   );
