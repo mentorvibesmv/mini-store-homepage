@@ -23,6 +23,67 @@ type Billing = "monthly" | "annual";
 // Mini Store team WhatsApp — the ONLY destination for the handoff.
 const TEAM_WHATSAPP_E164 = "919025800838";
 
+// Session-scoped marker so a refresh / back-nav restores the truthful
+// "WhatsApp opened" panel — but only when the current request context
+// still matches the one that was opened. Any change to business name,
+// plan, billing, design, or contact WhatsApp naturally returns idle.
+const HANDOFF_STORAGE_KEY = "mini-store:handoff-opened";
+const HANDOFF_STORAGE_VERSION = 1;
+
+type HandoffMarker = { version: number; contextKey: string };
+
+function buildContextKey(parts: {
+  businessName: string;
+  plan: PlanId;
+  billing: Billing;
+  designSlug: string;
+  contactWhatsapp: string;
+}): string {
+  const normalizedName = parts.businessName.trim().toLowerCase();
+  return encodeURIComponent(
+    [
+      normalizedName,
+      parts.plan,
+      parts.billing,
+      parts.designSlug,
+      parts.contactWhatsapp,
+    ].join("|"),
+  );
+}
+
+function readHandoffMarker(): HandoffMarker | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.sessionStorage.getItem(HANDOFF_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as unknown;
+    if (
+      parsed &&
+      typeof parsed === "object" &&
+      (parsed as HandoffMarker).version === HANDOFF_STORAGE_VERSION &&
+      typeof (parsed as HandoffMarker).contextKey === "string" &&
+      (parsed as HandoffMarker).contextKey.length > 0
+    ) {
+      return parsed as HandoffMarker;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function writeHandoffMarker(contextKey: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(
+      HANDOFF_STORAGE_KEY,
+      JSON.stringify({ version: HANDOFF_STORAGE_VERSION, contextKey }),
+    );
+  } catch {
+    // storage unavailable — silently degrade to idle-only UX
+  }
+}
+
 function parsePlan(v: unknown): PlanId | undefined {
   return v === "starter" || v === "business" ? v : undefined;
 }
