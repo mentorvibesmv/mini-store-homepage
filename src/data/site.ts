@@ -127,6 +127,12 @@ export type Template = {
   updatedAt?: string;
   visible: boolean;
   displayOrder: number;
+  /**
+   * Marks a template as ready to be rendered by the Launch Engine from a
+   * StoreConfig. When true, `renderer-registry.ts` must have a matching
+   * renderer for `slug`. Omit or set false for marketing-only templates.
+   */
+  launchable?: boolean;
 };
 
 export const templates: Template[] = [
@@ -283,6 +289,7 @@ export const templates: Template[] = [
     createdAt: "2025-05-04",
     visible: true,
     displayOrder: 7,
+    launchable: true,
   },
   {
     id: "creative-studio",
