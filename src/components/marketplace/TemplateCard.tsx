@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Template } from "@/data/site";
+import { isLaunchableSlug } from "@/lib/launch/renderer-registry";
 
 function statusBadge(t: Template): { label: string; tone: string } | null {
   if (t.featured) return { label: "Featured", tone: "bg-tone-amber text-[oklch(0.48_0.13_75)]" };
@@ -17,6 +19,7 @@ export function TemplateCard({
   onQuickPreview?: (t: Template) => void;
 }) {
   const badge = statusBadge(template);
+  const launchReady = isLaunchableSlug(template.slug);
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
@@ -42,7 +45,17 @@ export function TemplateCard({
           )}
         </div>
 
-        <h3 className="text-[17px] font-semibold text-foreground">{template.title}</h3>
+        <div className="flex items-center gap-2">
+          <h3 className="text-[17px] font-semibold text-foreground">{template.title}</h3>
+          {launchReady && (
+            <span
+              className="inline-flex items-center gap-1 rounded-full bg-tone-green px-2 py-0.5 text-[10px] font-semibold text-[oklch(0.42_0.12_155)]"
+              aria-label="Launch Ready"
+            >
+              <Sparkles className="h-3 w-3" /> Launch Ready
+            </span>
+          )}
+        </div>
 
         <p className="text-xs text-muted-foreground line-clamp-2">{template.shortDescription}</p>
 
