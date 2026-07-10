@@ -8,7 +8,7 @@
 // backend, no persistence, no submission tracking.
 
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge } from "@/components/site";
 import { cn } from "@/lib/utils";
