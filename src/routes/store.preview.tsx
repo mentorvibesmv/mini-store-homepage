@@ -122,6 +122,55 @@ function PreviewContent({
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-background">
       <Renderer config={config} />
+      {/* Preview handoff — pad the bottom so the fixed bar never obscures
+          the tail of the generated site. */}
+      <div aria-hidden="true" className="h-28 sm:h-24" />
+      <PreviewHandoffBar
+        plan={built.value.plan}
+        billing={built.value.billing}
+        designSlug={built.value.designSlug}
+      />
+    </div>
+  );
+}
+
+function PreviewHandoffBar({
+  plan,
+  billing,
+  designSlug,
+}: {
+  plan: PlanId;
+  billing: Billing;
+  designSlug: string;
+}) {
+  return (
+    <div
+      role="region"
+      aria-label="Mini Store preview controls"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/95 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.18)] backdrop-blur supports-[backdrop-filter]:bg-card/80"
+    >
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="flex items-center gap-2 text-[12.5px] font-medium text-muted-foreground">
+          <span className="inline-flex h-2 w-2 rounded-full bg-primary" />
+          Preview only — not published
+        </div>
+        <div className="flex flex-col-reverse items-stretch gap-2 sm:flex-row sm:items-center">
+          <Link
+            to="/setup/review"
+            search={{ plan, billing, design: designSlug }}
+            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-background px-5 py-2.5 text-[13px] font-medium text-foreground shadow-soft transition-colors hover:border-foreground/20"
+          >
+            Edit Store Details
+          </Link>
+          <Link
+            to="/launch/request"
+            search={{ plan, billing, design: designSlug }}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-6 py-2.5 text-[13.5px] font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow"
+          >
+            Request My Store
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
