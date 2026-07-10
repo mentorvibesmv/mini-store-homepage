@@ -147,6 +147,8 @@ function TemplateDetailsPage() {
         ? { label: "New", tone: "bg-tone-green text-[oklch(0.42_0.12_155)]" }
         : null;
 
+  const launchReady = isLaunchableSlug(template.slug);
+
   const prev = () => setActive((i) => (i - 1 + gallery.length) % gallery.length);
   const next = () => setActive((i) => (i + 1) % gallery.length);
 
