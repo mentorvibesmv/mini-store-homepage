@@ -1,6 +1,5 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Store } from "lucide-react";
-import { useState } from "react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge } from "@/components/site";
 import { templates } from "@/data/site";
@@ -12,6 +11,7 @@ import {
   hasContentDetails,
   hasBrandDetails,
 } from "@/lib/onboarding-draft";
+
 
 type PlanId = "starter" | "business";
 type Billing = "monthly" | "annual";
