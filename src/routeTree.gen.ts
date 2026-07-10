@@ -19,6 +19,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplatesIndexRouteImport } from './routes/templates.index'
+import { Route as StorePreviewRouteImport } from './routes/store.preview'
 import { Route as SetupReviewRouteImport } from './routes/setup_.review'
 import { Route as SetupProfileRouteImport } from './routes/setup_.profile'
 import { Route as SetupContentRouteImport } from './routes/setup_.content'
@@ -79,6 +80,11 @@ const TemplatesIndexRoute = TemplatesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => TemplatesRoute,
+} as any)
+const StorePreviewRoute = StorePreviewRouteImport.update({
+  id: '/store/preview',
+  path: '/store/preview',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SetupReviewRoute = SetupReviewRouteImport.update({
   id: '/setup_/review',
@@ -151,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/setup/content': typeof SetupContentRoute
   '/setup/profile': typeof SetupProfileRoute
   '/setup/review': typeof SetupReviewRoute
+  '/store/preview': typeof StorePreviewRoute
   '/templates/': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByTo {
   '/setup/content': typeof SetupContentRoute
   '/setup/profile': typeof SetupProfileRoute
   '/setup/review': typeof SetupReviewRoute
+  '/store/preview': typeof StorePreviewRoute
   '/templates': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/setup_/content': typeof SetupContentRoute
   '/setup_/profile': typeof SetupProfileRoute
   '/setup_/review': typeof SetupReviewRoute
+  '/store/preview': typeof StorePreviewRoute
   '/templates/': typeof TemplatesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/templates/$slug/preview': typeof TemplatesSlugPreviewRoute
@@ -219,6 +228,7 @@ export interface FileRouteTypes {
     | '/setup/content'
     | '/setup/profile'
     | '/setup/review'
+    | '/store/preview'
     | '/templates/'
     | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
@@ -240,6 +250,7 @@ export interface FileRouteTypes {
     | '/setup/content'
     | '/setup/profile'
     | '/setup/review'
+    | '/store/preview'
     | '/templates'
     | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/setup_/content'
     | '/setup_/profile'
     | '/setup_/review'
+    | '/store/preview'
     | '/templates/'
     | '/.mcp/invoke-tool/$tool'
     | '/templates/$slug/preview'
@@ -285,6 +297,7 @@ export interface RootRouteChildren {
   SetupContentRoute: typeof SetupContentRoute
   SetupProfileRoute: typeof SetupProfileRoute
   SetupReviewRoute: typeof SetupReviewRoute
+  StorePreviewRoute: typeof StorePreviewRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
@@ -359,6 +372,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/templates/'
       preLoaderRoute: typeof TemplatesIndexRouteImport
       parentRoute: typeof TemplatesRoute
+    }
+    '/store/preview': {
+      id: '/store/preview'
+      path: '/store/preview'
+      fullPath: '/store/preview'
+      preLoaderRoute: typeof StorePreviewRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/setup_/review': {
       id: '/setup_/review'
@@ -467,6 +487,7 @@ const rootRouteChildren: RootRouteChildren = {
   SetupContentRoute: SetupContentRoute,
   SetupProfileRoute: SetupProfileRoute,
   SetupReviewRoute: SetupReviewRoute,
+  StorePreviewRoute: StorePreviewRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
