@@ -327,31 +327,16 @@ function ReviewBody({
         >
           Back to Brand & Style
         </Link>
-        <div className="flex flex-col items-stretch gap-2 sm:items-end">
-          <button
-            type="button"
-            onClick={() => setConfirmed(true)}
-            className={cn(
-              "inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow sm:w-auto",
-            )}
-          >
-            Confirm & Prepare My Store
-          </button>
-          {confirmed ? (
-            <p
-              role="status"
-              aria-live="polite"
-              className="text-[12.5px] text-foreground sm:text-right"
-            >
-              Your store details are confirmed. Store preparation is the next
-              step.
-            </p>
-          ) : (
-            <p className="text-[12.5px] text-muted-foreground sm:text-right">
-              Store preparation is the next step.
-            </p>
+        <Link
+          to="/store/preview"
+          search={{ plan, billing, design: validDesignSlug }}
+          className={cn(
+            "inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow sm:w-auto",
           )}
-        </div>
+        >
+          Confirm & Prepare My Store
+        </Link>
+
       </div>
     </div>
   );
