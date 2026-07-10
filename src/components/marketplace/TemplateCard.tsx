@@ -45,7 +45,17 @@ export function TemplateCard({
           )}
         </div>
 
-        <h3 className="text-[17px] font-semibold text-foreground">{template.title}</h3>
+        <div className="flex items-center gap-2">
+          <h3 className="text-[17px] font-semibold text-foreground">{template.title}</h3>
+          {launchReady && (
+            <span
+              className="inline-flex items-center gap-1 rounded-full bg-tone-green px-2 py-0.5 text-[10px] font-semibold text-[oklch(0.42_0.12_155)]"
+              aria-label="Launch Ready"
+            >
+              <Sparkles className="h-3 w-3" /> Launch Ready
+            </span>
+          )}
+        </div>
 
         <p className="text-xs text-muted-foreground line-clamp-2">{template.shortDescription}</p>
 
