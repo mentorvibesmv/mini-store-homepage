@@ -221,6 +221,19 @@ function RequestContent({
   });
   const [attempted, setAttempted] = useState(false);
 
+  // Handoff marker — tracks whether WhatsApp was opened for the EXACT
+  // current request context. A mismatch (business/plan/billing/design or
+  // contact WhatsApp changed) naturally returns to idle without any
+  // manual clearing.
+  const [openedContextKey, setOpenedContextKey] = useState<string | null>(null);
+  const openedHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const shouldFocusOpenedRef = useRef(false);
+
+  useEffect(() => {
+    const marker = readHandoffMarker();
+    if (marker) setOpenedContextKey(marker.contextKey);
+  }, []);
+
   const trimmedName = contactName.trim();
   const nameError: string | null = !trimmedName
     ? "Enter your contact name."
