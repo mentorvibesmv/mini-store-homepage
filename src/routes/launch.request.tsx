@@ -8,7 +8,7 @@
 // backend, no persistence, no submission tracking.
 
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Container, Section, Badge } from "@/components/site";
 import { cn } from "@/lib/utils";
@@ -22,6 +22,67 @@ type Billing = "monthly" | "annual";
 
 // Mini Store team WhatsApp — the ONLY destination for the handoff.
 const TEAM_WHATSAPP_E164 = "919025800838";
+
+// Session-scoped marker so a refresh / back-nav restores the truthful
+// "WhatsApp opened" panel — but only when the current request context
+// still matches the one that was opened. Any change to business name,
+// plan, billing, design, or contact WhatsApp naturally returns idle.
+const HANDOFF_STORAGE_KEY = "mini-store:handoff-opened";
+const HANDOFF_STORAGE_VERSION = 1;
+
+type HandoffMarker = { version: number; contextKey: string };
+
+function buildContextKey(parts: {
+  businessName: string;
+  plan: PlanId;
+  billing: Billing;
+  designSlug: string;
+  contactWhatsapp: string;
+}): string {
+  const normalizedName = parts.businessName.trim().toLowerCase();
+  return encodeURIComponent(
+    [
+      normalizedName,
+      parts.plan,
+      parts.billing,
+      parts.designSlug,
+      parts.contactWhatsapp,
+    ].join("|"),
+  );
+}
+
+function readHandoffMarker(): HandoffMarker | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.sessionStorage.getItem(HANDOFF_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as unknown;
+    if (
+      parsed &&
+      typeof parsed === "object" &&
+      (parsed as HandoffMarker).version === HANDOFF_STORAGE_VERSION &&
+      typeof (parsed as HandoffMarker).contextKey === "string" &&
+      (parsed as HandoffMarker).contextKey.length > 0
+    ) {
+      return parsed as HandoffMarker;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function writeHandoffMarker(contextKey: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(
+      HANDOFF_STORAGE_KEY,
+      JSON.stringify({ version: HANDOFF_STORAGE_VERSION, contextKey }),
+    );
+  } catch {
+    // storage unavailable — silently degrade to idle-only UX
+  }
+}
 
 function parsePlan(v: unknown): PlanId | undefined {
   return v === "starter" || v === "business" ? v : undefined;
@@ -160,6 +221,19 @@ function RequestContent({
   });
   const [attempted, setAttempted] = useState(false);
 
+  // Handoff marker — tracks whether WhatsApp was opened for the EXACT
+  // current request context. A mismatch (business/plan/billing/design or
+  // contact WhatsApp changed) naturally returns to idle without any
+  // manual clearing.
+  const [openedContextKey, setOpenedContextKey] = useState<string | null>(null);
+  const openedHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const shouldFocusOpenedRef = useRef(false);
+
+  useEffect(() => {
+    const marker = readHandoffMarker();
+    if (marker) setOpenedContextKey(marker.contextKey);
+  }, []);
+
   const trimmedName = contactName.trim();
   const nameError: string | null = !trimmedName
     ? "Enter your contact name."
@@ -224,13 +298,41 @@ function RequestContent({
     trimmedEmail,
   ]);
 
+  const currentContextKey = useMemo(
+    () =>
+      buildContextKey({
+        businessName,
+        plan,
+        billing,
+        designSlug,
+        contactWhatsapp,
+      }),
+    [businessName, plan, billing, designSlug, contactWhatsapp],
+  );
+  const isOpened =
+    openedContextKey !== null && openedContextKey === currentContextKey;
+
   const handleContinueClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!allValid) {
       e.preventDefault();
       setAttempted(true);
+      return;
     }
-    // Otherwise the anchor's target="_blank" href opens the WhatsApp chat.
+    // Valid user-triggered click: persist context marker, transition to
+    // opened, allow the anchor to open WhatsApp normally.
+    writeHandoffMarker(currentContextKey);
+    if (openedContextKey !== currentContextKey) {
+      shouldFocusOpenedRef.current = true;
+      setOpenedContextKey(currentContextKey);
+    }
   };
+
+  useEffect(() => {
+    if (isOpened && shouldFocusOpenedRef.current) {
+      shouldFocusOpenedRef.current = false;
+      openedHeadingRef.current?.focus();
+    }
+  }, [isOpened]);
 
   return (
     <SiteLayout>
@@ -280,7 +382,8 @@ function RequestContent({
             </div>
           </div>
 
-          {/* Contact form */}
+          {/* Contact form (idle) */}
+          {!isOpened && (
           <form
             noValidate
             onSubmit={(e) => e.preventDefault()}
@@ -458,6 +561,63 @@ function RequestContent({
               </div>
             </div>
           </form>
+          )}
+
+          {/* Post-open panel */}
+          {isOpened && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="mt-6 rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8"
+            >
+              <h2
+                ref={openedHeadingRef}
+                tabIndex={-1}
+                className="text-[20px] font-bold text-foreground outline-none sm:text-[22px]"
+              >
+                WhatsApp opened
+              </h2>
+              <p className="mt-2 text-[14px] text-muted-foreground">
+                Send the prepared message in WhatsApp to complete your request.
+                Nothing is sent to the Mini Store team until you tap Send in
+                WhatsApp.
+              </p>
+
+              <div className="mt-6 text-center sm:text-left">
+                <Link
+                  to="/setup/review"
+                  search={{ plan, billing, design: designSlug }}
+                  className="text-[13px] font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                >
+                  Edit Store Details
+                </Link>
+              </div>
+
+              <div className="mt-4 flex flex-col-reverse gap-3 sm:mt-6 sm:flex-row sm:items-center sm:justify-between">
+                <Link
+                  to="/store/preview"
+                  search={{ plan, billing, design: designSlug }}
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground shadow-soft transition-colors hover:border-foreground/20 sm:w-auto"
+                >
+                  Back to Preview
+                </Link>
+                <div className="flex flex-col items-stretch gap-2 sm:items-end">
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleContinueClick}
+                    className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow sm:w-auto"
+                  >
+                    Open WhatsApp Again
+                  </a>
+                  <p className="text-[12.5px] text-muted-foreground sm:text-right">
+                    Use this if WhatsApp didn't open, or to re-open the chat.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
         </Container>
       </Section>
