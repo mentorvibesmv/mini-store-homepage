@@ -274,30 +274,64 @@ function TemplateDetailsPage() {
                 ))}
               </ul>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  to="/pricing"
-                  search={{ design: template.slug }}
-                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary-gradient px-6 text-sm font-medium text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5 sm:w-auto sm:flex-1"
-                >
-                  <Sliders className="h-4 w-4" /> Use This Design
-                </Link>
-                <Link
-                  to="/templates/$slug/preview"
-                  params={{ slug: template.slug }}
-                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-6 text-sm font-medium text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-foreground/20 sm:w-auto"
-                >
-                  <ExternalLink className="h-4 w-4" /> Live Demo
-                </Link>
-              </div>
-
-              <p className="mt-4 text-xs text-muted-foreground">
-                This design is offered as part of your Mini Store plan — see{" "}
-                <Link to="/pricing" search={{ design: undefined }} className="text-primary hover:underline">
-                  pricing
-                </Link>{" "}
-                for details.
-              </p>
+              {launchReady ? (
+                <>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <Link
+                      to="/pricing"
+                      search={{ design: template.slug }}
+                      className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary-gradient px-6 text-sm font-medium text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5 sm:w-auto sm:flex-1"
+                    >
+                      <Sliders className="h-4 w-4" /> Use This Design
+                    </Link>
+                    <Link
+                      to="/templates/$slug/preview"
+                      params={{ slug: template.slug }}
+                      className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-6 text-sm font-medium text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-foreground/20 sm:w-auto"
+                    >
+                      <ExternalLink className="h-4 w-4" /> Live Demo
+                    </Link>
+                  </div>
+                  <p className="mt-4 text-xs text-muted-foreground">
+                    This design is offered as part of your Mini Store plan — see{" "}
+                    <Link to="/pricing" search={{ design: undefined }} className="text-primary hover:underline">
+                      pricing
+                    </Link>{" "}
+                    for details.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="mt-8 flex flex-col gap-3">
+                    <button
+                      type="button"
+                      disabled
+                      aria-disabled="true"
+                      className="inline-flex h-12 w-full cursor-not-allowed items-center justify-center gap-2 rounded-full bg-muted px-6 text-sm font-medium text-muted-foreground opacity-80 sm:w-auto sm:self-start sm:px-8"
+                    >
+                      <Clock className="h-4 w-4" /> Coming Soon for Instant Preview
+                    </button>
+                    <p className="text-xs text-muted-foreground">
+                      This design can be explored now. Self-service store generation is coming soon.
+                    </p>
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                      <Link
+                        to="/templates/$slug/preview"
+                        params={{ slug: template.slug }}
+                        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-6 text-sm font-medium text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-foreground/20 sm:w-auto"
+                      >
+                        <ExternalLink className="h-4 w-4" /> Live Demo
+                      </Link>
+                      <Link
+                        to="/templates"
+                        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-6 text-sm font-medium text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-foreground/20 sm:w-auto"
+                      >
+                        <Sparkles className="h-4 w-4" /> Choose a Launch-Ready Design
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </Container>
