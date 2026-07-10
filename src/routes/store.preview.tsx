@@ -78,7 +78,7 @@ function PreviewContent({
   draft,
 }: {
   plan: PlanId | undefined;
-  billing: Billing;
+  billing: Billing | undefined;
   designSlug: string | undefined;
   draft: ReturnType<typeof useOnboardingDraft>["draft"];
 }) {
@@ -112,9 +112,8 @@ function PreviewContent({
   if (!Renderer) {
     return (
       <NotLaunchableState
-        templateTitle={config.template.title}
-        plan={plan}
-        billing={billing}
+        plan={built.value.plan}
+        billing={built.value.billing}
         designSlug={config.template.slug}
       />
     );
@@ -126,6 +125,7 @@ function PreviewContent({
     </div>
   );
 }
+
 
 function PreparingState() {
   return (
