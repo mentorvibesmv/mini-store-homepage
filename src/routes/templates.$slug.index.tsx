@@ -248,6 +248,11 @@ function TemplateDetailsPage() {
                     ★ {statusBadge.label}
                   </span>
                 )}
+                {launchReady && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-tone-green px-3 py-1 text-xs font-semibold text-[oklch(0.42_0.12_155)]">
+                    <Sparkles className="h-3 w-3" /> Launch Ready
+                  </span>
+                )}
               </div>
 
               <h1 className="mt-4 text-3xl font-bold leading-tight text-foreground sm:text-[38px]">
