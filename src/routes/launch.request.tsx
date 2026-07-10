@@ -561,6 +561,63 @@ function RequestContent({
               </div>
             </div>
           </form>
+          )}
+
+          {/* Post-open panel */}
+          {isOpened && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="mt-6 rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8"
+            >
+              <h2
+                ref={openedHeadingRef}
+                tabIndex={-1}
+                className="text-[20px] font-bold text-foreground outline-none sm:text-[22px]"
+              >
+                WhatsApp opened
+              </h2>
+              <p className="mt-2 text-[14px] text-muted-foreground">
+                Send the prepared message in WhatsApp to complete your request.
+                Nothing is sent to the Mini Store team until you tap Send in
+                WhatsApp.
+              </p>
+
+              <div className="mt-6 text-center sm:text-left">
+                <Link
+                  to="/setup/review"
+                  search={{ plan, billing, design: designSlug }}
+                  className="text-[13px] font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                >
+                  Edit Store Details
+                </Link>
+              </div>
+
+              <div className="mt-4 flex flex-col-reverse gap-3 sm:mt-6 sm:flex-row sm:items-center sm:justify-between">
+                <Link
+                  to="/store/preview"
+                  search={{ plan, billing, design: designSlug }}
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground shadow-soft transition-colors hover:border-foreground/20 sm:w-auto"
+                >
+                  Back to Preview
+                </Link>
+                <div className="flex flex-col items-stretch gap-2 sm:items-end">
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleContinueClick}
+                    className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary-gradient px-7 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-glow sm:w-auto"
+                  >
+                    Open WhatsApp Again
+                  </a>
+                  <p className="text-[12.5px] text-muted-foreground sm:text-right">
+                    Use this if WhatsApp didn't open, or to re-open the chat.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
         </Container>
       </Section>
