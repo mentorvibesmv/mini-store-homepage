@@ -204,7 +204,7 @@ function TemplateDetailsPage() {
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
-                <div className="flex flex-1 gap-3 overflow-x-auto">
+                <div className="flex min-w-0 flex-1 gap-3 overflow-x-auto">
                   {gallery.map((src, i) => (
                     <button
                       key={i}
