@@ -184,7 +184,7 @@ function TemplateDetailsPage() {
       {/* Main overview */}
       <Section className="pt-6">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr]">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
             {/* LEFT — gallery */}
             <div>
               <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
