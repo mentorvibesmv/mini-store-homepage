@@ -184,7 +184,7 @@ function TemplateDetailsPage() {
       {/* Main overview */}
       <Section className="pt-6">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr]">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
             {/* LEFT — gallery */}
             <div>
               <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
@@ -204,7 +204,7 @@ function TemplateDetailsPage() {
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
-                <div className="flex flex-1 gap-3 overflow-x-auto">
+                <div className="flex min-w-0 flex-1 gap-3 overflow-x-auto">
                   {gallery.map((src, i) => (
                     <button
                       key={i}
