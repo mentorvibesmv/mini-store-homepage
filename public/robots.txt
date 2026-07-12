@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Hidden / unfinished areas — not for indexing
+Disallow: /setup/
+Disallow: /setup
+Disallow: /store/
+Disallow: /launch/
+Disallow: /preview/
+Disallow: /pricing/start
+
+Sitemap: https://noble-web-architect.lovable.app/sitemap.xml
