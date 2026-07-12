@@ -364,7 +364,7 @@ function FeatureList({ items }: { items: string[] }) {
   );
 }
 
-function StarterCard({ plan, billing, design }: { plan: typeof pricingPage.plans.starter; billing: Billing; design?: string }) {
+function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter; billing: Billing; design?: string }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone}>
