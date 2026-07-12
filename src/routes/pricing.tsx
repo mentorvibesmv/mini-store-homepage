@@ -405,7 +405,7 @@ function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter; billing
   );
 }
 
-function BusinessCard({ plan, billing, design }: { plan: typeof pricingPage.plans.business; billing: Billing; design?: string }) {
+function BusinessCard({ plan }: { plan: typeof pricingPage.plans.business; billing: Billing; design?: string }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone} popular={plan.popular}>
