@@ -8,6 +8,7 @@ import heroMobile from "@/assets/hero-device-mobile.png";
 import customHero from "@/assets/custom-hero.jpg";
 import customPriceIllus from "@/assets/custom-price-illustration.jpg";
 import customCtaIllus from "@/assets/custom-cta-illustration.jpg";
+import { siteConfig } from "@/lib/site-config";
 
 // ============================================================
 // Site content configuration — future admin-panel editable.
