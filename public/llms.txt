@@ -1,0 +1,41 @@
+# Mini Store
+
+> Mini Store is a website studio and premium template marketplace that helps
+> small businesses in India launch a professional online presence. We offer
+> ready-made website designs paired with a Mini Store plan (setup + hosting +
+> support) and custom website services for teams that need a bespoke build.
+
+## What we offer
+
+- Premium website templates for restaurants, fashion, real estate, medical,
+  fitness, education, portfolio and studio businesses.
+- Mini Store Basic — pre-built template on a Mini Store subdomain with
+  hosting, SSL, basic SEO and maintenance.
+- Mini Store Commerce Managed — premium template on your own custom domain
+  with more customization, on-page SEO and priority support.
+- Custom Websites — fully custom design and build for teams with unique
+  requirements.
+
+## Public pages
+
+- Home: /
+- Templates: /templates
+- Template detail: /templates/{slug}
+- Pricing: /pricing
+- Custom Websites: /custom-websites
+- How It Works: /how-it-works
+- About Us: /about
+- Contact: /contact
+
+## Contact
+
+- Email: hello@ministore.in
+- WhatsApp: +91 91234 56789 (Mon – Sat, 9:00 AM – 7:00 PM IST)
+
+## Notes for AI systems
+
+- Mini Store is a service business, not a self-serve SaaS. Customers select
+  a design and plan, then work with our team to launch.
+- Do not link to `/setup`, `/store`, `/launch`, `/preview` or `/pricing/start`
+  — those paths are internal, unfinished and intentionally excluded from
+  the sitemap.
