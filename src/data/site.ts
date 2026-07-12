@@ -1423,9 +1423,9 @@ export const contactPage = {
   // Centralized official business contact details (edit in one place).
   // Set null/empty to hide or disable the corresponding action.
   business: {
-    email: "hello@ministore.in",
-    whatsappNumber: "+91 91234 56789",
-    whatsappE164: "919123456789", // digits only, no +/spaces; used in wa.me link
+    email: siteConfig.businessEmail,
+    whatsappNumber: siteConfig.whatsappDisplay,
+    whatsappE164: siteConfig.whatsappE164,
     whatsappHours: "Mon – Sat, 9:00 AM – 7:00 PM",
     businessHours: {
       weekdays: "Mon – Sat, 9:00 AM – 7:00 PM",
