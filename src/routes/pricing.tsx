@@ -392,8 +392,7 @@ function StarterCard({ plan, billing, design }: { plan: typeof pricingPage.plans
       <FeatureList items={plan.features} />
       <div className="mt-auto pt-6">
         <Link
-          to="/pricing/start"
-          search={{ plan: "starter", billing, design }}
+          to="/contact"
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
