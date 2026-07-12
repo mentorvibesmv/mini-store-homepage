@@ -20,8 +20,10 @@ import type { LaunchFailureReason } from "@/lib/launch/types";
 type PlanId = "starter" | "business";
 type Billing = "monthly" | "annual";
 
+import { siteConfig } from "@/lib/site-config";
+
 // Mini Store team WhatsApp — the ONLY destination for the handoff.
-const TEAM_WHATSAPP_E164 = "919025800838";
+const TEAM_WHATSAPP_E164 = siteConfig.teamWhatsappE164;
 
 // Session-scoped marker so a refresh / back-nav restores the truthful
 // "WhatsApp opened" panel — but only when the current request context
