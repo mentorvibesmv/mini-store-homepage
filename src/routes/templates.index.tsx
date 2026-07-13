@@ -29,22 +29,31 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/templates/")({
   validateSearch: searchSchema,
-  head: () => ({
-    meta: [
-      { title: "Templates Gallery — Mini Store" },
-      {
-        name: "description",
-        content:
-          "Browse website designs for restaurants, fashion, real estate, medical, fitness, education, portfolio and more.",
-      },
-      { property: "og:title", content: "Templates Gallery — Mini Store" },
-      {
-        property: "og:description",
-        content:
-          "Browse website designs made for real businesses, then make them your own with a Mini Store plan.",
-      },
-    ],
-  }),
+  head: () => {
+    const TITLE = "Website Template Gallery — Mini Store Designs";
+    const DESCRIPTION =
+      "Browse premium website designs for restaurants, fashion, real estate, medical, fitness, education, portfolio and studio businesses — ready to launch with a Mini Store plan.";
+    const seo = pageSeo({ path: "/templates", title: TITLE, description: DESCRIPTION });
+    return {
+      ...seo,
+      scripts: [
+        jsonLd(
+          webPageSchema({
+            path: "/templates",
+            name: TITLE,
+            description: DESCRIPTION,
+            type: "CollectionPage",
+          }),
+        ),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Templates", path: "/templates" },
+          ]),
+        ),
+      ],
+    };
+  },
   component: TemplatesPage,
 });
 
