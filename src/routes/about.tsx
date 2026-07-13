@@ -25,25 +25,35 @@ import { Container, Section, Button } from "@/components/site";
 import { aboutPage } from "@/data/site";
 import { cn } from "@/lib/utils";
 
+import { pageSeo, jsonLd, webPageSchema, breadcrumbSchema } from "@/lib/seo";
+
+const TITLE = "About Mini Store — Website Studio & Template Marketplace";
+const DESCRIPTION =
+  "Mini Store makes professional websites simple, affordable and accessible for every small business in India. Learn about our mission, process, and promise.";
+
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Us — Mini Store" },
-      {
-        name: "description",
-        content:
-          "Mini Store makes professional websites simple, affordable and accessible for every business. Learn about our mission, process, and promise.",
-      },
-      { property: "og:title", content: "About Us — Mini Store" },
-      {
-        property: "og:description",
-        content:
-          "One platform for templates and custom websites — built to help businesses of all sizes grow online without technical complexity.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSeo({ path: "/about", title: TITLE, description: DESCRIPTION });
+    return {
+      ...seo,
+      scripts: [
+        jsonLd(
+          webPageSchema({
+            path: "/about",
+            name: TITLE,
+            description: DESCRIPTION,
+            type: "AboutPage",
+          }),
+        ),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        ),
+      ],
+    };
+  },
   component: AboutPage,
 });
 
