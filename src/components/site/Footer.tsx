@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer id="contact" className="border-t border-border bg-surface">
       <Container className="py-12 sm:py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary-gradient text-sm font-semibold text-primary-foreground shadow-soft">
