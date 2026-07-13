@@ -20,6 +20,7 @@ import { TemplateCard } from "@/components/marketplace/TemplateCard";
 import { TemplateQuickPreview } from "@/components/marketplace/TemplateQuickPreview";
 import { templates, type Template, type TemplateTech } from "@/data/site";
 import { isLaunchableSlug } from "@/lib/launch/renderer-registry";
+import { pageSeo, jsonLd, productSchema, breadcrumbSchema } from "@/lib/seo";
 import heroLaptop from "@/assets/hero-device-laptop.png";
 import heroTablet from "@/assets/hero-device-tablet.png";
 import heroMobile from "@/assets/hero-device-mobile.png";
