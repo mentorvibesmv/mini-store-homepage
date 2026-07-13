@@ -33,24 +33,36 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
+import { pageSeo, jsonLd, webPageSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
+
+const TITLE = "Contact Mini Store — Talk to Our Website Team";
+const DESCRIPTION =
+  "Get in touch with the Mini Store team on WhatsApp or email. Ask a question, request a custom website, or start a new project — we reply during business hours (Mon–Sat).";
+
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Mini Store" },
-      {
-        name: "description",
-        content:
-          "Get in touch with the Mini Store team. Ask a question, request a custom website, or start your next project.",
-      },
-      { property: "og:title", content: "Contact — Mini Store" },
-      {
-        property: "og:description",
-        content: "Reach out to Mini Store for templates, custom websites, pricing, or support.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSeo({ path: "/contact", title: TITLE, description: DESCRIPTION });
+    return {
+      ...seo,
+      scripts: [
+        jsonLd(
+          webPageSchema({
+            path: "/contact",
+            name: TITLE,
+            description: DESCRIPTION,
+            type: "ContactPage",
+          }),
+        ),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ),
+        jsonLd(faqSchema(contactPage.faq.items)),
+      ],
+    };
+  },
   component: ContactPage,
 });
 
