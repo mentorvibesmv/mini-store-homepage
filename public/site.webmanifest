@@ -1,0 +1,12 @@
+{
+  "name": "Mini Store",
+  "short_name": "Mini Store",
+  "description": "Premium website designs and custom websites for small businesses in India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+  ]
+}
