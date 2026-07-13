@@ -31,7 +31,7 @@ export const Route = createFileRoute("/templates/$slug/")({
     if (!t) throw notFound();
     return { template: t };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) {
       return {
         meta: [
@@ -41,13 +41,35 @@ export const Route = createFileRoute("/templates/$slug/")({
       };
     }
     const t = loaderData.template;
+    const title = `${t.title} Website Template — Mini Store`;
+    const description = t.fullDescription ?? t.shortDescription;
+    const path = `/templates/${params.slug}`;
+    const seo = pageSeo({
+      path,
+      title,
+      description,
+      ogType: "product",
+      ogImage: t.image,
+    });
     return {
-      meta: [
-        { title: `${t.title} — Mini Store` },
-        { name: "description", content: t.fullDescription ?? t.shortDescription },
-        { property: "og:title", content: `${t.title} — Mini Store` },
-        { property: "og:description", content: t.fullDescription ?? t.shortDescription },
-        { property: "og:image", content: t.image },
+      ...seo,
+      scripts: [
+        jsonLd(
+          productSchema({
+            name: t.title,
+            description,
+            path,
+            image: t.image,
+            category: t.category,
+          }),
+        ),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Templates", path: "/templates" },
+            { name: t.title, path },
+          ]),
+        ),
       ],
     };
   },
