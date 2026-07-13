@@ -18,6 +18,7 @@ import {
   type Template,
   type SortOption,
 } from "@/data/site";
+import { pageSeo, jsonLd, webPageSchema, breadcrumbSchema } from "@/lib/seo";
 
 const PAGE_SIZE = 8;
 
