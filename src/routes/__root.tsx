@@ -78,30 +78,49 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mini Store — Website Designs & Custom Websites" },
-      {
-        name: "description",
-        content:
-          "Mini Store offers website designs and custom website services to help businesses launch and grow online.",
-      },
       { name: "author", content: "Mini Store" },
-      { property: "og:title", content: "Mini Store — Website Designs & Custom Websites" },
-      {
-        property: "og:description",
-        content:
-          "Choose a website design and a Mini Store plan, or request a separate custom website quote.",
-      },
-      { property: "og:type", content: "website" },
+      { name: "theme-color", content: "#ffffff" },
+      { property: "og:site_name", content: "Mini Store" },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/favicon.ico" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://noble-web-architect.lovable.app/#organization",
+              name: "Mini Store",
+              url: "https://noble-web-architect.lovable.app",
+              logo: "https://noble-web-architect.lovable.app/og-default.jpg",
+              email: "hello@ministore.in",
+              areaServed: "IN",
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://noble-web-architect.lovable.app/#website",
+              url: "https://noble-web-architect.lovable.app",
+              name: "Mini Store",
+              publisher: { "@id": "https://noble-web-architect.lovable.app/#organization" },
+              inLanguage: "en-IN",
+            },
+          ],
+        }),
       },
     ],
   }),
