@@ -17,6 +17,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CustomWebsitesRouteImport } from './routes/custom-websites'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -73,6 +74,11 @@ const McpRoute = McpRouteImport.update({
 const HowItWorksRoute = HowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomWebsitesRoute = CustomWebsitesRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/custom-websites': typeof CustomWebsitesRoute
+  '/faq': typeof FaqRoute
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
@@ -196,6 +203,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/custom-websites': typeof CustomWebsitesRoute
+  '/faq': typeof FaqRoute
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
@@ -223,6 +231,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/custom-websites': typeof CustomWebsitesRoute
+  '/faq': typeof FaqRoute
   '/how-it-works': typeof HowItWorksRoute
   '/mcp': typeof McpRoute
   '/pricing': typeof PricingRoute
@@ -252,6 +261,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/custom-websites'
+    | '/faq'
     | '/how-it-works'
     | '/mcp'
     | '/pricing'
@@ -279,6 +289,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/custom-websites'
+    | '/faq'
     | '/how-it-works'
     | '/mcp'
     | '/pricing'
@@ -305,6 +316,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/custom-websites'
+    | '/faq'
     | '/how-it-works'
     | '/mcp'
     | '/pricing'
@@ -333,6 +345,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   CustomWebsitesRoute: typeof CustomWebsitesRoute
+  FaqRoute: typeof FaqRoute
   HowItWorksRoute: typeof HowItWorksRoute
   McpRoute: typeof McpRoute
   PricingRoute: typeof PricingRoute
@@ -409,6 +422,13 @@ declare module '@tanstack/react-router' {
       path: '/how-it-works'
       fullPath: '/how-it-works'
       preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/custom-websites': {
@@ -554,6 +574,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   CustomWebsitesRoute: CustomWebsitesRoute,
+  FaqRoute: FaqRoute,
   HowItWorksRoute: HowItWorksRoute,
   McpRoute: McpRoute,
   PricingRoute: PricingRoute,
