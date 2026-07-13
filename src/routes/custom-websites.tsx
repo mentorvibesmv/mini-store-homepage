@@ -35,25 +35,38 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
+import { pageSeo, jsonLd, webPageSchema, breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo";
+
+const TITLE = "Custom Website Design & Development — Mini Store";
+const DESCRIPTION =
+  "We design and build fully custom websites for Indian businesses — 100% custom design, responsive, SEO-friendly, delivered in 2–4 weeks with a 30-day warranty.";
+
 export const Route = createFileRoute("/custom-websites")({
-  head: () => ({
-    meta: [
-      { title: "Custom Websites — Mini Store" },
-      {
-        name: "description",
-        content:
-          "We design and build fully custom websites for your business — 100% custom design built around your brand.",
-      },
-      { property: "og:title", content: "Custom Websites — Mini Store" },
-      {
-        property: "og:description",
-        content:
-          "Stand out online with a custom website designed to match your brand, engage your audience, and grow your business.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSeo({ path: "/custom-websites", title: TITLE, description: DESCRIPTION });
+    return {
+      ...seo,
+      scripts: [
+        jsonLd(
+          webPageSchema({ path: "/custom-websites", name: TITLE, description: DESCRIPTION }),
+        ),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Custom Websites", path: "/custom-websites" },
+          ]),
+        ),
+        jsonLd(
+          serviceSchema({
+            name: "Custom Website Design & Development",
+            description: DESCRIPTION,
+            path: "/custom-websites",
+          }),
+        ),
+        jsonLd(faqSchema(customWebsitesPage.faq.items)),
+      ],
+    };
+  },
   component: CustomWebsitesPage,
 });
 

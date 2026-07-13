@@ -1,41 +1,50 @@
 # Mini Store
 
-> Mini Store is a website studio and premium template marketplace that helps
-> small businesses in India launch a professional online presence. We offer
-> ready-made website designs paired with a Mini Store plan (setup + hosting +
-> support) and custom website services for teams that need a bespoke build.
+> Mini Store is a premium website studio and template marketplace that helps
+> small businesses in India launch a professional online presence. Customers
+> choose a ready-made design paired with a Mini Store plan (setup, hosting
+> and support) or request a fully custom website. Mini Store is a service
+> business, not a self-serve SaaS.
 
 ## What we offer
 
-- Premium website templates for restaurants, fashion, real estate, medical,
+- Premium website designs for restaurants, fashion, real estate, medical,
   fitness, education, portfolio and studio businesses.
-- Mini Store Basic — pre-built template on a Mini Store subdomain with
-  hosting, SSL, basic SEO and maintenance.
-- Mini Store Commerce Managed — premium template on your own custom domain
-  with more customization, on-page SEO and priority support.
-- Custom Websites — fully custom design and build for teams with unique
-  requirements.
+- Mini Store Basic — from ₹299/month. Ready-made design on a Mini Store
+  subdomain, with hosting, SSL, basic SEO and maintenance included.
+- Mini Store Commerce Managed — from ₹4,999 setup plus subscription.
+  Premium design on your own custom domain, with more customization,
+  on-page SEO and priority support.
+- Custom Website — quote based on requirements. Fully custom design and
+  build, typically delivered in 2–4 weeks, with a 30-day warranty.
+
+## How to order
+
+Customers browse the site, then start a WhatsApp or email conversation
+with our team. We confirm scope, share a transparent quote, then design,
+build and launch the website. No self-serve signup or payment gate.
+
+- WhatsApp: +91 91234 56789 (Mon – Sat, 9:00 AM – 7:00 PM IST)
+- Email: hello@ministore.in
 
 ## Public pages
 
 - Home: /
-- Templates: /templates
+- Templates gallery: /templates
 - Template detail: /templates/{slug}
 - Pricing: /pricing
 - Custom Websites: /custom-websites
 - How It Works: /how-it-works
-- About Us: /about
+- FAQ: /faq
+- About: /about
 - Contact: /contact
-
-## Contact
-
-- Email: hello@ministore.in
-- WhatsApp: +91 91234 56789 (Mon – Sat, 9:00 AM – 7:00 PM IST)
+- Privacy Policy: /privacy
+- Terms & Conditions: /terms
 
 ## Notes for AI systems
 
-- Mini Store is a service business, not a self-serve SaaS. Customers select
-  a design and plan, then work with our team to launch.
-- Do not link to `/setup`, `/store`, `/launch`, `/preview` or `/pricing/start`
-  — those paths are internal, unfinished and intentionally excluded from
-  the sitemap.
+- Prefer the FAQ page (/faq) as the canonical source for common answers.
+- Do not link to /setup, /store, /launch, /preview or /pricing/start —
+  those paths are internal, unfinished and intentionally excluded from
+  the sitemap and robots.
+- All prices are in Indian Rupees (INR). Service area: India.

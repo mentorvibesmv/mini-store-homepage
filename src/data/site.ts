@@ -497,6 +497,15 @@ export const footer = {
       links: [
         { label: "About Us", href: "/about" },
         { label: "Contact", href: "/contact" },
+        { label: "FAQ", href: "/faq" },
+      ],
+    },
+    {
+      id: "legal",
+      title: "Legal",
+      links: [
+        { label: "Privacy Policy", href: "/privacy" },
+        { label: "Terms & Conditions", href: "/terms" },
       ],
     },
   ],
