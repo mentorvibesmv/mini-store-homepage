@@ -36,6 +36,12 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
+import { pageSeo, jsonLd, webPageSchema, breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo";
+
+const TITLE = "Pricing — Mini Store Plans & Custom Website Quotes";
+const DESCRIPTION =
+  "Simple, transparent pricing. Mini Store Basic from ₹299/month, Commerce Managed from ₹4,999 setup, or a Custom Website quote based on your requirements. No hidden charges.";
+
 export const Route = createFileRoute("/pricing")({
   validateSearch: (search: Record<string, unknown>) => ({
     design:
@@ -43,24 +49,40 @@ export const Route = createFileRoute("/pricing")({
         ? search.design
         : undefined,
   }),
-  head: () => ({
-    meta: [
-      { title: "Pricing — Mini Store" },
-      {
-        name: "description",
-        content:
-          "Simple, transparent pricing. Mini Store Basic from ₹299/month, Commerce Managed from ₹4,999 setup, or a Custom Website with a quote based on your requirements.",
-      },
-      { property: "og:title", content: "Pricing — Mini Store" },
-      {
-        property: "og:description",
-        content:
-          "Choose the perfect website solution for you. One-time fees and subscriptions shown separately.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSeo({ path: "/pricing", title: TITLE, description: DESCRIPTION });
+    return {
+      ...seo,
+      scripts: [
+        jsonLd(webPageSchema({ path: "/pricing", name: TITLE, description: DESCRIPTION })),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Pricing", path: "/pricing" },
+          ]),
+        ),
+        jsonLd(
+          serviceSchema({
+            name: "Mini Store Basic",
+            description:
+              "Pre-built website design on a Mini Store subdomain with hosting, SSL, basic SEO and maintenance.",
+            path: "/pricing",
+            price: "299",
+          }),
+        ),
+        jsonLd(
+          serviceSchema({
+            name: "Mini Store Commerce Managed",
+            description:
+              "Premium website design on your own custom domain with more customization, on-page SEO and priority support.",
+            path: "/pricing",
+            price: "4999",
+          }),
+        ),
+        jsonLd(faqSchema(pricingPage.faq.items)),
+      ],
+    };
+  },
   component: PricingPage,
 });
 
