@@ -20,25 +20,28 @@ import { Container, Section, Button } from "@/components/site";
 import { howItWorksPage } from "@/data/site";
 import { cn } from "@/lib/utils";
 
+import { pageSeo, jsonLd, webPageSchema, breadcrumbSchema } from "@/lib/seo";
+
+const TITLE = "How It Works — Mini Store's 7-Step Website Launch Process";
+const DESCRIPTION =
+  "From choosing a template or custom website to going live — see Mini Store's simple, transparent 7-step process for launching your business online.";
+
 export const Route = createFileRoute("/how-it-works")({
-  head: () => ({
-    meta: [
-      { title: "How It Works — Mini Store" },
-      {
-        name: "description",
-        content:
-          "See how Mini Store works from choosing a template or custom website to going live — a simple, transparent 7-step process.",
-      },
-      { property: "og:title", content: "How It Works — Mini Store" },
-      {
-        property: "og:description",
-        content:
-          "A simple, transparent process for launching your business website — from choosing your path to ongoing support.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSeo({ path: "/how-it-works", title: TITLE, description: DESCRIPTION });
+    return {
+      ...seo,
+      scripts: [
+        jsonLd(webPageSchema({ path: "/how-it-works", name: TITLE, description: DESCRIPTION })),
+        jsonLd(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "How It Works", path: "/how-it-works" },
+          ]),
+        ),
+      ],
+    };
+  },
   component: HowItWorksPage,
 });
 
