@@ -224,7 +224,21 @@ function ContactForm({
   firstFieldRef: React.RefObject<HTMLInputElement | null>;
 }) {
   const f = contactPage.form;
-  const [values, setValues] = useState<FormState>(initialForm);
+  const { plan, design } = Route.useSearch();
+  const [values, setValues] = useState<FormState>(() => {
+    const planLabel =
+      plan === "starter"
+        ? "Mini Store Basic"
+        : plan === "business"
+          ? "Mini Store Commerce Managed"
+          : plan === "custom"
+            ? "Custom Website"
+            : undefined;
+    const parts: string[] = [];
+    if (planLabel) parts.push(`Selected plan: ${planLabel}`);
+    if (design) parts.push(`Selected design: ${design}`);
+    return { ...initialForm, message: parts.length ? `${parts.join("\n")}\n\n` : "" };
+  });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
