@@ -1472,8 +1472,8 @@ export const contactPage = {
       "Our team will be in touch shortly. A submission service will be connected soon; please email us directly for anything urgent.",
     errorBody: "Something went wrong. Please try again or email us directly.",
     consentLabel: "I agree to the",
-    privacyHref: "/legal/privacy",
-    termsHref: "/legal/terms",
+    privacyHref: "/privacy",
+    termsHref: "/terms",
     subjectOptions: [
       { id: "general", label: "General Question" },
       { id: "template", label: "Template Help" },
