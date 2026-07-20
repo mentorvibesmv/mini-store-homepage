@@ -40,6 +40,16 @@ const DESCRIPTION =
   "Get in touch with the Mini Store team on WhatsApp or email. Ask a question, request a custom website, or start a new project — we reply during business hours (Mon–Sat).";
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    plan:
+      typeof search.plan === "string" && ["starter", "business", "custom"].includes(search.plan)
+        ? (search.plan as "starter" | "business" | "custom")
+        : undefined,
+    design:
+      typeof search.design === "string" && search.design.length > 0
+        ? search.design
+        : undefined,
+  }),
   head: () => {
     const seo = pageSeo({ path: "/contact", title: TITLE, description: DESCRIPTION });
     return {
