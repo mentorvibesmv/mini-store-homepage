@@ -326,14 +326,13 @@ function TemplateDetailsPage() {
               ) : (
                 <>
                   <div className="mt-8 flex flex-col gap-3">
-                    <button
-                      type="button"
-                      disabled
-                      aria-disabled="true"
-                      className="inline-flex h-12 w-full cursor-not-allowed items-center justify-center gap-2 rounded-full bg-muted px-6 text-sm font-medium text-muted-foreground opacity-80 sm:w-auto sm:self-start sm:px-8"
+                    <Link
+                      to="/pricing"
+                      search={{ design: template.slug }}
+                      className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary-gradient px-6 text-sm font-medium text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5 sm:w-auto sm:self-start sm:px-8"
                     >
-                      <Clock className="h-4 w-4" /> Coming Soon for Instant Preview
-                    </button>
+                      <Sliders className="h-4 w-4" /> Choose a Plan
+                    </Link>
                     <p className="text-xs text-muted-foreground">
                       This design can be explored now. Self-service store generation is coming soon.
                     </p>
