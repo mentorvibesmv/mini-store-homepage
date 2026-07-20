@@ -557,7 +557,7 @@ export type FaqItem = {
   displayOrder: number;
 };
 
-export const customRequestHref = "/custom-websites/request";
+export const customRequestHref = "/contact?plan=custom";
 
 export const customWebsitesPage = {
   hero: {
