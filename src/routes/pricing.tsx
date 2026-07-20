@@ -493,15 +493,16 @@ function CustomCard({ plan }: { plan: typeof pricingPage.plans.custom }) {
       </div>
       <FeatureList items={plan.features} />
       <div className="mt-auto pt-6">
-        <a
-          href={plan.cta.href}
+        <Link
+          to="/contact"
+          search={{ plan: "custom", design: undefined }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
           )}
         >
           {plan.cta.label}
-        </a>
+        </Link>
       </div>
     </PlanShell>
   );
