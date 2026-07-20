@@ -40,6 +40,16 @@ const DESCRIPTION =
   "Get in touch with the Mini Store team on WhatsApp or email. Ask a question, request a custom website, or start a new project — we reply during business hours (Mon–Sat).";
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    plan:
+      typeof search.plan === "string" && ["starter", "business", "custom"].includes(search.plan)
+        ? (search.plan as "starter" | "business" | "custom")
+        : undefined,
+    design:
+      typeof search.design === "string" && search.design.length > 0
+        ? search.design
+        : undefined,
+  }),
   head: () => {
     const seo = pageSeo({ path: "/contact", title: TITLE, description: DESCRIPTION });
     return {
@@ -214,7 +224,21 @@ function ContactForm({
   firstFieldRef: React.RefObject<HTMLInputElement | null>;
 }) {
   const f = contactPage.form;
-  const [values, setValues] = useState<FormState>(initialForm);
+  const { plan, design } = Route.useSearch();
+  const [values, setValues] = useState<FormState>(() => {
+    const planLabel =
+      plan === "starter"
+        ? "Mini Store Basic"
+        : plan === "business"
+          ? "Mini Store Commerce Managed"
+          : plan === "custom"
+            ? "Custom Website"
+            : undefined;
+    const parts: string[] = [];
+    if (planLabel) parts.push(`Selected plan: ${planLabel}`);
+    if (design) parts.push(`Selected design: ${design}`);
+    return { ...initialForm, message: parts.length ? `${parts.join("\n")}\n\n` : "" };
+  });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 

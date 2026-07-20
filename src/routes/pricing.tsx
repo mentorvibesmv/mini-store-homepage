@@ -386,7 +386,7 @@ function FeatureList({ items }: { items: string[] }) {
   );
 }
 
-function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter; billing: Billing; design?: string }) {
+function StarterCard({ plan, design }: { plan: typeof pricingPage.plans.starter; billing: Billing; design?: string }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone}>
@@ -415,6 +415,7 @@ function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter; billing
       <div className="mt-auto pt-6">
         <Link
           to="/contact"
+          search={{ plan: "starter", design }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
@@ -427,7 +428,7 @@ function StarterCard({ plan }: { plan: typeof pricingPage.plans.starter; billing
   );
 }
 
-function BusinessCard({ plan }: { plan: typeof pricingPage.plans.business; billing: Billing; design?: string }) {
+function BusinessCard({ plan, design }: { plan: typeof pricingPage.plans.business; billing: Billing; design?: string }) {
   const t = planTone[plan.tone as keyof typeof planTone];
   return (
     <PlanShell tone={plan.tone as keyof typeof planTone} popular={plan.popular}>
@@ -460,6 +461,7 @@ function BusinessCard({ plan }: { plan: typeof pricingPage.plans.business; billi
       <div className="mt-auto pt-6">
         <Link
           to="/contact"
+          search={{ plan: "business", design }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
@@ -491,15 +493,16 @@ function CustomCard({ plan }: { plan: typeof pricingPage.plans.custom }) {
       </div>
       <FeatureList items={plan.features} />
       <div className="mt-auto pt-6">
-        <a
-          href={plan.cta.href}
+        <Link
+          to="/contact"
+          search={{ plan: "custom", design: undefined }}
           className={cn(
             "flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
             t.btn,
           )}
         >
           {plan.cta.label}
-        </a>
+        </Link>
       </div>
     </PlanShell>
   );
